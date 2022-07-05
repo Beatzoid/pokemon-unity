@@ -4,7 +4,9 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float moveSpeed;
+
     public LayerMask solidObjectsLayer;
+    public LayerMask grassLayer;
 
     private bool isMoving;
     private Vector2 input;
@@ -23,6 +25,7 @@ public class PlayerController : MonoBehaviour
             input.x = Input.GetAxisRaw("Horizontal");
             input.y = Input.GetAxisRaw("Vertical");
 
+            // Removes diagonal movement
             if (input.x != 0) input.y = 0;
 
             if (input != Vector2.zero)
@@ -45,8 +48,10 @@ public class PlayerController : MonoBehaviour
     {
         isMoving = true;
 
+        // While we are still moving to the target position
         while ((targetPos - transform.position).sqrMagnitude > Mathf.Epsilon)
         {
+            // Smoothly move the player in small increments to the target position
             transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);
             yield return null;
         }
@@ -54,10 +59,26 @@ public class PlayerController : MonoBehaviour
         transform.position = targetPos;
 
         isMoving = false;
+
+        CheckForEncounters();
+    }
+
+    private void CheckForEncounters()
+    {
+        // If touching a sprite with the grass layer
+        if (Physics2D.OverlapCircle(transform.position, 0.2f, grassLayer) != null)
+        {
+            // 10% chance to encounter a wild pokemon
+            if (Random.Range(1, 101) <= 10)
+            {
+                Debug.Log("Encountered a wild pokemon");
+            }
+        }
     }
 
     private bool IsWalkable(Vector3 targetPos)
     {
+        // If touching a sprite with the solidObjects layer
         if (Physics2D.OverlapCircle(targetPos, 0.2f, solidObjectsLayer) != null)
         {
             return false;
