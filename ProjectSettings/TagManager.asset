@@ -11,7 +11,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - SolidObjects
   - 
   - 
   - 
@@ -43,6 +43,9 @@ TagManager:
     locked: 0
   - name: Background
     uniqueID: 2943119323
+    locked: 0
+  - name: Foreground
+    uniqueID: 1656503483
     locked: 0
   - name: Player
     uniqueID: 97969561
