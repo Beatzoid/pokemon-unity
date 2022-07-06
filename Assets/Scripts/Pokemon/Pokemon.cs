@@ -27,6 +27,38 @@ public class Pokemon
         }
     }
 
+    /// <summary>
+    ///     Causes the specified pokemon to take damage
+    /// </summary>
+    /// <param name="move">The move to apply to the pokemon </param>
+    /// <param name="attacker">The attacking pokemon </param>
+    /// <returns>
+    /// A boolean representing whether the pokemon fainted
+    /// </returns>
+    public bool TakeDamage(Move move, Pokemon attacker)
+    {
+        float modifiers = Random.Range(0.85f, 1f);
+        float a = (2 * attacker.Level + 10) / 250f;
+
+        float d = a * move.Base.Power * ((float)attacker.Attack / Defense) + 2;
+        int damage = Mathf.FloorToInt(d * modifiers);
+
+        HP -= damage;
+        if (HP <= 0)
+        {
+            HP = 0;
+            return true;
+        }
+
+        return false;
+    }
+
+    public Move GetRandomMove()
+    {
+        int r = Random.Range(0, Moves.Count);
+        return Moves[r];
+    }
+
     public int Attack
     {
         get { return Mathf.FloorToInt(Base.Attack * Level / 100f) + 5; }
