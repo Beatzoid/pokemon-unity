@@ -8,7 +8,6 @@ public class Pokemon
     public int HP { get; set; }
     public List<Move> Moves { get; set; }
 
-
     public Pokemon(PokemonBase pBase, int pLevel)
     {
         Base = pBase;
