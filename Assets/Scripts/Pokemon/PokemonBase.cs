@@ -1,38 +1,30 @@
+using System.Collections.Generic;
 using UnityEngine;
 
-public enum PokemonType
-{
-    None,
-    Normal,
-    Fire,
-    Water,
-    Electric,
-    Grass,
-    Ice,
-    Fighting,
-    Poison,
-    Ground,
-    Flying,
-    Phychic,
-    Bug,
-    Rock,
-    Ghost,
-    Dragon
-}
 
 [CreateAssetMenu(fileName = "Pokemon", menuName = "Pokemon/Create new pokemon")]
 public class PokemonBase : ScriptableObject
 {
+    [Header("Info")]
     [SerializeField] string pokemonName;
 
     [TextArea]
     [SerializeField] string description;
 
+    [Space(5)]
+    [Header("Sprites")]
+
     [SerializeField] Sprite frontSprite;
     [SerializeField] Sprite backSprite;
 
+    [Space(5)]
+    [Header("Types")]
+
     [SerializeField] PokemonType type1;
     [SerializeField] PokemonType type2;
+
+    [Space(5)]
+    [Header("Stats")]
 
     [SerializeField] int maxHp;
     [SerializeField] int attack;
@@ -40,6 +32,10 @@ public class PokemonBase : ScriptableObject
     [SerializeField] int specialAttack;
     [SerializeField] int specialDefense;
     [SerializeField] int speed;
+
+    [Space(5)]
+    [Header("Misc")]
+    [SerializeField] List<LearnableMove> learnableMoves;
 
     public string PokemonName
     {
@@ -100,4 +96,46 @@ public class PokemonBase : ScriptableObject
     {
         get { return speed; }
     }
+
+    public List<LearnableMove> LearnableMoves
+    {
+        get { return learnableMoves; }
+    }
+}
+
+[System.Serializable]
+public class LearnableMove
+{
+    [SerializeField] MoveBase moveBase;
+    [SerializeField] int level;
+
+    public MoveBase MoveBase
+    {
+        get { return moveBase; }
+    }
+
+    public int Level
+    {
+        get { return level; }
+    }
+}
+
+public enum PokemonType
+{
+    None,
+    Normal,
+    Fire,
+    Water,
+    Electric,
+    Grass,
+    Ice,
+    Fighting,
+    Poison,
+    Ground,
+    Flying,
+    Phychic,
+    Bug,
+    Rock,
+    Ghost,
+    Dragon
 }

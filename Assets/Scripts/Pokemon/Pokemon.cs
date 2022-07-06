@@ -1,16 +1,31 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Pokemon
 {
-    PokemonBase _base;
-    int level;
+    public int HP { get; set; }
+    public List<Move> Moves { get; set; }
+
+    readonly PokemonBase _base;
+    readonly int level;
 
     public Pokemon(PokemonBase pBase, int pLevel)
     {
         _base = pBase;
         level = pLevel;
+        HP = _base.MaxHp;
 
+        Moves = new List<Move>();
 
+        // Generate moves based on pokemon level
+        foreach (LearnableMove move in _base.LearnableMoves)
+        {
+            if (move.Level <= level)
+                Moves.Add(new Move(move.MoveBase));
+
+            if (Moves.Count >= 4)
+                break;
+        }
     }
 
     public int Attack
