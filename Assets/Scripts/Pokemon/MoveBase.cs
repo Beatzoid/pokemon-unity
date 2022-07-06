@@ -4,27 +4,27 @@ using UnityEngine;
 public class MoveBase : ScriptableObject
 {
     [Header("Info")]
-    [SerializeField] string moveName;
+    [SerializeField] readonly string moveName;
 
     [TextArea]
-    [SerializeField] string description;
+    [SerializeField] readonly string description;
 
     [Space(5)]
     [Header("Stats")]
 
-    [SerializeField] PokemonType type;
-    [SerializeField] int power;
-    [SerializeField] int accuracy;
-    [SerializeField] int pp;
+    [SerializeField] readonly PokemonType type;
+    [SerializeField] readonly int power;
+    [SerializeField] readonly int accuracy;
+    [SerializeField] readonly int pp;
 
     public string MoveName
     {
-        get { return name; }
+        get { return moveName; }
     }
 
     public string Description
     {
-        get { return name; }
+        get { return description; }
     }
 
     public PokemonType Type

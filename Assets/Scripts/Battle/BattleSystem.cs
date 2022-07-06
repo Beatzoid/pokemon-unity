@@ -13,11 +13,11 @@ public enum BattleState
 
 public class BattleSystem : MonoBehaviour
 {
-    [SerializeField] BattleUnit playerUnit;
-    [SerializeField] BattleUnit enemyUnit;
-    [SerializeField] BattleHud playerHud;
-    [SerializeField] BattleHud enemyHud;
-    [SerializeField] BattleDialogBox dialogBox;
+    [SerializeField] readonly BattleUnit playerUnit;
+    [SerializeField] readonly BattleUnit enemyUnit;
+    [SerializeField] readonly BattleHud playerHud;
+    [SerializeField] readonly BattleHud enemyHud;
+    [SerializeField] readonly BattleDialogBox dialogBox;
 
     BattleState state;
     int currentAction;
@@ -64,7 +64,7 @@ public class BattleSystem : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Return))
         {
             dialogBox.EnableMoveSelector(false);
-            dialogBox.EnableDialogText(true);
+            dialogBox.SetDialogTextActive(true);
             StartCoroutine(PerformPlayerMove());
         }
     }
@@ -75,7 +75,7 @@ public class BattleSystem : MonoBehaviour
 
         Move move = playerUnit.Pokemon.Moves[currentMove];
 
-        yield return dialogBox.TypeDialog($"{playerUnit.Pokemon.Base.PokemonName} used {move.Base.MoveName}");
+        yield return dialogBox.TypeDialog($"{playerUnit.Pokemon.Base.Name} used {move.Base.MoveName}");
         yield return new WaitForSeconds(1f);
 
         bool isFainted = enemyUnit.Pokemon.TakeDamage(move, playerUnit.Pokemon);
@@ -83,7 +83,7 @@ public class BattleSystem : MonoBehaviour
 
         if (isFainted)
         {
-            yield return dialogBox.TypeDialog($"{enemyUnit.Pokemon.Base.PokemonName} Fainted");
+            yield return dialogBox.TypeDialog($"{enemyUnit.Pokemon.Base.Name} Fainted");
         }
         else
         {
@@ -97,7 +97,7 @@ public class BattleSystem : MonoBehaviour
 
         Move move = enemyUnit.Pokemon.GetRandomMove();
 
-        yield return dialogBox.TypeDialog($"{enemyUnit.Pokemon.Base.PokemonName} used {move.Base.MoveName}");
+        yield return dialogBox.TypeDialog($"{enemyUnit.Pokemon.Base.Name} used {move.Base.MoveName}");
         yield return new WaitForSeconds(1f);
 
         bool isFainted = playerUnit.Pokemon.TakeDamage(move, enemyUnit.Pokemon);
@@ -105,7 +105,7 @@ public class BattleSystem : MonoBehaviour
 
         if (isFainted)
         {
-            yield return dialogBox.TypeDialog($"{playerUnit.Pokemon.Base.PokemonName} Fainted");
+            yield return dialogBox.TypeDialog($"{playerUnit.Pokemon.Base.Name} Fainted");
         }
         else
         {
@@ -140,6 +140,10 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Setup the battle by setting up the player and enemy units, setting the HUD stats, and
+    /// showing a message on the dialog box
+    /// </summary>
     public IEnumerator SetupBattle()
     {
         playerUnit.Setup();
@@ -150,7 +154,7 @@ public class BattleSystem : MonoBehaviour
 
         dialogBox.SetMoveNames(playerUnit.Pokemon.Moves);
 
-        yield return dialogBox.TypeDialog($"A wild {enemyUnit.Pokemon.Base.PokemonName} appeared");
+        yield return dialogBox.TypeDialog($"A wild {enemyUnit.Pokemon.Base.Name} appeared");
         yield return new WaitForSeconds(1f);
 
         PlayerAction();
@@ -167,7 +171,7 @@ public class BattleSystem : MonoBehaviour
     {
         state = BattleState.PlayerMove;
         dialogBox.EnableActionSelector(false);
-        dialogBox.EnableDialogText(false);
+        dialogBox.SetDialogTextActive(false);
         dialogBox.EnableMoveSelector(true);
     }
 }

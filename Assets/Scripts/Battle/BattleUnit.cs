@@ -3,11 +3,14 @@ using UnityEngine.UI;
 
 public class BattleUnit : MonoBehaviour
 {
-    [SerializeField] PokemonBase _base;
-    [SerializeField] int level;
-    [SerializeField] bool isPlayerUnit;
+    [SerializeField] readonly PokemonBase _base;
+    [SerializeField] readonly int level;
+    [SerializeField] readonly bool isPlayerUnit;
     public Pokemon Pokemon { get; set; }
 
+    /// <summary>
+    /// Setup the battle unit
+    /// </summary>
     public void Setup()
     {
         Pokemon = new Pokemon(_base, level);

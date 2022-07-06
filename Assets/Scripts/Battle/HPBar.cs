@@ -4,13 +4,21 @@ using UnityEngine;
 
 public class HPBar : MonoBehaviour
 {
-    [SerializeField] GameObject health;
+    [SerializeField] readonly GameObject health;
 
+    /// <summary>
+    /// Set the HP of the HP bar
+    /// </summary>
+    /// <param name="hpNormalized">The HP (normalized) </param>
     public void SetHP(float hpNormalized)
     {
         health.transform.localScale = new Vector3(hpNormalized, 1f);
     }
 
+    /// <summary>
+    /// Smoothly set the HP of the HP bar
+    /// </summary>
+    /// <param name="newHp">The HP </param>
     public IEnumerator SetHPSmoothly(float newHp)
     {
         float currentHp = health.transform.localScale.x;

@@ -8,6 +8,11 @@ public class Pokemon
     public int HP { get; set; }
     public List<Move> Moves { get; set; }
 
+    /// <summary>
+    /// The Pokemon class manages all Pokemon
+    /// </summary>
+    /// <param name="pBase">The pokemon base </param>
+    /// <param name="pLevel">The pokemon level </param>
     public Pokemon(PokemonBase pBase, int pLevel)
     {
         Base = pBase;
