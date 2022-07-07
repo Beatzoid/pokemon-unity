@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class BattleHud : MonoBehaviour
 {
-    [SerializeField] readonly TextMeshProUGUI nameText;
-    [SerializeField] readonly TextMeshProUGUI levelText;
-    [SerializeField] readonly HPBar hpBar;
+    [SerializeField] TextMeshProUGUI nameText;
+    [SerializeField] TextMeshProUGUI levelText;
+    [SerializeField] HPBar hpBar;
 
     Pokemon _pokemon;
 

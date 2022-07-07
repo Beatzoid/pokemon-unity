@@ -3,8 +3,8 @@ using UnityEngine;
 [System.Serializable]
 public class LearnableMove
 {
-    [SerializeField] readonly MoveBase moveBase;
-    [SerializeField] readonly int level;
+    [SerializeField] MoveBase moveBase;
+    [SerializeField] int level;
 
     public MoveBase MoveBase
     {

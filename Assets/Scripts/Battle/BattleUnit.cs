@@ -3,9 +3,9 @@ using UnityEngine.UI;
 
 public class BattleUnit : MonoBehaviour
 {
-    [SerializeField] readonly PokemonBase _base;
-    [SerializeField] readonly int level;
-    [SerializeField] readonly bool isPlayerUnit;
+    [SerializeField] PokemonBase _base;
+    [SerializeField] int level;
+    [SerializeField] bool isPlayerUnit;
     public Pokemon Pokemon { get; set; }
 
     /// <summary>

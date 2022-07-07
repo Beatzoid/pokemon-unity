@@ -18,43 +18,46 @@ public enum PokemonType
     Bug,
     Rock,
     Ghost,
-    Dragon
+    Dragon,
+    Dark,
+    Steel,
+    Fairy
 }
 
 [CreateAssetMenu(fileName = "Pokemon", menuName = "Pokemon/Create new pokemon")]
 public class PokemonBase : ScriptableObject
 {
     [Header("Info")]
-    [SerializeField] readonly string pokemonName;
+    [SerializeField] string pokemonName;
 
     [TextArea]
-    [SerializeField] readonly string description;
+    [SerializeField] string description;
 
     [Space(5)]
     [Header("Sprites")]
 
-    [SerializeField] readonly Sprite frontSprite;
-    [SerializeField] readonly Sprite backSprite;
+    [SerializeField] Sprite frontSprite;
+    [SerializeField] Sprite backSprite;
 
     [Space(5)]
     [Header("Types")]
 
-    [SerializeField] readonly PokemonType type1;
-    [SerializeField] readonly PokemonType type2;
+    [SerializeField] PokemonType type1;
+    [SerializeField] PokemonType type2;
 
     [Space(5)]
     [Header("Stats")]
 
-    [SerializeField] readonly int maxHp;
-    [SerializeField] readonly int attack;
-    [SerializeField] readonly int defense;
-    [SerializeField] readonly int specialAttack;
-    [SerializeField] readonly int specialDefense;
-    [SerializeField] readonly int speed;
+    [SerializeField] int maxHp;
+    [SerializeField] int attack;
+    [SerializeField] int defense;
+    [SerializeField] int specialAttack;
+    [SerializeField] int specialDefense;
+    [SerializeField] int speed;
 
     [Space(5)]
     [Header("Misc")]
-    [SerializeField] readonly List<LearnableMove> learnableMoves;
+    [SerializeField] List<LearnableMove> learnableMoves;
 
     public string Name
     {
@@ -81,7 +84,7 @@ public class PokemonBase : ScriptableObject
         get { return type1; }
     }
 
-    public PokemonType Typ2
+    public PokemonType Type2
     {
         get { return type2; }
     }
@@ -121,4 +124,3 @@ public class PokemonBase : ScriptableObject
         get { return learnableMoves; }
     }
 }
-

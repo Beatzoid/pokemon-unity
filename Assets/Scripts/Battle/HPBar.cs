@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HPBar : MonoBehaviour
 {
-    [SerializeField] readonly GameObject health;
+    [SerializeField] GameObject health;
 
     /// <summary>
     /// Set the HP of the HP bar

@@ -5,18 +5,18 @@ using UnityEngine;
 
 public class BattleDialogBox : MonoBehaviour
 {
-    [SerializeField] readonly int lettersPerSecond;
+    [SerializeField] int lettersPerSecond;
     [SerializeField] Color highlightedColor;
-    [SerializeField] readonly TextMeshProUGUI dialogText;
-    [SerializeField] readonly GameObject actionSelector;
-    [SerializeField] readonly GameObject moveSelector;
-    [SerializeField] readonly GameObject moveDetails;
+    [SerializeField] TextMeshProUGUI dialogText;
+    [SerializeField] GameObject actionSelector;
+    [SerializeField] GameObject moveSelector;
+    [SerializeField] GameObject moveDetails;
 
-    [SerializeField] readonly List<TextMeshProUGUI> actionTexts;
-    [SerializeField] readonly List<TextMeshProUGUI> moveTexts;
+    [SerializeField] List<TextMeshProUGUI> actionTexts;
+    [SerializeField] List<TextMeshProUGUI> moveTexts;
 
-    [SerializeField] readonly TextMeshProUGUI ppText;
-    [SerializeField] readonly TextMeshProUGUI typeText;
+    [SerializeField] TextMeshProUGUI ppText;
+    [SerializeField] TextMeshProUGUI typeText;
 
     /// <summary>
     /// Set the dialog box text
@@ -40,6 +40,8 @@ public class BattleDialogBox : MonoBehaviour
             dialogText.text += letter;
             yield return new WaitForSeconds(1f / lettersPerSecond);
         }
+
+        yield return new WaitForSeconds(1f);
     }
 
     /// <summary>
@@ -55,7 +57,7 @@ public class BattleDialogBox : MonoBehaviour
     /// Show/hide the action selector
     /// </summary>
     /// <param name="enabled">Whether to show or hide the action selector </param> 
-    public void EnableActionSelector(bool enabled)
+    public void SetActionSelectorActive(bool enabled)
     {
         actionSelector.SetActive(enabled);
     }
@@ -64,7 +66,7 @@ public class BattleDialogBox : MonoBehaviour
     /// Show/hide the move selector and details
     /// </summary>
     /// <param name="enabled">Whether to show or hide the move selector amd details </param> 
-    public void EnableMoveSelector(bool enabled)
+    public void SetMoveSelectorActive(bool enabled)
     {
         moveSelector.SetActive(enabled);
         moveDetails.SetActive(enabled);

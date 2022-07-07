@@ -38,24 +38,38 @@ public class Pokemon
     /// <param name="move">The move to apply to the pokemon </param>
     /// <param name="attacker">The attacking pokemon </param>
     /// <returns>
-    /// A boolean representing whether the pokemon fainted
+    /// A DamageDetails class containing the effectiveness of the attack, whether it was a critical,
+    /// and whether or not the pokemon fainted
     /// </returns>
-    public bool TakeDamage(Move move, Pokemon attacker)
+    public DamageDetails TakeDamage(Move move, Pokemon attacker)
     {
-        float modifiers = Random.Range(0.85f, 1f);
-        float a = (2 * attacker.Level + 10) / 250f;
+        float critical = 1;
 
-        float d = a * move.Base.Power * ((float)attacker.Attack / Defense) + 2;
+        if (Random.value * 100f <= 6.25) critical = 2;
+
+        float effectiveness = TypeChart.GetEffectiveness(move.Base.Type, this.Base.Type1) * TypeChart.GetEffectiveness(move.Base.Type, this.Base.Type2);
+
+        DamageDetails damageDetails = new()
+        {
+            TypeEffectiveness = effectiveness,
+            Critical = critical,
+            Fainted = false
+        };
+
+        float modifiers = Random.Range(0.85f, 1f) * effectiveness * critical;
+        float a = ((2 * attacker.Level) + 10) / 250f;
+
+        float d = ((a * move.Base.Power) * ((float)attacker.Attack / Defense)) + 2;
         int damage = Mathf.FloorToInt(d * modifiers);
 
         HP -= damage;
         if (HP <= 0)
         {
             HP = 0;
-            return true;
+            damageDetails.Fainted = true;
         }
 
-        return false;
+        return damageDetails;
     }
 
     public Move GetRandomMove()

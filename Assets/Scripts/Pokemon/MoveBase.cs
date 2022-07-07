@@ -4,18 +4,18 @@ using UnityEngine;
 public class MoveBase : ScriptableObject
 {
     [Header("Info")]
-    [SerializeField] readonly string moveName;
+    [SerializeField] string moveName;
 
     [TextArea]
-    [SerializeField] readonly string description;
+    [SerializeField] string description;
 
     [Space(5)]
     [Header("Stats")]
 
-    [SerializeField] readonly PokemonType type;
-    [SerializeField] readonly int power;
-    [SerializeField] readonly int accuracy;
-    [SerializeField] readonly int pp;
+    [SerializeField] PokemonType type;
+    [SerializeField] int power;
+    [SerializeField] int accuracy;
+    [SerializeField] int pp;
 
     public string MoveName
     {
