@@ -44,5 +44,4 @@ public class GameController : MonoBehaviour
 
         battleSystem.StartBattle();
     }
-
 }

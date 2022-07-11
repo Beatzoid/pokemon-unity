@@ -38,7 +38,7 @@ public class Pokemon
     /// <param name="move">The move to apply to the pokemon </param>
     /// <param name="attacker">The attacking pokemon </param>
     /// <returns>
-    /// A DamageDetails class containing the effectiveness of the attack, whether it was a critical,
+    /// A <see cref="DamageDetails"> DamageDetails </see> class containing the effectiveness of the attack, whether it was a critical,
     /// and whether or not the pokemon fainted
     /// </returns>
     public DamageDetails TakeDamage(Move move, Pokemon attacker)
@@ -56,10 +56,13 @@ public class Pokemon
             Fainted = false
         };
 
+        float attack = move.Base.IsSpecial ? attacker.SpecialAttack : attacker.Attack;
+        float defense = move.Base.IsSpecial ? attacker.SpecialDefense : attacker.Defense;
+
         float modifiers = Random.Range(0.85f, 1f) * effectiveness * critical;
         float a = ((2 * attacker.Level) + 10) / 250f;
 
-        float d = ((a * move.Base.Power) * ((float)attacker.Attack / Defense)) + 2;
+        float d = ((a * move.Base.Power) * ((float)attack / defense)) + 2;
         int damage = Mathf.FloorToInt(d * modifiers);
 
         HP -= damage;
