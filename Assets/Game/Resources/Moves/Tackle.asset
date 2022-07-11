@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9be2b2a768ff8d45b1860133c2c4f3b, type: 3}
   m_Name: Tackle
   m_EditorClassIdentifier: 
-  moveName: Tacke
+  moveName: Tackle
   description: 
   type: 1
   power: 40
