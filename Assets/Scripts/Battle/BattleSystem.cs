@@ -8,7 +8,8 @@ public enum BattleState
     PlayerAction,
     PlayerMove,
     EnemyMove,
-    Busy
+    Busy,
+    PartyScreen
 }
 
 public class BattleSystem : MonoBehaviour
@@ -23,8 +24,9 @@ public class BattleSystem : MonoBehaviour
     public event Action<bool> OnBattleOver;
 
     BattleState state;
-    int currentAction;
-    int currentMove;
+    int currentActionIndex;
+    int currentMoveIndex;
+    int currentPartyMemberIndex;
 
     PokemonParty playerParty;
     Pokemon wildPokemon;
@@ -52,22 +54,68 @@ public class BattleSystem : MonoBehaviour
         {
             HandleMoveSelection();
         }
+        else if (state == BattleState.PartyScreen)
+        {
+            HandlePartyScreenSelection();
+        }
+    }
+
+    void HandlePartyScreenSelection()
+    {
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+            ++currentPartyMemberIndex;
+        else if (Input.GetKeyDown(KeyCode.LeftArrow))
+            --currentPartyMemberIndex;
+        else if (Input.GetKeyDown(KeyCode.DownArrow))
+            currentPartyMemberIndex += 2;
+        else if (Input.GetKeyDown(KeyCode.UpArrow))
+            currentPartyMemberIndex -= 2;
+
+        currentPartyMemberIndex = Mathf.Clamp(currentPartyMemberIndex, 0, playerParty.Pokemon.Count);
+
+        partyScreen.UpdateMemberSelection(currentPartyMemberIndex);
+
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            Pokemon selectedPartyMember = playerParty.Pokemon[currentPartyMemberIndex];
+
+            if (selectedPartyMember.HP <= 0)
+            {
+                partyScreen.SetMessageText("You can't send out a fainted pokemon");
+                return;
+            }
+
+            if (selectedPartyMember == playerUnit.Pokemon)
+            {
+                partyScreen.SetMessageText("You can't switch with the currently active pokemon");
+                return;
+            }
+
+            partyScreen.gameObject.SetActive(false);
+            state = BattleState.Busy;
+            StartCoroutine(SwitchPokemon(selectedPartyMember));
+        }
+        else if (Input.GetKeyDown(KeyCode.X))
+        {
+            partyScreen.gameObject.SetActive(false);
+            PlayerAction();
+        }
     }
 
     void HandleMoveSelection()
     {
         if (Input.GetKeyDown(KeyCode.RightArrow))
-            ++currentMove;
+            ++currentMoveIndex;
         else if (Input.GetKeyDown(KeyCode.LeftArrow))
-            --currentMove;
+            --currentMoveIndex;
         else if (Input.GetKeyDown(KeyCode.DownArrow))
-            currentMove += 2;
+            currentMoveIndex += 2;
         else if (Input.GetKeyDown(KeyCode.UpArrow))
-            currentMove -= 2;
+            currentMoveIndex -= 2;
 
-        currentMove = Mathf.Clamp(currentMove, 0, playerUnit.Pokemon.Moves.Count - 1);
+        currentMoveIndex = Mathf.Clamp(currentMoveIndex, 0, playerUnit.Pokemon.Moves.Count - 1);
 
-        dialogBox.UpdateMoveSelection(currentMove, playerUnit.Pokemon.Moves[currentMove]);
+        dialogBox.UpdateMoveSelection(currentMoveIndex, playerUnit.Pokemon.Moves[currentMoveIndex]);
 
         if (Input.GetKeyDown(KeyCode.Return))
         {
@@ -86,35 +134,35 @@ public class BattleSystem : MonoBehaviour
     void HandleActionSelection()
     {
         if (Input.GetKeyDown(KeyCode.RightArrow))
-            ++currentAction;
+            ++currentActionIndex;
         else if (Input.GetKeyDown(KeyCode.LeftArrow))
-            --currentAction;
+            --currentActionIndex;
         else if (Input.GetKeyDown(KeyCode.DownArrow))
-            currentAction += 2;
+            currentActionIndex += 2;
         else if (Input.GetKeyDown(KeyCode.UpArrow))
-            currentAction -= 2;
+            currentActionIndex -= 2;
 
-        currentAction = Mathf.Clamp(currentAction, 0, 3);
+        currentActionIndex = Mathf.Clamp(currentActionIndex, 0, 3);
 
-        dialogBox.UpdateActionSelection(currentAction);
+        dialogBox.UpdateActionSelection(currentActionIndex);
 
         if (Input.GetKeyDown(KeyCode.Return))
         {
-            if (currentAction == 0)
+            if (currentActionIndex == 0)
             {
                 // Fight
                 PlayerMove();
             }
-            else if (currentAction == 1)
+            else if (currentActionIndex == 1)
             {
                 // Bag
             }
-            else if (currentAction == 2)
+            else if (currentActionIndex == 2)
             {
                 // Choose Pokemon
                 OpenPartyScreen();
             }
-            else if (currentAction == 3)
+            else if (currentActionIndex == 3)
             {
                 // Run
             }
@@ -123,6 +171,7 @@ public class BattleSystem : MonoBehaviour
 
     void OpenPartyScreen()
     {
+        state = BattleState.PartyScreen;
         partyScreen.SetPartyData(playerParty.Pokemon);
         partyScreen.gameObject.SetActive(true);
     }
@@ -148,7 +197,7 @@ public class BattleSystem : MonoBehaviour
     /// </summary>
     public IEnumerator SetupBattle()
     {
-        currentMove = 0;
+        currentMoveIndex = 0;
         playerUnit.Setup(playerParty.GetHealthyPokemon());
         enemyUnit.Setup(wildPokemon);
 
@@ -164,11 +213,32 @@ public class BattleSystem : MonoBehaviour
         PlayerAction();
     }
 
+    IEnumerator SwitchPokemon(Pokemon newPokemon)
+    {
+        if (playerUnit.Pokemon.HP > 0)
+        {
+            yield return dialogBox.TypeDialog($"Come back {playerUnit.Pokemon.Base.name}");
+            playerUnit.PlayFaintAnimation();
+            yield return new WaitForSeconds(1.5f);
+        }
+
+        currentMoveIndex = 0;
+
+        playerUnit.Setup(newPokemon);
+        playerHud.SetData(newPokemon);
+
+        dialogBox.SetMoveNames(newPokemon.Moves);
+
+        yield return dialogBox.TypeDialog($"Go {newPokemon.Base.Name}!");
+
+        StartCoroutine(PerformEnemyMove());
+    }
+
     IEnumerator PerformPlayerMove()
     {
         state = BattleState.Busy;
 
-        Move move = playerUnit.Pokemon.Moves[currentMove];
+        Move move = playerUnit.Pokemon.Moves[currentMoveIndex];
         move.PP--;
 
         yield return dialogBox.TypeDialog($"{playerUnit.Pokemon.Base.Name} used {move.Base.MoveName}");
@@ -226,16 +296,7 @@ public class BattleSystem : MonoBehaviour
 
             if (nextPokemon != null)
             {
-                currentMove = 0;
-
-                playerUnit.Setup(nextPokemon);
-                playerHud.SetData(nextPokemon);
-
-                dialogBox.SetMoveNames(nextPokemon.Moves);
-
-                yield return dialogBox.TypeDialog($"Go {nextPokemon.Base.Name}!");
-
-                PlayerAction();
+                OpenPartyScreen();
             }
             else
             {
