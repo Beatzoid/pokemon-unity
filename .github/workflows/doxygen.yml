@@ -15,6 +15,6 @@ jobs:
             - uses: actions/checkout@v2
 
             - name: Generate
-              uses: langroodi/doxygenize@1.6.3
+              uses: langroodi/doxygenize@v1.6.3
               with:
                   htmloutput: "./Docs/html"
