@@ -16,6 +16,9 @@ jobs:
               with:
                   lfs: true
 
+            - name: Install Git lfs
+              run: sudo apt install git-lfs && git lfs install
+
             - name: Generate
               uses: langroodi/doxygenize@v1.6.3
               with:
