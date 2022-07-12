@@ -24,6 +24,7 @@ public class BattleUnit : MonoBehaviour
     /// </summary>
     public void Setup(Pokemon pokemon)
     {
+        image = GetComponent<Image>();
         Pokemon = pokemon;
 
         if (isPlayerUnit)

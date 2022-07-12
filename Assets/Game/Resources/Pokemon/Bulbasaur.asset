@@ -19,9 +19,9 @@ MonoBehaviour:
   type1: 5
   type2: 8
   maxHp: 45
-  attack: 49
+  attack: 1000
   defense: 49
-  specialAttack: 65
+  specialAttack: 1000
   specialDefense: 65
   speed: 45
   learnableMoves:
