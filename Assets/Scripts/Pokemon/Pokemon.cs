@@ -1,22 +1,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class Pokemon
 {
-    public PokemonBase Base { get; set; }
-    public int Level { get; set; }
+    [SerializeField] PokemonBase _base;
+    [SerializeField] int level;
+
+    public PokemonBase Base { get { return _base; } }
+    public int Level { get { return level; } }
     public int HP { get; set; }
     public List<Move> Moves { get; set; }
 
     /// <summary>
-    /// The Pokemon class manages all Pokemon
+    /// Initializes the Pokemon
     /// </summary>
-    /// <param name="pBase">The pokemon base </param>
-    /// <param name="pLevel">The pokemon level </param>
-    public Pokemon(PokemonBase pBase, int pLevel)
+    public void Init()
     {
-        Base = pBase;
-        Level = pLevel;
         HP = MaxHp;
 
         Moves = new List<Move>();
