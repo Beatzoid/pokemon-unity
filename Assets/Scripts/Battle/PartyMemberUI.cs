@@ -22,4 +22,3 @@ public class PartyMemberUI : MonoBehaviour
         hpBar.SetHP((float)pokemon.HP / pokemon.MaxHp);
     }
 }
-

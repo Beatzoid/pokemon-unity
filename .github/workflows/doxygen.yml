@@ -1,0 +1,20 @@
+name: Doxygen
+
+on:
+    workflow_dispatch: {}
+    push:
+        branches: [master]
+    pull_request:
+        branches: [master]
+
+jobs:
+    activation:
+        name: Generate Doxygen
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+
+            - name: Generate
+              uses: langroodi/doxygenize@1.6.3
+              with:
+                  htmloutput: "./Docs/html"
