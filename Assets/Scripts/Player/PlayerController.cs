@@ -4,92 +4,92 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed;
+	public float moveSpeed;
 
-    public LayerMask solidObjectsLayer;
-    public LayerMask grassLayer;
+	public LayerMask solidObjectsLayer;
+	public LayerMask grassLayer;
 
-    public event Action OnEncounter;
+	public event Action OnEncounter;
 
-    private bool isMoving;
-    private Vector2 input;
+	private bool isMoving;
+	private Vector2 input;
 
-    private Animator animator;
+	private Animator animator;
 
-    public void Awake()
-    {
-        animator = GetComponent<Animator>();
-    }
+	public void Awake()
+	{
+		animator = GetComponent<Animator>();
+	}
 
-    public void HandleUpdate()
-    {
-        if (!isMoving)
-        {
-            input.x = Input.GetAxisRaw("Horizontal");
-            input.y = Input.GetAxisRaw("Vertical");
+	public void HandleUpdate()
+	{
+		if (!isMoving)
+		{
+			input.x = Input.GetAxisRaw("Horizontal");
+			input.y = Input.GetAxisRaw("Vertical");
 
-            // Removes diagonal movement
-            if (input.x != 0) input.y = 0;
+			// Removes diagonal movement
+			if (input.x != 0) input.y = 0;
 
-            if (input != Vector2.zero)
-            {
-                animator.SetFloat("moveX", input.x);
-                animator.SetFloat("moveY", input.y);
+			if (input != Vector2.zero)
+			{
+				animator.SetFloat("moveX", input.x);
+				animator.SetFloat("moveY", input.y);
 
-                Vector3 targetPos = transform.position;
-                targetPos.x += input.x;
-                targetPos.y += input.y;
+				Vector3 targetPos = transform.position;
+				targetPos.x += input.x;
+				targetPos.y += input.y;
 
-                if (IsWalkable(new Vector3(targetPos.x, targetPos.y - 0.5f))) StartCoroutine(Move(targetPos));
-            }
-        }
+				if (IsWalkable(new Vector3(targetPos.x, targetPos.y - 0.5f))) StartCoroutine(Move(targetPos));
+			}
+		}
 
-        animator.SetBool("isMoving", isMoving);
-    }
+		animator.SetBool("isMoving", isMoving);
+	}
 
-    IEnumerator Move(Vector3 targetPos)
-    {
-        isMoving = true;
+	private IEnumerator Move(Vector3 targetPos)
+	{
+		isMoving = true;
 
-        // While we are still moving to the target position
-        while ((targetPos - transform.position).sqrMagnitude > Mathf.Epsilon)
-        {
-            // Smoothly move the player in small increments to the target position
-            transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);
-            yield return null;
-        }
+		// While we are still moving to the target position
+		while ((targetPos - transform.position).sqrMagnitude > Mathf.Epsilon)
+		{
+			// Smoothly move the player in small increments to the target position
+			transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);
+			yield return null;
+		}
 
-        transform.position = targetPos;
+		transform.position = targetPos;
 
-        isMoving = false;
+		isMoving = false;
 
-        CheckForEncounters();
-    }
+		CheckForEncounters();
+	}
 
-    private void CheckForEncounters()
-    {
-        // If touching a sprite with the grass layer
-        if (Physics2D.OverlapCircle(transform.position, 0.2f, grassLayer) != null)
-        {
-            // 10% chance to encounter a wild pokemon
-            if (UnityEngine.Random.Range(1, 101) <= 10)
-            {
-                animator.SetBool("isMoving", false);
-                OnEncounter();
-            }
-        }
-    }
+	private void CheckForEncounters()
+	{
+		// If touching a sprite with the grass layer
+		if (Physics2D.OverlapCircle(transform.position, 0.2f, grassLayer) != null)
+		{
+			// 10% chance to encounter a wild pokemon
+			if (UnityEngine.Random.Range(1, 101) <= 10)
+			{
+				animator.SetBool("isMoving", false);
+				OnEncounter();
+			}
+		}
+	}
 
-    private bool IsWalkable(Vector3 targetPos)
-    {
-        // If touching a sprite with the solidObjects layer
-        if (Physics2D.OverlapCircle(targetPos, 0.2f, solidObjectsLayer) != null)
-        {
-            return false;
-        }
-        else
-        {
-            return true;
-        }
-    }
+	private bool IsWalkable(Vector3 targetPos)
+	{
+		// If touching a sprite with the solidObjects layer
+		if (Physics2D.OverlapCircle(targetPos, 0.2f, solidObjectsLayer) != null)
+		{
+			return false;
+		}
+		else
+		{
+			return true;
+		}
+	}
 }

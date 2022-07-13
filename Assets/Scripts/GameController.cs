@@ -4,47 +4,48 @@ public enum GameState { FreeRoam, Battle }
 
 public class GameController : MonoBehaviour
 {
-    [SerializeField] PlayerController playerController;
-    [SerializeField] BattleSystem battleSystem;
-    [SerializeField] Camera worldCamera;
+	[SerializeField] private PlayerController playerController;
+	[SerializeField] private BattleSystem battleSystem;
+	[SerializeField] private Camera worldCamera;
 
-    GameState state;
+	private GameState state;
 
-    public void Start()
-    {
-        playerController.OnEncounter += StartBattle;
-        battleSystem.OnBattleOver += EndBattle;
-    }
-    public void Update()
-    {
-        if (state == GameState.FreeRoam)
-        {
-            playerController.HandleUpdate();
-        }
-        else if (state == GameState.Battle)
-        {
-            battleSystem.HandleUpdate();
-        }
-    }
+	public void Start()
+	{
+		playerController.OnEncounter += StartBattle;
+		battleSystem.OnBattleOver += EndBattle;
+	}
 
-    private void EndBattle(bool won)
-    {
-        state = GameState.FreeRoam;
+	public void Update()
+	{
+		if (state == GameState.FreeRoam)
+		{
+			playerController.HandleUpdate();
+		}
+		else if (state == GameState.Battle)
+		{
+			battleSystem.HandleUpdate();
+		}
+	}
 
-        battleSystem.gameObject.SetActive(false);
-        worldCamera.gameObject.SetActive(true);
-    }
+	private void EndBattle(bool won)
+	{
+		state = GameState.FreeRoam;
 
-    private void StartBattle()
-    {
-        state = GameState.Battle;
+		battleSystem.gameObject.SetActive(false);
+		worldCamera.gameObject.SetActive(true);
+	}
 
-        battleSystem.gameObject.SetActive(true);
-        worldCamera.gameObject.SetActive(false);
+	private void StartBattle()
+	{
+		state = GameState.Battle;
 
-        PokemonParty playerParty = playerController.GetComponent<PokemonParty>();
-        Pokemon wildPokemon = FindObjectOfType<MapArea>().GetComponent<MapArea>().GetRandomWildPokemon();
+		battleSystem.gameObject.SetActive(true);
+		worldCamera.gameObject.SetActive(false);
 
-        battleSystem.StartBattle(playerParty, wildPokemon);
-    }
+		PokemonParty playerParty = playerController.GetComponent<PokemonParty>();
+		Pokemon wildPokemon = FindObjectOfType<MapArea>().GetComponent<MapArea>().GetRandomWildPokemon();
+
+		battleSystem.StartBattle(playerParty, wildPokemon);
+	}
 }

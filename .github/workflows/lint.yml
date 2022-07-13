@@ -1,0 +1,15 @@
+name: Acquire activation file
+on:
+    workflow_dispatch: {}
+jobs:
+    activation:
+        name: Request manual activation file 🔑
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+              with:
+                  lfs: true
+
+            - uses: snow-actions/eclint@v1.0.1
+              with:
+                  args: "check"
