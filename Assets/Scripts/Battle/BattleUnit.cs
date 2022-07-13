@@ -8,7 +8,6 @@ public class BattleUnit : MonoBehaviour
 
     [SerializeField] private BattleHud hud;
 
-
     private Image image;
     private Vector3 originalPos;
     private Color originalColor;

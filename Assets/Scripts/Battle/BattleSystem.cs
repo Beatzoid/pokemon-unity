@@ -233,22 +233,40 @@ public class BattleSystem : MonoBehaviour
             BattleOver(true);
     }
 
-    private IEnumerator RunMove(BattleUnit attacker, BattleUnit target, Move move)
+    private IEnumerator RunMove(BattleUnit source, BattleUnit target, Move move)
     {
         move.PP--;
 
-        yield return dialogBox.TypeDialog($"{attacker.Pokemon.Base.Name} used {move.Base.MoveName}");
+        yield return dialogBox.TypeDialog($"{source.Pokemon.Base.Name} used {move.Base.MoveName}");
 
-        attacker.PlayAttackAnimation();
+        source.PlayAttackAnimation();
         yield return new WaitForSeconds(1f);
 
         target.PlayHitAnimation();
 
-        DamageDetails damageDetails = target.Pokemon.TakeDamage(move, attacker.Pokemon);
-        yield return target.Hud.UpdateHP();
-        yield return ShowDamageDetails(damageDetails);
+        if (move.Base.Category == MoveCategory.Status)
+        {
+            MoveEffects effects = move.Base.Effects;
 
-        if (damageDetails.Fainted)
+            // Move should boost stats
+            if (effects.Boosts != null)
+            {
+                if (move.Base.Target == MoveTarget.self)
+                    source.Pokemon.ApplyBoosts(effects.Boosts);
+                else
+                    target.Pokemon.ApplyBoosts(effects.Boosts);
+            }
+        }
+        else
+        {
+            DamageDetails damageDetails = target.Pokemon.TakeDamage(move, source.Pokemon);
+            yield return target.Hud.UpdateHP();
+            yield return ShowDamageDetails(damageDetails);
+        }
+
+
+
+        if (target.Pokemon.HP <= 0)
         {
             yield return dialogBox.TypeDialog($"{target.Pokemon.Base.Name} Fainted");
             target.PlayFaintAnimation();

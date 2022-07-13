@@ -4,113 +4,171 @@ using UnityEngine;
 [System.Serializable]
 public class Pokemon
 {
-	[SerializeField] private PokemonBase _base;
-	[SerializeField] private int level;
+    [SerializeField] private PokemonBase _base;
+    [SerializeField] private int level;
 
-	public PokemonBase Base { get { return _base; } }
-	public int Level { get { return level; } }
-	public int HP { get; set; }
-	public List<Move> Moves { get; set; }
+    public PokemonBase Base { get { return _base; } }
+    public int Level { get { return level; } }
+    public int HP { get; set; }
+    public List<Move> Moves { get; set; }
+    public Dictionary<Stat, int> Stats { get; private set; }
+    public Dictionary<Stat, int> StatBoosts { get; private set; }
 
-	/// <summary>
-	/// Initializes the Pokemon
-	/// </summary>
-	public void Init()
-	{
-		HP = MaxHp;
+    /// <summary>
+    /// Initializes the Pokemon
+    /// </summary>
+    public void Init()
+    {
+        Moves = new List<Move>();
 
-		Moves = new List<Move>();
+        // Generate moves based on pokemon level
+        foreach (LearnableMove move in Base.LearnableMoves)
+        {
+            if (move.Level <= Level)
+                Moves.Add(new Move(move.MoveBase));
 
-		// Generate moves based on pokemon level
-		foreach (LearnableMove move in Base.LearnableMoves)
-		{
-			if (move.Level <= Level)
-				Moves.Add(new Move(move.MoveBase));
+            if (Moves.Count >= 4)
+                break;
+        }
 
-			if (Moves.Count >= 4)
-				break;
-		}
-	}
+        CalculateStats();
+        HP = MaxHp;
 
-	/// <summary>
-	///     Causes the specified pokemon to take damage
-	/// </summary>
-	/// <param name="move">The move to apply to the pokemon </param>
-	/// <param name="attacker">The attacking pokemon </param>
-	/// <returns>
-	/// A <see cref="DamageDetails"> DamageDetails </see> class containing the effectiveness of the attack, whether it was a critical,
-	/// and whether or not the pokemon fainted
-	/// </returns>
-	public DamageDetails TakeDamage(Move move, Pokemon attacker)
-	{
-		float critical = 1;
+        StatBoosts = new Dictionary<Stat, int>()
+        {
+            {Stat.Attack, 0},
+            {Stat.Defense, 0},
+            {Stat.SpecialAttack, 0},
+            {Stat.SpecialDefense, 0},
+            {Stat.Speed, 0},
+        };
+    }
 
-		if (Random.value * 100f <= 6.25) critical = 2;
+    /// <summary>
+    ///     Causes the specified pokemon to take damage
+    /// </summary>
+    /// <param name="move">The move to apply to the pokemon </param>
+    /// <param name="attacker">The attacking pokemon </param>
+    /// <returns>
+    /// A <see cref="DamageDetails"> DamageDetails </see> class containing the effectiveness of the attack, whether it was a critical,
+    /// and whether or not the pokemon fainted
+    /// </returns>
+    public DamageDetails TakeDamage(Move move, Pokemon attacker)
+    {
+        float critical = 1;
 
-		float effectiveness = TypeChart.GetEffectiveness(move.Base.Type, Base.Type1) * TypeChart.GetEffectiveness(move.Base.Type, Base.Type2);
+        if (Random.value * 100f <= 6.25) critical = 2;
 
-		DamageDetails damageDetails = new()
-		{
-			TypeEffectiveness = effectiveness,
-			Critical = critical,
-			Fainted = false
-		};
+        float effectiveness = TypeChart.GetEffectiveness(move.Base.Type, Base.Type1) * TypeChart.GetEffectiveness(move.Base.Type, Base.Type2);
 
-		float attack = move.Base.IsSpecial ? attacker.SpecialAttack : attacker.Attack;
-		float defense = move.Base.IsSpecial ? attacker.SpecialDefense : attacker.Defense;
+        DamageDetails damageDetails = new()
+        {
+            TypeEffectiveness = effectiveness,
+            Critical = critical,
+            Fainted = false
+        };
 
-		float modifiers = Random.Range(0.85f, 1f) * effectiveness * critical;
-		float a = ((2 * attacker.Level) + 10) / 250f;
+        bool specialMove = move.Base.Category == MoveCategory.Special;
 
-		float d = (a * move.Base.Power * ((float)attack / defense)) + 2;
-		int damage = Mathf.FloorToInt(d * modifiers);
+        float attack = specialMove ? attacker.SpecialAttack : attacker.Attack;
+        float defense = specialMove ? attacker.SpecialDefense : attacker.Defense;
 
-		HP -= damage;
-		if (HP <= 0)
-		{
-			HP = 0;
-			damageDetails.Fainted = true;
-		}
+        float modifiers = Random.Range(0.85f, 1f) * effectiveness * critical;
+        float a = ((2 * attacker.Level) + 10) / 250f;
 
-		return damageDetails;
-	}
+        float d = (a * move.Base.Power * ((float)attack / defense)) + 2;
+        int damage = Mathf.FloorToInt(d * modifiers);
 
-	/// <summary>
-	/// Get a random move from the pokemon's move list
-	/// </summary>
-	public Move GetRandomMove()
-	{
-		int r = Random.Range(0, Moves.Count);
-		return Moves[r];
-	}
+        HP -= damage;
+        if (HP <= 0)
+        {
+            HP = 0;
+            damageDetails.Fainted = true;
+        }
 
-	public int Attack
-	{
-		get { return Mathf.FloorToInt(Base.Attack * Level / 100f) + 5; }
-	}
+        return damageDetails;
+    }
 
-	public int Defense
-	{
-		get { return Mathf.FloorToInt(Base.Defense * Level / 100f) + 5; }
-	}
+    /// <summary>
+    /// Get a random move from the pokemon's move list
+    /// </summary>
+    public Move GetRandomMove()
+    {
+        int r = Random.Range(0, Moves.Count);
+        return Moves[r];
+    }
 
-	public int SpecialAttack
-	{
-		get { return Mathf.FloorToInt(Base.SpecialAttack * Level / 100f) + 5; }
-	}
+    /// <summary>
+    /// Apply stat boosts to the pokemon
+    /// </summary>
+    /// <param name="statBoosts">The boosts to apply </param>
+    public void ApplyBoosts(List<StatBoost> statBoosts)
+    {
+        foreach (StatBoost statBoost in statBoosts)
+        {
+            Stat stat = statBoost.stat;
+            int boost = statBoost.boost;
 
-	public int SpecialDefense
-	{
-		get { return Mathf.FloorToInt(Base.SpecialAttack * Level / 100f) + 5; }
-	}
+            StatBoosts[stat] = Mathf.Clamp(StatBoosts[stat] + boost, -6, 6);
 
-	public int Speed
-	{
-		get { return Mathf.FloorToInt(Base.Speed * Level / 100f) + 5; }
-	}
+            Debug.Log($"{stat} has been boosted to {StatBoosts[stat]}");
+        }
+    }
 
-	public int MaxHp
-	{
-		get { return Mathf.FloorToInt(Base.Speed * Level / 100f) + 10; }
-	}
+    private void CalculateStats()
+    {
+        Stats = new Dictionary<Stat, int>
+        {
+            { Stat.Attack, Mathf.FloorToInt(Base.Attack * Level / 100f) + 5 },
+            { Stat.Defense, Mathf.FloorToInt(Base.Defense * Level / 100f) + 5 },
+            { Stat.SpecialAttack, Mathf.FloorToInt(Base.SpecialAttack * Level / 100f) + 5 },
+            { Stat.SpecialDefense, Mathf.FloorToInt(Base.SpecialDefense * Level / 100f) + 5 },
+            { Stat.Speed, Mathf.FloorToInt(Base.Speed * Level / 100f) + 5 }
+        };
+
+        MaxHp = Mathf.FloorToInt(Base.MaxHp * Level / 100f) + 10;
+    }
+
+    private int GetStat(Stat stat)
+    {
+        int statVal = Stats[stat];
+
+        int boost = StatBoosts[stat];
+        float[] boostValues = new float[] { 1f, 1.5f, 2f, 2.5f, 3f, 3.5f, 4f };
+
+        if (boost >= 0)
+            statVal = Mathf.FloorToInt(statVal * boostValues[boost]);
+        else
+            statVal = Mathf.FloorToInt(statVal / boostValues[-boost]);
+
+
+        return statVal;
+    }
+
+    public int Attack
+    {
+        get { return GetStat(Stat.Attack); }
+    }
+
+    public int Defense
+    {
+        get { return GetStat(Stat.Defense); }
+    }
+
+    public int SpecialAttack
+    {
+        get { return GetStat(Stat.SpecialAttack); }
+    }
+
+    public int SpecialDefense
+    {
+        get { return GetStat(Stat.SpecialDefense); }
+    }
+
+    public int Speed
+    {
+        get { return GetStat(Stat.Speed); }
+    }
+
+    public int MaxHp { get; private set; }
 }
