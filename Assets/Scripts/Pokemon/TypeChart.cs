@@ -1,7 +1,7 @@
 public class TypeChart
 {
-	private static float[][] typeChart = {
-          //                     Nor   Fir   Wat   Ele   Gra   Ice   Fig   Poi   Gro   Fly   Psy   Bug   Roc   Gho   Dra   Dar  Ste    Fai
+    private static float[][] typeChart = {
+        //                     Nor   Fir   Wat   Ele   Gra   Ice   Fig   Poi   Gro   Fly   Psy   Bug   Roc   Gho   Dra   Dar  Ste    Fai
         /*Normal*/  new float[] {1f,   1f,   1f,   1f,   1f,   1f,   1f,   1f,   1f,   1f,   1f,   1f,   0.5f, 0,    1f,   1f,   0.5f, 1f},
         /*Fire*/    new float[] {1f,   0.5f, 0.5f, 1f,   2f,   2f,   1f,   1f,   1f,   1f,   1f,   2f,   0.5f, 1f,   0.5f, 1f,   2f,   1f},
         /*Water*/   new float[] {1f,   2f,   0.5f, 1f,   0.5f, 1f,   1f,   1f,   2f,   1f,   1f,   1f,   2f,   1f,   0.5f, 1f,   1f,   1f},
@@ -20,20 +20,20 @@ public class TypeChart
         /*Dark*/    new float[] {1f,   1f,   1f,   1f,   1f,   1f,   0.5f, 1f,   1f,   1f,   2f,   1f,   1f,   2f,   1f,   0.5f, 1f,   0.5f},
         /*Steel*/   new float[] {1f,   0.5f, 0.5f, 0.5f, 1f,   2f,   1f,   1f,   1f,   1f,   1f,   2f,   0.5f, 1f,   1f,   1f,   0.5f, 2f},
         /*Fairy*/   new float[] {1f,   0.5f, 1f,   1f,   1f,   1f,   2f,   0.5f, 1f,   1f,   1f,   1f,   1f,   1f,   2f,   2f,   0.5f, 1f},
-	};
+    };
 
-	/// <summary>
-	/// Get the effectiveness of one pokemon against another
-	/// </summary>
-	/// <param name="attackType">The type of pokemon attacking </param>
-	/// <param name="defenseType">The type of pokemon defending (being attacked) </param>
-	public static float GetEffectiveness(PokemonType attackType, PokemonType defenseType)
-	{
-		if (attackType == PokemonType.None || defenseType == PokemonType.None) return 1;
+    /// <summary>
+    /// Get the effectiveness of one pokemon against another
+    /// </summary>
+    /// <param name="attackType">The type of pokemon attacking </param>
+    /// <param name="defenseType">The type of pokemon defending (being attacked) </param>
+    public static float GetEffectiveness(PokemonType attackType, PokemonType defenseType)
+    {
+        if (attackType == PokemonType.None || defenseType == PokemonType.None) return 1;
 
-		int row = (int)attackType - 1;
-		int col = (int)defenseType - 1;
+        int row = (int)attackType - 1;
+        int col = (int)defenseType - 1;
 
-		return typeChart[row][col];
-	}
+        return typeChart[row][col];
+    }
 }
