@@ -13,6 +13,9 @@ public enum BattleState
     Battleover
 }
 
+/// <summary>
+/// The BattleSystem class manages the core battle scene logic
+/// </summary>
 public class BattleSystem : MonoBehaviour
 {
     [SerializeField] private BattleUnit playerUnit;
@@ -248,7 +251,7 @@ public class BattleSystem : MonoBehaviour
         {
             MoveEffects effects = move.Base.Effects;
 
-            // Move should boost stats
+            // Move should boost/hurt stats
             if (effects.Boosts != null)
             {
                 if (move.Base.Target == MoveTarget.self)
@@ -260,11 +263,9 @@ public class BattleSystem : MonoBehaviour
         else
         {
             DamageDetails damageDetails = target.Pokemon.TakeDamage(move, source.Pokemon);
-            yield return target.Hud.UpdateHP();
+            yield return target.Hud.SmoothlyUpdateHP();
             yield return ShowDamageDetails(damageDetails);
         }
-
-
 
         if (target.Pokemon.HP <= 0)
         {
@@ -286,6 +287,7 @@ public class BattleSystem : MonoBehaviour
             yield return new WaitForSeconds(1.5f);
         }
 
+        // Makes sure that we don't get an "OutOfRangeIndex" error
         currentMoveIndex = 0;
 
         playerUnit.Setup(newPokemon);

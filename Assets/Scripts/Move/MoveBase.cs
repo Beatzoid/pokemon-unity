@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public enum MoveCategory
@@ -11,6 +10,9 @@ public enum MoveTarget
     enemy, self
 }
 
+/// <summary>
+/// The MoveBase class holds all data for a move
+/// </summary>
 [CreateAssetMenu(fileName = "Move", menuName = "Pokemon/Create new move")]
 public class MoveBase : ScriptableObject
 {
@@ -75,22 +77,4 @@ public class MoveBase : ScriptableObject
     {
         get { return target; }
     }
-}
-
-[System.Serializable]
-public class MoveEffects
-{
-    [SerializeField] private List<StatBoost> boosts;
-
-    public List<StatBoost> Boosts
-    {
-        get { return boosts; }
-    }
-}
-
-[System.Serializable]
-public class StatBoost
-{
-    public Stat stat;
-    public int boost;
 }

@@ -1,3 +1,6 @@
+/// <summary>
+/// The Move class manages all moves for pokemon 
+/// </summary>
 public class Move
 {
     public MoveBase Base { get; set; }

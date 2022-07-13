@@ -1,6 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// The Pokemon class manages all logic for pokemon
+/// </summary>
 [System.Serializable]
 public class Pokemon
 {
@@ -45,7 +48,7 @@ public class Pokemon
     }
 
     /// <summary>
-    ///     Causes the specified pokemon to take damage
+    /// Causes the specified pokemon to take damage
     /// </summary>
     /// <param name="move">The move to apply to the pokemon </param>
     /// <param name="attacker">The attacking pokemon </param>
@@ -141,7 +144,6 @@ public class Pokemon
         else
             statVal = Mathf.FloorToInt(statVal / boostValues[-boost]);
 
-
         return statVal;
     }
 
@@ -164,7 +166,6 @@ public class Pokemon
     {
         get { return GetStat(Stat.SpecialDefense); }
     }
-
     public int Speed
     {
         get { return GetStat(Stat.Speed); }

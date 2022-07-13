@@ -33,6 +33,9 @@ public enum Stat
     Speed
 }
 
+/// <summary>
+/// The PokemonBase class holds all data for all pokemon
+/// </summary>
 [CreateAssetMenu(fileName = "Pokemon", menuName = "Pokemon/Create new pokemon")]
 public class PokemonBase : ScriptableObject
 {

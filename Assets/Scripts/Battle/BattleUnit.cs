@@ -2,6 +2,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 
+/// <summary>
+/// The BattleUnit class manages a unit (pokemon) in the battle scene
+/// </summary>
 public class BattleUnit : MonoBehaviour
 {
     [SerializeField] private bool isPlayerUnit;
@@ -21,7 +24,7 @@ public class BattleUnit : MonoBehaviour
     }
 
     /// <summary>
-    /// Setup the battle unit
+    /// Setup the battle unit (image sprite, hud, animation, etc)
     /// </summary>
     public void Setup(Pokemon pokemon)
     {
