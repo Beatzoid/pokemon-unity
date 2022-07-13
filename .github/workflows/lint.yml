@@ -13,6 +13,6 @@ jobs:
               with:
                   lfs: true
 
-            - uses: snow-actions/eclint@v1.0.1
+            - uses: wow-rp-addons/actions-editorconfig-check@v1
               with:
-                  args: "check ./Assets/**/*.cs"
+                  files: "./Assets/**/*.cs"
