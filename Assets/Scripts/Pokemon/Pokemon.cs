@@ -16,7 +16,9 @@ public class Pokemon
     public List<Move> Moves { get; set; }
     public Dictionary<Stat, int> Stats { get; private set; }
     public Dictionary<Stat, int> StatBoosts { get; private set; }
+    public Condition Status { get; private set; }
     public Queue<string> StatusChanges { get; private set; } = new Queue<string>();
+    public bool HPChanged { get; set; }
 
     /// <summary>
     /// Initializes the Pokemon
@@ -76,12 +78,7 @@ public class Pokemon
         float d = (a * move.Base.Power * ((float)attack / defense)) + 2;
         int damage = Mathf.FloorToInt(d * modifiers);
 
-        HP -= damage;
-        if (HP <= 0)
-        {
-            HP = 0;
-            damageDetails.Fainted = true;
-        }
+        UpdateHP(damage);
 
         return damageDetails;
     }
@@ -123,6 +120,34 @@ public class Pokemon
     public void OnBattleOver()
     {
         ResetStatBoosts();
+    }
+
+    /// <summary>
+    /// Set the status of the pokemon
+    /// </summary>
+    /// <param name="ConditionID">The <see cref="ConditionID">ConditionID </see> of the status to set </param>
+    public void SetStatus(ConditionID conditionID)
+    {
+        Status = ConditionsDB.Conditions[conditionID];
+        StatusChanges.Enqueue($"{Base.Name} {Status.StartMessage}!");
+    }
+
+    /// <summary>
+    /// Set the HP of the pokemon
+    /// </summary>
+    /// <param name="damage">How much HP to take off/add </param>
+    public void UpdateHP(int damage)
+    {
+        HPChanged = true;
+        HP = Mathf.Clamp(HP - damage, 0, MaxHp);
+    }
+
+    /// <summary>
+    /// Applies any status effects
+    /// </summary>
+    public void OnAfterTurn()
+    {
+        Status?.OnAfterTurn?.Invoke(this);
     }
 
     private void ResetStatBoosts()
@@ -189,6 +214,5 @@ public class Pokemon
     {
         get { return GetStat(Stat.Speed); }
     }
-
     public int MaxHp { get; private set; }
 }

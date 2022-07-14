@@ -7,7 +7,7 @@
 #
 
 # Ensure that text files that any contributor introduces to the repository have their line endings normalized
-* text=auto
+* text=auto eol=lf
 
 # Increase probability of success for merging files with specific extensions
 *.cs diff=csharp

@@ -285,19 +285,42 @@ public class BattleSystem : MonoBehaviour
 
             CheckForBattleOver(target);
         }
+
+        source.Pokemon.OnAfterTurn();
+        yield return ShowStatusChanges(source.Pokemon);
+        yield return source.Hud.SmoothlyUpdateHP();
+
+        // Since statuses like poison and burn effect the HP of the pokemon
+        // it has the potential to faint because of the effect
+        // so this if statement checks if that is the case and handles it accordingly
+        if (source.Pokemon.HP <= 0)
+        {
+            yield return dialogBox.TypeDialog($"{source.Pokemon.Base.Name} Fainted");
+            source.PlayFaintAnimation();
+
+            yield return new WaitForSeconds(1.5f);
+
+            CheckForBattleOver(source);
+        }
     }
 
     private IEnumerator RunMoveEffects(Move move, Pokemon source, Pokemon target)
     {
         MoveEffects effects = move.Base.Effects;
 
-        // Move should boost/hurt stats
+        // Stat boosting/deboosting
         if (effects.Boosts != null)
         {
             if (move.Base.Target == MoveTarget.self)
                 source.ApplyBoosts(effects.Boosts);
             else
                 target.ApplyBoosts(effects.Boosts);
+        }
+
+        // Status Conditions/Effects
+        if (effects.Status != ConditionID.none)
+        {
+            target.SetStatus(effects.Status);
         }
 
         yield return ShowStatusChanges(source);
