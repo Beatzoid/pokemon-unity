@@ -10590,12 +10590,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pokemon:
-  - _base: {fileID: 11400000, guid: 60d5d35f7d472694fa32a6f36932f943, type: 2}
+  - _base: {fileID: 11400000, guid: f2db162f2a9da06469aa6d341529299b, type: 2}
     level: 10
-  - _base: {fileID: 11400000, guid: 06fcbbd1cb5271f4fa84e38678c754b1, type: 2}
-    level: 3
-  - _base: {fileID: 11400000, guid: 06fcbbd1cb5271f4fa84e38678c754b1, type: 2}
-    level: 2
+  - _base: {fileID: 11400000, guid: e52a66427dfd687438aadb1a793b88c3, type: 2}
+    level: 10
+  - _base: {fileID: 11400000, guid: 3bc6ea44e66e7da46ae9dcb5131ebb41, type: 2}
+    level: 10
   - _base: {fileID: 11400000, guid: 06fcbbd1cb5271f4fa84e38678c754b1, type: 2}
     level: 5
   - _base: {fileID: 11400000, guid: c152396595429184e84dc07d5aaa12d2, type: 2}

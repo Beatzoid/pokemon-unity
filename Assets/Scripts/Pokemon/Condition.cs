@@ -9,8 +9,16 @@ public class Condition
     /// Message shown when the condition is inflicted on a pokemon
     /// </summary>
     public string StartMessage { get; set; }
+     /// <summary>
+    /// Run an action before OnBeforeTurn
+    /// </summary>
+    public Action<Pokemon> OnStart { get; set; }
     /// <summary>
-    /// What to do to the pokemon after they get inflicted with the condition
+    /// Run an action after the pokemon's turn (eg. burn, poison)
     /// </summary>
     public Action<Pokemon> OnAfterTurn { get; set; }
+    /// <summary>
+    /// Run an action before the pokemon's turn (eg. paralyze)
+    /// </summary>
+    public Func<Pokemon, bool> OnBeforeMove { get; set; }
 }

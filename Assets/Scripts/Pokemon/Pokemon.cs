@@ -17,6 +17,7 @@ public class Pokemon
     public Dictionary<Stat, int> Stats { get; private set; }
     public Dictionary<Stat, int> StatBoosts { get; private set; }
     public Condition Status { get; private set; }
+    public int StatusTime { get; set; }
     public Queue<string> StatusChanges { get; private set; } = new Queue<string>();
     public bool HPChanged { get; set; }
 
@@ -129,7 +130,16 @@ public class Pokemon
     public void SetStatus(ConditionID conditionID)
     {
         Status = ConditionsDB.Conditions[conditionID];
+        Status?.OnStart?.Invoke(this);
         StatusChanges.Enqueue($"{Base.Name} {Status.StartMessage}!");
+    }
+
+    /// <summary>
+    /// Remove all status effects from the pokemon
+    /// </summary>
+    public void CureStatus()
+    {
+        Status = null;
     }
 
     /// <summary>
@@ -143,11 +153,23 @@ public class Pokemon
     }
 
     /// <summary>
-    /// Applies any status effects
+    /// Ran after a pokemon's turn
     /// </summary>
     public void OnAfterTurn()
     {
         Status?.OnAfterTurn?.Invoke(this);
+    }
+
+    /// <summary>
+    /// Ran before a pokemon's turn
+    /// </summary>
+    /// <returns>A bool representing whether or not the pokemon can perform their move </returns>
+    public bool OnBeforeTurn()
+    {
+        if (Status?.OnBeforeMove != null)
+            return Status.OnBeforeMove(this);
+
+        return true;
     }
 
     private void ResetStatBoosts()
