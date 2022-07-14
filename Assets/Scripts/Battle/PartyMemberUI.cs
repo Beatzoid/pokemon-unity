@@ -11,7 +11,6 @@ public class PartyMemberUI : MonoBehaviour
     [SerializeField] private HPBar hpBar;
     [SerializeField] private Color highlightedColor;
 
-
     /// <summary>
     /// Set the data for the Party Member UI
     /// </summary>

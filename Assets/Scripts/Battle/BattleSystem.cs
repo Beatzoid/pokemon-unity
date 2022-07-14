@@ -81,7 +81,7 @@ public class BattleSystem : MonoBehaviour
 
         yield return dialogBox.TypeDialog($"A wild {enemyUnit.Pokemon.Base.Name} appeared");
 
-        ActionSelection();
+        ChooseFirstTurn();
     }
 
     private void HandlePartyScreenSelection()
@@ -207,6 +207,14 @@ public class BattleSystem : MonoBehaviour
         dialogBox.SetActionSelectorActive(true);
     }
 
+    private void ChooseFirstTurn()
+    {
+        if (playerUnit.Pokemon.Speed >= enemyUnit.Pokemon.Speed)
+            ActionSelection();
+        else
+            StartCoroutine(PerformEnemyMove());
+    }
+
     private void MoveSelection()
     {
         state = BattleState.MoveSelection;
@@ -218,6 +226,7 @@ public class BattleSystem : MonoBehaviour
     private void BattleOver(bool won)
     {
         state = BattleState.Battleover;
+        playerParty.Pokemon.ForEach(p => p.OnBattleOver());
         OnBattleOver(won);
     }
 
@@ -236,6 +245,15 @@ public class BattleSystem : MonoBehaviour
             BattleOver(true);
     }
 
+    private IEnumerator ShowStatusChanges(Pokemon pokemon)
+    {
+        while (pokemon.StatusChanges.Count > 0)
+        {
+            string message = pokemon.StatusChanges.Dequeue();
+            yield return dialogBox.TypeDialog(message);
+        }
+    }
+
     private IEnumerator RunMove(BattleUnit source, BattleUnit target, Move move)
     {
         move.PP--;
@@ -249,16 +267,7 @@ public class BattleSystem : MonoBehaviour
 
         if (move.Base.Category == MoveCategory.Status)
         {
-            MoveEffects effects = move.Base.Effects;
-
-            // Move should boost/hurt stats
-            if (effects.Boosts != null)
-            {
-                if (move.Base.Target == MoveTarget.self)
-                    source.Pokemon.ApplyBoosts(effects.Boosts);
-                else
-                    target.Pokemon.ApplyBoosts(effects.Boosts);
-            }
+            yield return RunMoveEffects(move, source.Pokemon, target.Pokemon);
         }
         else
         {
@@ -278,10 +287,31 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
+    private IEnumerator RunMoveEffects(Move move, Pokemon source, Pokemon target)
+    {
+        MoveEffects effects = move.Base.Effects;
+
+        // Move should boost/hurt stats
+        if (effects.Boosts != null)
+        {
+            if (move.Base.Target == MoveTarget.self)
+                source.ApplyBoosts(effects.Boosts);
+            else
+                target.ApplyBoosts(effects.Boosts);
+        }
+
+        yield return ShowStatusChanges(source);
+        yield return ShowStatusChanges(target);
+    }
+
     private IEnumerator SwitchPokemon(Pokemon newPokemon)
     {
+        bool currentPokemonFainted = true;
+
         if (playerUnit.Pokemon.HP > 0)
         {
+            currentPokemonFainted = false;
+
             yield return dialogBox.TypeDialog($"Come back {playerUnit.Pokemon.Base.name}");
             playerUnit.PlayFaintAnimation();
             yield return new WaitForSeconds(1.5f);
@@ -295,6 +325,11 @@ public class BattleSystem : MonoBehaviour
         dialogBox.SetMoveNames(newPokemon.Moves);
 
         yield return dialogBox.TypeDialog($"Go {newPokemon.Base.Name}!");
+
+        if (currentPokemonFainted)
+            ChooseFirstTurn();
+        else
+            StartCoroutine(PerformEnemyMove());
 
         StartCoroutine(PerformEnemyMove());
     }
