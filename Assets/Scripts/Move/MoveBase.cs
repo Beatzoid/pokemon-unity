@@ -34,7 +34,6 @@ public class MoveBase : ScriptableObject
     [SerializeField] private MoveCategory category;
     [SerializeField] private MoveTarget target;
 
-
     [Space(5)]
     [Header("Effects")]
     [Space(2)]

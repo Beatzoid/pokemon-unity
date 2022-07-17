@@ -266,7 +266,6 @@ public class BattleSystem : MonoBehaviour
         else
             moveAccuracy *= boostValues[-evasion];
 
-
         return UnityEngine.Random.Range(1, 101) <= moveAccuracy;
     }
     private IEnumerator ShowStatusChanges(Pokemon pokemon)
@@ -296,7 +295,6 @@ public class BattleSystem : MonoBehaviour
 
         if (CheckIfMoveHits(move, source.Pokemon, target.Pokemon))
         {
-
             source.PlayAttackAnimation();
             yield return new WaitForSeconds(1f);
 
