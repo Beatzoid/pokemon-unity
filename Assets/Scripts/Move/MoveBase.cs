@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public enum MoveCategory
@@ -28,10 +29,17 @@ public class MoveBase : ScriptableObject
     [SerializeField] private PokemonType type;
     [SerializeField] private int power;
     [SerializeField] private int accuracy;
+    [SerializeField] private bool alwaysHits;
     [SerializeField] private int pp;
     [SerializeField] private MoveCategory category;
-    [SerializeField] private MoveEffects effects;
     [SerializeField] private MoveTarget target;
+
+
+    [Space(5)]
+    [Header("Effects")]
+    [Space(2)]
+    [SerializeField] private MoveEffects effects;
+    [SerializeField] private List<SecondaryEffects> secondaryEffects;
 
     public string MoveName
     {
@@ -58,6 +66,11 @@ public class MoveBase : ScriptableObject
         get { return accuracy; }
     }
 
+    public bool AlwaysHits
+    {
+        get { return alwaysHits; }
+    }
+
     public int PP
     {
         get { return pp; }
@@ -71,6 +84,11 @@ public class MoveBase : ScriptableObject
     public MoveEffects Effects
     {
         get { return effects; }
+    }
+
+    public List<SecondaryEffects> SecondaryEffects
+    {
+        get { return secondaryEffects; }
     }
 
     public MoveTarget Target

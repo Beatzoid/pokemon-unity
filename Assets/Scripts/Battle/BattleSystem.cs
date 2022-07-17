@@ -245,6 +245,30 @@ public class BattleSystem : MonoBehaviour
             BattleOver(true);
     }
 
+    private bool CheckIfMoveHits(Move move, Pokemon source, Pokemon target)
+    {
+        if (move.Base.AlwaysHits) return true;
+
+        float moveAccuracy = move.Base.Accuracy;
+
+        int accuracy = source.StatBoosts[Stat.Accuracy];
+        int evasion = target.StatBoosts[Stat.Evasion];
+
+        float[] boostValues = new float[] { 1f, 4f / 3f, 5f / 3f, 2f, 7f / 3f, 8f / 3f, 3f };
+
+        if (accuracy > 0)
+            moveAccuracy *= boostValues[accuracy];
+        else
+            moveAccuracy /= boostValues[-accuracy];
+
+        if (evasion > 0)
+            moveAccuracy /= boostValues[evasion];
+        else
+            moveAccuracy *= boostValues[-evasion];
+
+
+        return UnityEngine.Random.Range(1, 101) <= moveAccuracy;
+    }
     private IEnumerator ShowStatusChanges(Pokemon pokemon)
     {
         while (pokemon.StatusChanges.Count > 0)
@@ -270,35 +294,56 @@ public class BattleSystem : MonoBehaviour
 
         yield return dialogBox.TypeDialog($"{source.Pokemon.Base.Name} used {move.Base.MoveName}");
 
-        source.PlayAttackAnimation();
-        yield return new WaitForSeconds(1f);
-
-        target.PlayHitAnimation();
-
-        if (move.Base.Category == MoveCategory.Status)
+        if (CheckIfMoveHits(move, source.Pokemon, target.Pokemon))
         {
-            yield return RunMoveEffects(move, source.Pokemon, target.Pokemon);
+
+            source.PlayAttackAnimation();
+            yield return new WaitForSeconds(1f);
+
+            target.PlayHitAnimation();
+
+            if (move.Base.Category == MoveCategory.Status)
+            {
+                yield return RunMoveEffects(move.Base.Effects, source.Pokemon, target.Pokemon, move.Base.Target);
+            }
+            else
+            {
+                DamageDetails damageDetails = target.Pokemon.TakeDamage(move, source.Pokemon);
+                yield return target.Hud.UpdateHP();
+                yield return ShowDamageDetails(damageDetails);
+            }
+
+            if (target.Pokemon.HP <= 0)
+            {
+                yield return dialogBox.TypeDialog($"{target.Pokemon.Base.Name} Fainted");
+                target.PlayFaintAnimation();
+
+                yield return new WaitForSeconds(1.5f);
+
+                CheckForBattleOver(target);
+            }
         }
         else
         {
-            DamageDetails damageDetails = target.Pokemon.TakeDamage(move, source.Pokemon);
-            yield return target.Hud.UpdateHP();
-            yield return ShowDamageDetails(damageDetails);
-        }
-
-        if (target.Pokemon.HP <= 0)
-        {
-            yield return dialogBox.TypeDialog($"{target.Pokemon.Base.Name} Fainted");
-            target.PlayFaintAnimation();
-
-            yield return new WaitForSeconds(1.5f);
-
-            CheckForBattleOver(target);
+            yield return dialogBox.TypeDialog($"{source.Pokemon.Base.Name}'s attack missed!");
         }
 
         source.Pokemon.OnAfterTurn();
         yield return ShowStatusChanges(source.Pokemon);
         yield return source.Hud.UpdateHP();
+
+        if (move.Base.SecondaryEffects != null && move.Base.SecondaryEffects.Count > 0 && target.Pokemon.HP > 0)
+        {
+            foreach (SecondaryEffects secondaryEffect in move.Base.SecondaryEffects)
+            {
+                int random = UnityEngine.Random.Range(1, 101);
+
+                if (random <= secondaryEffect.Chance)
+                {
+                    yield return RunMoveEffects(secondaryEffect, source.Pokemon, target.Pokemon, secondaryEffect.Target);
+                }
+            }
+        }
 
         // Since statuses like poison and burn effect the HP of the pokemon
         // it has the potential to faint because of the effect
@@ -314,14 +359,12 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
-    private IEnumerator RunMoveEffects(Move move, Pokemon source, Pokemon target)
+    private IEnumerator RunMoveEffects(MoveEffects effects, Pokemon source, Pokemon target, MoveTarget moveTarget)
     {
-        MoveEffects effects = move.Base.Effects;
-
         // Stat boosting/deboosting
         if (effects.Boosts != null)
         {
-            if (move.Base.Target == MoveTarget.self)
+            if (moveTarget == MoveTarget.self)
                 source.ApplyBoosts(effects.Boosts);
             else
                 target.ApplyBoosts(effects.Boosts);

@@ -143,7 +143,7 @@ public class ConditionsDB
                     // Hurt by confusion
                     pokemon.StatusChanges.Enqueue($"{pokemon.Base.Name} is confused");
                     pokemon.UpdateHP(pokemon.MaxHp / 8);
-                    pokemon.StatusChanges.Enqueue($"{pokemon.Base.Name} hurt itself due to confusuon!");
+                    pokemon.StatusChanges.Enqueue($"{pokemon.Base.Name} hurt itself due to confusion!");
                     return false;
                 }
             }

@@ -30,7 +30,11 @@ public enum Stat
     Defense,
     SpecialAttack,
     SpecialDefense,
-    Speed
+    Speed,
+
+    // Not actual stats, used to boost moveAccuracy
+    Accuracy,
+    Evasion
 }
 
 /// <summary>

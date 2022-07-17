@@ -26,3 +26,20 @@ public class MoveEffects
         get { return volatileStatus; }
     }
 }
+
+[System.Serializable]
+public class SecondaryEffects : MoveEffects
+{
+    [SerializeField] private int chance;
+    [SerializeField] private MoveTarget target;
+
+    public int Chance
+    {
+        get { return chance; }
+    }
+
+    public MoveTarget Target
+    {
+        get { return target; }
+    }
+}
