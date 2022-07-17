@@ -2,6 +2,7 @@ using System;
 
 public class Condition
 {
+    public ConditionID Id { get; set; }
     public string Name { get; set; }
     public string Description { get; set; }
 
@@ -9,7 +10,7 @@ public class Condition
     /// Message shown when the condition is inflicted on a pokemon
     /// </summary>
     public string StartMessage { get; set; }
-     /// <summary>
+    /// <summary>
     /// Run an action before OnBeforeTurn
     /// </summary>
     public Action<Pokemon> OnStart { get; set; }

@@ -260,6 +260,7 @@ public class BattleSystem : MonoBehaviour
         if (!canRunMove)
         {
             yield return ShowStatusChanges(source.Pokemon);
+            yield return source.Hud.UpdateHP();
             yield break;
         }
 
@@ -281,7 +282,7 @@ public class BattleSystem : MonoBehaviour
         else
         {
             DamageDetails damageDetails = target.Pokemon.TakeDamage(move, source.Pokemon);
-            yield return target.Hud.SmoothlyUpdateHP();
+            yield return target.Hud.UpdateHP();
             yield return ShowDamageDetails(damageDetails);
         }
 
@@ -297,7 +298,7 @@ public class BattleSystem : MonoBehaviour
 
         source.Pokemon.OnAfterTurn();
         yield return ShowStatusChanges(source.Pokemon);
-        yield return source.Hud.SmoothlyUpdateHP();
+        yield return source.Hud.UpdateHP();
 
         // Since statuses like poison and burn effect the HP of the pokemon
         // it has the potential to faint because of the effect
@@ -330,6 +331,12 @@ public class BattleSystem : MonoBehaviour
         if (effects.Status != ConditionID.none)
         {
             target.SetStatus(effects.Status);
+        }
+
+        // Volatile Status Conditions/Effects
+        if (effects.VolatileStatus != ConditionID.none)
+        {
+            target.SetVolatileStatus(effects.VolatileStatus);
         }
 
         yield return ShowStatusChanges(source);

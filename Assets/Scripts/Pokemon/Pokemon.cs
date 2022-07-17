@@ -13,13 +13,19 @@ public class Pokemon
     public PokemonBase Base { get { return _base; } }
     public int Level { get { return level; } }
     public int HP { get; set; }
+
     public List<Move> Moves { get; set; }
     public Dictionary<Stat, int> Stats { get; private set; }
     public Dictionary<Stat, int> StatBoosts { get; private set; }
+
     public Condition Status { get; private set; }
+    public Condition VolatileStatus { get; private set; }
     public int StatusTime { get; set; }
+    public int VolatileStatusTime { get; set; }
     public Queue<string> StatusChanges { get; private set; } = new Queue<string>();
+
     public bool HPChanged { get; set; }
+    public event System.Action OnStatusChanged;
 
     /// <summary>
     /// Initializes the Pokemon
@@ -42,6 +48,8 @@ public class Pokemon
         HP = MaxHp;
 
         ResetStatBoosts();
+        Status = null;
+        VolatileStatus = null;
     }
 
     /// <summary>
@@ -116,11 +124,12 @@ public class Pokemon
     }
 
     /// <summary>
-    /// Resets pokemon stat boosts
+    /// Resets pokemon
     /// </summary>
     public void OnBattleOver()
     {
         ResetStatBoosts();
+        CureVolatileStatus();
     }
 
     /// <summary>
@@ -129,9 +138,12 @@ public class Pokemon
     /// <param name="ConditionID">The <see cref="ConditionID">ConditionID </see> of the status to set </param>
     public void SetStatus(ConditionID conditionID)
     {
+        if (Status != null) return;
+
         Status = ConditionsDB.Conditions[conditionID];
         Status?.OnStart?.Invoke(this);
         StatusChanges.Enqueue($"{Base.Name} {Status.StartMessage}!");
+        OnStatusChanged?.Invoke();
     }
 
     /// <summary>
@@ -140,6 +152,28 @@ public class Pokemon
     public void CureStatus()
     {
         Status = null;
+        OnStatusChanged?.Invoke();
+    }
+
+    /// <summary>
+    /// Set the volatile status of the pokemon
+    /// </summary>
+    /// <param name="ConditionID">The <see cref="ConditionID">ConditionID </see> of the volatile status to set </param>
+    public void SetVolatileStatus(ConditionID conditionID)
+    {
+        if (VolatileStatus != null) return;
+
+        VolatileStatus = ConditionsDB.Conditions[conditionID];
+        VolatileStatus?.OnStart?.Invoke(this);
+        StatusChanges.Enqueue($"{Base.Name} {VolatileStatus.StartMessage}!");
+    }
+
+    /// <summary>
+    /// Remove all volatile status effects from the pokemon
+    /// </summary>
+    public void CureVolatileStatus()
+    {
+        VolatileStatus = null;
     }
 
     /// <summary>
@@ -158,6 +192,7 @@ public class Pokemon
     public void OnAfterTurn()
     {
         Status?.OnAfterTurn?.Invoke(this);
+        VolatileStatus?.OnAfterTurn?.Invoke(this);
     }
 
     /// <summary>
@@ -166,10 +201,17 @@ public class Pokemon
     /// <returns>A bool representing whether or not the pokemon can perform their move </returns>
     public bool OnBeforeTurn()
     {
-        if (Status?.OnBeforeMove != null)
-            return Status.OnBeforeMove(this);
+        bool canPerformMove = true;
 
-        return true;
+        if (Status?.OnBeforeMove != null)
+            if (!Status.OnBeforeMove(this))
+                canPerformMove = false;
+
+        if (VolatileStatus?.OnBeforeMove != null)
+            if (!VolatileStatus.OnBeforeMove(this))
+                canPerformMove = false;
+
+        return canPerformMove;
     }
 
     private void ResetStatBoosts()
@@ -195,7 +237,7 @@ public class Pokemon
             { Stat.Speed, Mathf.FloorToInt(Base.Speed * Level / 100f) + 5 }
         };
 
-        MaxHp = Mathf.FloorToInt(Base.MaxHp * Level / 100f) + 10;
+        MaxHp = Mathf.FloorToInt(Base.MaxHp * Level / 100f) + 10 + Level;
     }
 
     private int GetStat(Stat stat)
