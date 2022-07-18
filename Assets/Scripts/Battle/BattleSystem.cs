@@ -417,7 +417,6 @@ public class BattleSystem : MonoBehaviour
             int playerMovePriority = playerUnit.Pokemon.CurrentMove.Base.Priority;
             int enemyMovePriority = enemyUnit.Pokemon.CurrentMove.Base.Priority;
 
-
             // Check to see who goes first
 
             bool playerGoesFirst = true;

@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed;
 
     public LayerMask solidObjectsLayer;
+    public LayerMask interactablesLayer;
     public LayerMask grassLayer;
 
     public event Action OnEncounter;
@@ -48,6 +49,8 @@ public class PlayerController : MonoBehaviour
         }
 
         animator.SetBool("isMoving", isMoving);
+
+        if (Input.GetKeyDown(KeyCode.Return)) Interact();
     }
 
     private IEnumerator Move(Vector3 targetPos)
@@ -83,10 +86,25 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void Interact()
+    {
+        Vector3 facingDir = new Vector3(animator.GetFloat("moveX"), animator.GetFloat("moveY"));
+        // Position of the tile that the player is facing
+        Vector3 interactPos = transform.position + facingDir;
+
+        // Debug.DrawLine(transform.position, interactPos, Color.red, 0.5f);
+
+        Collider2D collider = Physics2D.OverlapCircle(interactPos, 0.3f, interactablesLayer);
+        if (collider != null)
+        {
+            collider.GetComponent<Interactable>()?.Interact();
+        }
+    }
+
     private bool IsWalkable(Vector3 targetPos)
     {
         // If touching a sprite with the solidObjects layer
-        if (Physics2D.OverlapCircle(targetPos, 0.2f, solidObjectsLayer) != null)
+        if (Physics2D.OverlapCircle(targetPos, 0.2f, solidObjectsLayer | interactablesLayer) != null)
         {
             return false;
         }
