@@ -161,6 +161,9 @@ public class BattleSystem : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Return))
         {
+            Move move = playerUnit.Pokemon.Moves[currentMoveIndex];
+            if (move.PP == 0) return;
+
             dialogBox.SetMoveSelectorActive(false);
             dialogBox.SetDialogTextActive(true);
             StartCoroutine(RunTurns(BattleAction.Move));
@@ -411,8 +414,18 @@ public class BattleSystem : MonoBehaviour
             playerUnit.Pokemon.CurrentMove = playerUnit.Pokemon.Moves[currentMoveIndex];
             enemyUnit.Pokemon.CurrentMove = enemyUnit.Pokemon.GetRandomMove();
 
+            int playerMovePriority = playerUnit.Pokemon.CurrentMove.Base.Priority;
+            int enemyMovePriority = enemyUnit.Pokemon.CurrentMove.Base.Priority;
+
+
             // Check to see who goes first
-            bool playerGoesFirst = playerUnit.Pokemon.Speed >= enemyUnit.Pokemon.Speed;
+
+            bool playerGoesFirst = true;
+
+            if (enemyMovePriority > playerMovePriority)
+                playerGoesFirst = false;
+            else if (enemyMovePriority == playerMovePriority)
+                playerGoesFirst = playerUnit.Pokemon.Speed >= enemyUnit.Pokemon.Speed;
 
             BattleUnit firstUnit = playerGoesFirst ? playerUnit : enemyUnit;
             BattleUnit secondUnit = playerGoesFirst ? enemyUnit : playerUnit;

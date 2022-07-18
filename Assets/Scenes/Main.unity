@@ -6125,7 +6125,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 205.3, y: 45.7}
+  m_AnchoredPosition: {x: 205.3, y: 66.20001}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &862903576
@@ -9134,10 +9134,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wildPokemon:
-  - _base: {fileID: 11400000, guid: 06fcbbd1cb5271f4fa84e38678c754b1, type: 2}
-    level: 7
-  - _base: {fileID: 11400000, guid: 06fcbbd1cb5271f4fa84e38678c754b1, type: 2}
-    level: 7
+  - _base: {fileID: 11400000, guid: 3bc6ea44e66e7da46ae9dcb5131ebb41, type: 2}
+    level: 8
 --- !u!1 &1996010042
 GameObject:
   m_ObjectHideFlags: 0
@@ -9366,9 +9364,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pokemon:
-  - _base: {fileID: 11400000, guid: c152396595429184e84dc07d5aaa12d2, type: 2}
-    level: 10
   - _base: {fileID: 11400000, guid: a619fcf8e808e924aad53c218010381e, type: 2}
+    level: 8
+  - _base: {fileID: 11400000, guid: c152396595429184e84dc07d5aaa12d2, type: 2}
     level: 10
   - _base: {fileID: 11400000, guid: f2db162f2a9da06469aa6d341529299b, type: 2}
     level: 10
