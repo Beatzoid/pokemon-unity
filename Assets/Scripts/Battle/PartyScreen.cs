@@ -62,6 +62,4 @@ public class PartyScreen : MonoBehaviour
                 memberSlots[i].SetSelected(false);
         }
     }
-
-
 }

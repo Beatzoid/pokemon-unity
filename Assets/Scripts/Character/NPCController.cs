@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
 
-public enum NPCState { Idle, Walking }
+public enum NPCState { Idle, Walking, Dialog }
 
 public class NPCController : MonoBehaviour, Interactable
 {
@@ -23,8 +23,6 @@ public class NPCController : MonoBehaviour, Interactable
 
     public void Update()
     {
-        if (DialogManager.Instance.IsShowing) return;
-
         if (state == NPCState.Idle)
         {
             idleTimer += Time.deltaTime;
@@ -39,18 +37,35 @@ public class NPCController : MonoBehaviour, Interactable
         character.HandleUpdate();
     }
 
-    public void Interact()
+    /// <summary>
+    /// Trigger the NPC's interact function
+    /// </summary>
+    /// <param name="initiator">The transform of the character to interact with </param>
+    public void Interact(Transform initiator)
     {
         if (state == NPCState.Idle)
-            StartCoroutine(DialogManager.Instance.ShowDialog(dialog));
+        {
+            state = NPCState.Dialog;
+            character.LookTowards(initiator.position);
+
+            StartCoroutine(DialogManager.Instance.ShowDialog(dialog, () =>
+            {
+                idleTimer = 0f;
+                state = NPCState.Idle;
+            }));
+        }
     }
 
     private IEnumerator Walk()
     {
         state = NPCState.Walking;
 
+        Vector3 oldPos = transform.position;
+
         yield return character.Move(movementPatterns[currentMovementPatternIndex]);
-        currentMovementPatternIndex = (currentMovementPatternIndex + 1) % movementPatterns.Count;
+
+        if (transform.position != oldPos)
+            currentMovementPatternIndex = (currentMovementPatternIndex + 1) % movementPatterns.Count;
 
         state = NPCState.Idle;
     }

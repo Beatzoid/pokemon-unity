@@ -97,7 +97,6 @@ public class BattleUnit : MonoBehaviour
         sequence.Join(image.DOFade(0f, 1f));
     }
 
-
     public bool IsPlayerUnit
     {
         get { return isPlayerUnit; }

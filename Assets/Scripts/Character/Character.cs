@@ -30,7 +30,7 @@ public class Character : MonoBehaviour
         targetPos.x += moveVector.x;
         targetPos.y += moveVector.y;
 
-        if (!IsWalkable(targetPos)) yield break;
+        if (!IsPathClear(targetPos)) yield break;
 
         IsMoving = true;
 
@@ -54,16 +54,51 @@ public class Character : MonoBehaviour
         Animator.IsMoving = IsMoving;
     }
 
-    private bool IsWalkable(Vector3 targetPos)
+    /// <summary>
+    /// Make the character look towards the target position
+    /// </summary>
+    /// <param name="targetPos">The position to look towards </param>
+    public void LookTowards(Vector3 targetPos)
     {
-        // If touching a sprite with the solidObjects layer
-        if (Physics2D.OverlapCircle(targetPos, 0.2f, GameLayers.L.SolidObjectsLayer | GameLayers.L.InteractablesLayer) != null)
+        float xDiff = Mathf.Floor(targetPos.x) - Mathf.Floor(transform.position.x);
+        float yDiff = Mathf.Floor(targetPos.y) - Mathf.Floor(transform.position.y);
+
+        if (xDiff == 0 || yDiff == 0)
         {
-            return false;
+            Animator.MoveX = Mathf.Clamp(xDiff, -1f, 1f);
+            Animator.MoveY = Mathf.Clamp(yDiff, -1f, 1f);
         }
         else
-        {
-            return true;
-        }
+            Debug.LogError("Error in LookTowards: You can't ask the character to look diagonally");
     }
+    private bool IsPathClear(Vector3 targetPos)
+    {
+        Vector3 diff = targetPos - transform.position;
+        Vector3 direction = diff.normalized;
+
+        if (Physics2D.BoxCast(
+            transform.position + direction, // Origin
+            new Vector2(0.2f, 0.2f), // Size
+            0f, // Angle
+            direction,
+            diff.magnitude - 1, // Distance
+            GameLayers.L.SolidObjectsLayer | GameLayers.L.InteractablesLayer | GameLayers.L.PlayerLayer) == true
+        )
+            return false;
+
+        return true;
+    }
+
+    // private bool IsWalkable(Vector3 targetPos)
+    // {
+    //     // If touching a sprite with the solidObjects layer
+    //     if (Physics2D.OverlapCircle(targetPos, 0.2f, GameLayers.L.SolidObjectsLayer | GameLayers.L.InteractablesLayer) != null)
+    //     {
+    //         return false;
+    //     }
+    //     else
+    //     {
+    //         return true;
+    //     }
+    // }
 }

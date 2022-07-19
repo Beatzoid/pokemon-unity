@@ -5,6 +5,7 @@ public class GameLayers : MonoBehaviour
     [SerializeField] private LayerMask solidObjectsLayer;
     [SerializeField] private LayerMask interactablesLayer;
     [SerializeField] private LayerMask grassLayer;
+    [SerializeField] private LayerMask playerLayer;
 
     public static GameLayers L { get; set; }
 
@@ -26,5 +27,10 @@ public class GameLayers : MonoBehaviour
     public LayerMask GrassLayer
     {
         get => grassLayer;
+    }
+
+    public LayerMask PlayerLayer
+    {
+        get => playerLayer;
     }
 }
