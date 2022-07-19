@@ -18,11 +18,11 @@ public class PlayerController : MonoBehaviour
     private bool isMoving;
     private Vector2 input;
 
-    private Animator animator;
+    private CharacterAnimator animator;
 
     public void Awake()
     {
-        animator = GetComponent<Animator>();
+        animator = GetComponent<CharacterAnimator>();
     }
 
     public void HandleUpdate()
@@ -37,8 +37,8 @@ public class PlayerController : MonoBehaviour
 
             if (input != Vector2.zero)
             {
-                animator.SetFloat("moveX", input.x);
-                animator.SetFloat("moveY", input.y);
+                animator.MoveX = input.x;
+                animator.MoveY = input.y;
 
                 Vector3 targetPos = transform.position;
                 targetPos.x += input.x;
@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        animator.SetBool("isMoving", isMoving);
+        animator.IsMoving = isMoving;
 
         if (Input.GetKeyDown(KeyCode.Return)) Interact();
     }
@@ -80,7 +80,7 @@ public class PlayerController : MonoBehaviour
             // 10% chance to encounter a wild pokemon
             if (UnityEngine.Random.Range(1, 101) <= 10)
             {
-                animator.SetBool("isMoving", false);
+                animator.IsMoving = false;
                 OnEncounter();
             }
         }
@@ -88,7 +88,7 @@ public class PlayerController : MonoBehaviour
 
     private void Interact()
     {
-        Vector3 facingDir = new Vector3(animator.GetFloat("moveX"), animator.GetFloat("moveY"));
+        Vector3 facingDir = new Vector3(animator.MoveX, animator.MoveY);
         // Position of the tile that the player is facing
         Vector3 interactPos = transform.position + facingDir;
 
