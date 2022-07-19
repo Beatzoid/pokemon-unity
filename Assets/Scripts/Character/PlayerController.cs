@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using UnityEngine;
 
 /// <summary>
@@ -7,27 +6,20 @@ using UnityEngine;
 /// </summary>
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed;
-
-    public LayerMask solidObjectsLayer;
-    public LayerMask interactablesLayer;
-    public LayerMask grassLayer;
-
     public event Action OnEncounter;
 
-    private bool isMoving;
     private Vector2 input;
 
-    private CharacterAnimator animator;
+    private Character character;
 
     public void Awake()
     {
-        animator = GetComponent<CharacterAnimator>();
+        character = GetComponent<Character>();
     }
 
     public void HandleUpdate()
     {
-        if (!isMoving)
+        if (!character.IsMoving)
         {
             input.x = Input.GetAxisRaw("Horizontal");
             input.y = Input.GetAxisRaw("Vertical");
@@ -37,50 +29,24 @@ public class PlayerController : MonoBehaviour
 
             if (input != Vector2.zero)
             {
-                animator.MoveX = input.x;
-                animator.MoveY = input.y;
-
-                Vector3 targetPos = transform.position;
-                targetPos.x += input.x;
-                targetPos.y += input.y;
-
-                if (IsWalkable(new Vector3(targetPos.x, targetPos.y - 0.5f))) StartCoroutine(Move(targetPos));
+                StartCoroutine(character.Move(input, CheckForEncounters));
             }
         }
 
-        animator.IsMoving = isMoving;
+        character.HandleUpdate();
 
         if (Input.GetKeyDown(KeyCode.Return)) Interact();
-    }
-
-    private IEnumerator Move(Vector3 targetPos)
-    {
-        isMoving = true;
-
-        // While we are still moving to the target position
-        while ((targetPos - transform.position).sqrMagnitude > Mathf.Epsilon)
-        {
-            // Smoothly move the player in small increments to the target position
-            transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);
-            yield return null;
-        }
-
-        transform.position = targetPos;
-
-        isMoving = false;
-
-        CheckForEncounters();
     }
 
     private void CheckForEncounters()
     {
         // If touching a sprite with the grass layer
-        if (Physics2D.OverlapCircle(transform.position, 0.2f, grassLayer) != null)
+        if (Physics2D.OverlapCircle(transform.position, 0.2f, GameLayers.L.GrassLayer) != null)
         {
             // 10% chance to encounter a wild pokemon
             if (UnityEngine.Random.Range(1, 101) <= 10)
             {
-                animator.IsMoving = false;
+                character.Animator.IsMoving = false;
                 OnEncounter();
             }
         }
@@ -88,29 +54,16 @@ public class PlayerController : MonoBehaviour
 
     private void Interact()
     {
-        Vector3 facingDir = new Vector3(animator.MoveX, animator.MoveY);
+        Vector3 facingDir = new Vector3(character.Animator.MoveX, character.Animator.MoveY);
         // Position of the tile that the player is facing
         Vector3 interactPos = transform.position + facingDir;
 
         // Debug.DrawLine(transform.position, interactPos, Color.red, 0.5f);
 
-        Collider2D collider = Physics2D.OverlapCircle(interactPos, 0.3f, interactablesLayer);
+        Collider2D collider = Physics2D.OverlapCircle(interactPos, 0.3f, GameLayers.L.InteractablesLayer);
         if (collider != null)
         {
             collider.GetComponent<Interactable>()?.Interact();
-        }
-    }
-
-    private bool IsWalkable(Vector3 targetPos)
-    {
-        // If touching a sprite with the solidObjects layer
-        if (Physics2D.OverlapCircle(targetPos, 0.2f, solidObjectsLayer | interactablesLayer) != null)
-        {
-            return false;
-        }
-        else
-        {
-            return true;
         }
     }
 }

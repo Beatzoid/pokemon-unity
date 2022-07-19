@@ -12,6 +12,7 @@ public class DialogManager : MonoBehaviour
     public static DialogManager Instance { get; private set; }
     public event Action OnShowDialog;
     public event Action OnCloseDialog;
+    public bool IsShowing { get; private set; }
 
     private int currentLineIndex = 0;
     private Dialog dialog;
@@ -34,6 +35,7 @@ public class DialogManager : MonoBehaviour
             else
             {
                 currentLineIndex = 0;
+                IsShowing = false;
                 dialogBox.SetActive(false);
                 OnCloseDialog?.Invoke();
             }
@@ -50,6 +52,8 @@ public class DialogManager : MonoBehaviour
 
         OnShowDialog.Invoke();
         this.dialog = dialog;
+        IsShowing = true;
+
         dialogBox.SetActive(true);
         StartCoroutine(TypeDialog(dialog.Lines[0]));
     }
