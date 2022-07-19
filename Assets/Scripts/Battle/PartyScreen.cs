@@ -40,6 +40,15 @@ public class PartyScreen : MonoBehaviour
     }
 
     /// <summary>
+    /// Set the message text for the party screen
+    /// </summary>
+    /// <param name="message">The message to display </param>
+    public void SetMessageText(string message)
+    {
+        messageText.text = message;
+    }
+
+    /// <summary>
     /// Update the member selection UI in the party screen
     /// </summary>
     /// <param name="selectedMemberIndex">The index of the selected party member</param>
@@ -54,12 +63,5 @@ public class PartyScreen : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Set the message text for the party screen
-    /// </summary>
-    /// <param name="message">The message to display </param>
-    public void SetMessageText(string message)
-    {
-        messageText.text = message;
-    }
+
 }

@@ -66,5 +66,4 @@ public class Character : MonoBehaviour
             return true;
         }
     }
-
 }

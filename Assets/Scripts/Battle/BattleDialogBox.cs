@@ -76,6 +76,21 @@ public class BattleDialogBox : MonoBehaviour
     }
 
     /// <summary>
+    /// Update the move selection UI with the move names
+    /// </summary>
+    /// <param name="moves">The list of moves </param>
+    public void SetMoveNames(List<Move> moves)
+    {
+        for (int i = 0; i < moveTexts.Count; ++i)
+        {
+            if (i < moves.Count)
+                moveTexts[i].text = moves[i].Base.MoveName;
+            else
+                moveTexts[i].text = "-";
+        }
+    }
+
+    /// <summary>
     /// Update the action selection UI with the selected action
     /// </summary>
     /// <param name="selectedAction">The selected action </param>
@@ -114,20 +129,5 @@ public class BattleDialogBox : MonoBehaviour
             ppText.color = new Color(1f, 0.647f, 0f);
         else
             ppText.color = Color.black;
-    }
-
-    /// <summary>
-    /// Update the move selection UI with the move names
-    /// </summary>
-    /// <param name="moves">The list of moves </param>
-    public void SetMoveNames(List<Move> moves)
-    {
-        for (int i = 0; i < moveTexts.Count; ++i)
-        {
-            if (i < moves.Count)
-                moveTexts[i].text = moves[i].Base.MoveName;
-            else
-                moveTexts[i].text = "-";
-        }
     }
 }

@@ -14,7 +14,7 @@ public enum PokemonType
     Poison,
     Ground,
     Flying,
-    Phychic,
+    Psychic,
     Bug,
     Rock,
     Ghost,

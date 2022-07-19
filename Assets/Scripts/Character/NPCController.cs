@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
 
-public enum NPCState { Idle, Walking };
+public enum NPCState { Idle, Walking }
 
 public class NPCController : MonoBehaviour, Interactable
 {

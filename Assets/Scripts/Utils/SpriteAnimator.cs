@@ -3,8 +3,9 @@ using UnityEngine;
 
 public class SpriteAnimator
 {
+    public List<Sprite> Frames { get; }
+
     private SpriteRenderer spriteRenderer;
-    private List<Sprite> frames;
     private float frameRate;
     private int currentFrame;
     private float timer;
@@ -17,7 +18,7 @@ public class SpriteAnimator
     /// <param name="frameRate">The framerate of the animation </param>
     public SpriteAnimator(List<Sprite> frames, SpriteRenderer spriteRenderer, float frameRate = 0.16f)
     {
-        this.frames = frames;
+        Frames = frames;
         this.spriteRenderer = spriteRenderer;
         this.frameRate = frameRate;
     }
@@ -29,7 +30,7 @@ public class SpriteAnimator
     {
         currentFrame = 1;
         timer = 0f;
-        spriteRenderer.sprite = frames[1];
+        spriteRenderer.sprite = Frames[1];
     }
 
     /// <summary>
@@ -41,14 +42,10 @@ public class SpriteAnimator
 
         if (timer > frameRate)
         {
-            currentFrame = (currentFrame + 1) % frames.Count;
-            spriteRenderer.sprite = frames[currentFrame];
+            currentFrame = (currentFrame + 1) % Frames.Count;
+            spriteRenderer.sprite = Frames[currentFrame];
             timer -= frameRate;
         }
     }
 
-    public List<Sprite> Frames
-    {
-        get { return frames; }
-    }
 }

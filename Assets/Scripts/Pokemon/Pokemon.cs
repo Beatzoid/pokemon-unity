@@ -54,6 +54,7 @@ public class Pokemon
         VolatileStatus = null;
     }
 
+    #region Battle
     /// <summary>
     /// Causes the specified pokemon to take damage
     /// </summary>
@@ -106,37 +107,6 @@ public class Pokemon
     }
 
     /// <summary>
-    /// Apply stat boosts to the pokemon
-    /// </summary>
-    /// <param name="statBoosts">The boosts to apply </param>
-    public void ApplyBoosts(List<StatBoost> statBoosts)
-    {
-        foreach (StatBoost statBoost in statBoosts)
-        {
-            Stat stat = statBoost.stat;
-            int boost = statBoost.boost;
-
-            StatBoosts[stat] = Mathf.Clamp(StatBoosts[stat] + boost, -6, 6);
-
-            if (boost > 0)
-                StatusChanges.Enqueue($"{Base.Name}'s {stat} increased!");
-            else
-                StatusChanges.Enqueue($"{Base.Name}'s {stat} decreased!");
-
-            Debug.Log($"{stat} has been boosted to {StatBoosts[stat]}");
-        }
-    }
-
-    /// <summary>
-    /// Resets pokemon
-    /// </summary>
-    public void OnBattleOver()
-    {
-        ResetStatBoosts();
-        CureVolatileStatus();
-    }
-
-    /// <summary>
     /// Set the status of the pokemon
     /// </summary>
     /// <param name="ConditionID">The <see cref="ConditionID">ConditionID </see> of the status to set </param>
@@ -157,6 +127,28 @@ public class Pokemon
     {
         Status = null;
         OnStatusChanged?.Invoke();
+    }
+
+    /// <summary>
+    /// Apply stat boosts to the pokemon
+    /// </summary>
+    /// <param name="statBoosts">The boosts to apply </param>
+    public void ApplyBoosts(List<StatBoost> statBoosts)
+    {
+        foreach (StatBoost statBoost in statBoosts)
+        {
+            Stat stat = statBoost.stat;
+            int boost = statBoost.boost;
+
+            StatBoosts[stat] = Mathf.Clamp(StatBoosts[stat] + boost, -6, 6);
+
+            if (boost > 0)
+                StatusChanges.Enqueue($"{Base.Name}'s {stat} increased!");
+            else
+                StatusChanges.Enqueue($"{Base.Name}'s {stat} decreased!");
+
+            Debug.Log($"{stat} has been boosted to {StatBoosts[stat]}");
+        }
     }
 
     /// <summary>
@@ -190,6 +182,10 @@ public class Pokemon
         HP = Mathf.Clamp(HP - damage, 0, MaxHp);
     }
 
+    #endregion
+
+    #region Events
+
     /// <summary>
     /// Ran after a pokemon's turn
     /// </summary>
@@ -217,6 +213,19 @@ public class Pokemon
 
         return canPerformMove;
     }
+
+    /// <summary>
+    /// Resets pokemon
+    /// </summary>
+    public void OnBattleOver()
+    {
+        ResetStatBoosts();
+        CureVolatileStatus();
+    }
+
+    #endregion
+
+    #region Stats
 
     private void ResetStatBoosts()
     {
@@ -261,6 +270,10 @@ public class Pokemon
         return statVal;
     }
 
+    #endregion
+
+    #region Properties
+
     public int Attack
     {
         get { return GetStat(Stat.Attack); }
@@ -285,4 +298,6 @@ public class Pokemon
         get { return GetStat(Stat.Speed); }
     }
     public int MaxHp { get; private set; }
+
+    #endregion
 }

@@ -11,6 +11,8 @@ public class BattleUnit : MonoBehaviour
 
     [SerializeField] private BattleHud hud;
 
+    public Pokemon Pokemon { get; set; }
+
     private Image image;
     private Vector3 originalPos;
     private Color originalColor;
@@ -95,7 +97,6 @@ public class BattleUnit : MonoBehaviour
         sequence.Join(image.DOFade(0f, 1f));
     }
 
-    public Pokemon Pokemon { get; set; }
 
     public bool IsPlayerUnit
     {

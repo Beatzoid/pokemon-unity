@@ -42,6 +42,7 @@ public class BattleSystem : MonoBehaviour
     private PokemonParty playerParty;
     private Pokemon wildPokemon;
 
+    #region Setup
     /// <summary>
     /// Start a battle
     /// </summary>
@@ -53,25 +54,6 @@ public class BattleSystem : MonoBehaviour
         this.wildPokemon = wildPokemon;
 
         StartCoroutine(SetupBattle());
-    }
-
-    /// <summary>
-    /// Update the battle system
-    /// </summary>
-    public void HandleUpdate()
-    {
-        if (state == BattleState.ActionSelection)
-        {
-            HandleActionSelection();
-        }
-        else if (state == BattleState.MoveSelection)
-        {
-            HandleMoveSelection();
-        }
-        else if (state == BattleState.PartyScreen)
-        {
-            HandlePartyScreenSelection();
-        }
     }
 
     /// <summary>
@@ -91,6 +73,29 @@ public class BattleSystem : MonoBehaviour
         yield return dialogBox.TypeDialog($"A wild {enemyUnit.Pokemon.Base.Name} appeared");
 
         ActionSelection();
+    }
+
+    #endregion
+
+    #region Handlers
+
+    /// <summary>
+    /// Update the battle system
+    /// </summary>
+    public void HandleUpdate()
+    {
+        if (state == BattleState.ActionSelection)
+        {
+            HandleActionSelection();
+        }
+        else if (state == BattleState.MoveSelection)
+        {
+            HandleMoveSelection();
+        }
+        else if (state == BattleState.PartyScreen)
+        {
+            HandlePartyScreenSelection();
+        }
     }
 
     private void HandlePartyScreenSelection()
@@ -215,6 +220,10 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
+    #endregion
+
+    #region Selection
+
     private void OpenPartyScreen()
     {
         state = BattleState.PartyScreen;
@@ -236,6 +245,10 @@ public class BattleSystem : MonoBehaviour
         dialogBox.SetDialogTextActive(false);
         dialogBox.SetMoveSelectorActive(true);
     }
+
+    #endregion
+
+    #region Checks
 
     private void BattleOver(bool won)
     {
@@ -283,6 +296,10 @@ public class BattleSystem : MonoBehaviour
         return UnityEngine.Random.Range(1, 101) <= moveAccuracy;
     }
 
+    #endregion
+
+    #region UI
+
     private IEnumerator ShowStatusChanges(Pokemon pokemon)
     {
         while (pokemon.StatusChanges.Count > 0)
@@ -291,6 +308,21 @@ public class BattleSystem : MonoBehaviour
             yield return dialogBox.TypeDialog(message);
         }
     }
+
+    private IEnumerator ShowDamageDetails(DamageDetails damageDetails)
+    {
+        if (damageDetails.Critical > 1f)
+            yield return dialogBox.TypeDialog("A critical hit!");
+
+        if (damageDetails.TypeEffectiveness > 1f)
+            yield return dialogBox.TypeDialog("It's super effective!");
+        else if (damageDetails.TypeEffectiveness < 1f)
+            yield return dialogBox.TypeDialog("Its not very effective...");
+    }
+
+    #endregion
+
+    #region Runners
 
     private IEnumerator RunMove(BattleUnit source, BattleUnit target, Move move)
     {
@@ -465,6 +497,10 @@ public class BattleSystem : MonoBehaviour
         if (state != BattleState.BattleOver) ActionSelection();
     }
 
+    #endregion
+
+    #region Pokemon
+
     private IEnumerator SwitchPokemon(Pokemon newPokemon)
     {
         if (playerUnit.Pokemon.HP > 0)
@@ -486,14 +522,5 @@ public class BattleSystem : MonoBehaviour
         state = BattleState.RunningTurn;
     }
 
-    private IEnumerator ShowDamageDetails(DamageDetails damageDetails)
-    {
-        if (damageDetails.Critical > 1f)
-            yield return dialogBox.TypeDialog("A critical hit!");
-
-        if (damageDetails.TypeEffectiveness > 1f)
-            yield return dialogBox.TypeDialog("It's super effective!");
-        else if (damageDetails.TypeEffectiveness < 1f)
-            yield return dialogBox.TypeDialog("Its not very effective...");
-    }
+    #endregion
 }
