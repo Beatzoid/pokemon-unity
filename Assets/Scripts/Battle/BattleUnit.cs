@@ -38,6 +38,7 @@ public class BattleUnit : MonoBehaviour
         else
             image.sprite = Pokemon.Base.FrontSprite;
 
+        hud.gameObject.SetActive(true);
         hud.SetData(pokemon);
 
         image.color = originalColor;
@@ -95,6 +96,11 @@ public class BattleUnit : MonoBehaviour
 
         sequence.Append(image.transform.DOLocalMoveY(originalPos.y - 150f, 2f));
         sequence.Join(image.DOFade(0f, 1f));
+    }
+
+    public void Clear()
+    {
+        hud.gameObject.SetActive(false);
     }
 
     public bool IsPlayerUnit

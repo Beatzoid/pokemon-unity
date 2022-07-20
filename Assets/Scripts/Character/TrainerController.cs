@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class TrainerController : MonoBehaviour
 {
+    [SerializeField] private string name;
+    [SerializeField] private Sprite sprite;
     [SerializeField] private Dialog dialog;
     [SerializeField] private GameObject exclamation;
     [SerializeField] private GameObject fov;
@@ -24,6 +26,11 @@ public class TrainerController : MonoBehaviour
         character.HandleUpdate();
     }
 
+
+    /// <summary>
+    /// Trigger a trainer battle
+    /// </summary>
+    /// <param name="PlayerController">The player controller </param>
     public IEnumerator TriggerTrainerBattle(PlayerController player)
     {
         // Show exclamation
@@ -41,10 +48,14 @@ public class TrainerController : MonoBehaviour
 
         StartCoroutine(DialogManager.Instance.ShowDialog(dialog, () =>
         {
-            Debug.Log("Starting trainer battle");
+            GameController.instance.StartTrainerBattle(this);
         }));
     }
 
+    /// <summary>
+    /// Set the Fov collider rotation
+    /// </summary>
+    /// <param name="FacingDirection">The direction to face the collider in </param>
     public void SetFovRotation(FacingDirection dir)
     {
         float angle = 0f;
@@ -63,5 +74,15 @@ public class TrainerController : MonoBehaviour
         }
 
         fov.transform.eulerAngles = new Vector3(0f, 0f, angle);
+    }
+
+    public Sprite Sprite
+    {
+        get => sprite;
+    }
+
+    public string Name
+    {
+        get => name;
     }
 }
