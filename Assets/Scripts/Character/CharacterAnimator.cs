@@ -1,12 +1,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum FacingDirection { Up, Down, Left, Right }
+
 public class CharacterAnimator : MonoBehaviour
 {
     [SerializeField] private List<Sprite> walkDownSprites;
     [SerializeField] private List<Sprite> walkUpSprites;
     [SerializeField] private List<Sprite> walkLeftSprites;
     [SerializeField] private List<Sprite> walkRightSprites;
+    [SerializeField] private FacingDirection defaultDirection = FacingDirection.Down;
 
     // Parameters
     public float MoveX { get; set; }
@@ -32,6 +35,7 @@ public class CharacterAnimator : MonoBehaviour
         walkRightAnim = new SpriteAnimator(walkRightSprites, spriteRenderer);
         walkLeftAnim = new SpriteAnimator(walkLeftSprites, spriteRenderer);
 
+        SetFacingDirection(defaultDirection);
         currentAnim = walkDownAnim;
     }
 
@@ -56,5 +60,29 @@ public class CharacterAnimator : MonoBehaviour
             spriteRenderer.sprite = currentAnim.Frames[0];
 
         wasPrevMoving = IsMoving;
+    }
+
+    public void SetFacingDirection(FacingDirection dir)
+    {
+        switch (dir)
+        {
+            case FacingDirection.Right:
+                MoveX = 1;
+                break;
+            case FacingDirection.Left:
+                MoveX = -1;
+                break;
+            case FacingDirection.Down:
+                MoveY = 1;
+                break;
+            case FacingDirection.Up:
+                MoveY = 1;
+                break;
+        }
+    }
+
+    public FacingDirection DefaultDirection
+    {
+        get => defaultDirection;
     }
 }

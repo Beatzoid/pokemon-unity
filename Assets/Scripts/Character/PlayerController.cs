@@ -7,9 +7,9 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public event Action OnEncounter;
+    public event Action<Collider2D> OnEnterTrainersView;
 
     private Vector2 input;
-
     private Character character;
 
     public void Awake()
@@ -29,13 +29,19 @@ public class PlayerController : MonoBehaviour
 
             if (input != Vector2.zero)
             {
-                StartCoroutine(character.Move(input, CheckForEncounters));
+                StartCoroutine(character.Move(input, OnMoveOver));
             }
         }
 
         character.HandleUpdate();
 
         if (Input.GetKeyDown(KeyCode.Return)) Interact();
+    }
+
+    private void OnMoveOver()
+    {
+        CheckForEncounters();
+        CheckIfInTrainersView();
     }
 
     private void CheckForEncounters()
@@ -49,6 +55,17 @@ public class PlayerController : MonoBehaviour
                 character.Animator.IsMoving = false;
                 OnEncounter();
             }
+        }
+    }
+
+    private void CheckIfInTrainersView()
+    {
+        Collider2D fovCollider = Physics2D.OverlapCircle(transform.position, 0.2f, GameLayers.L.FovLayer);
+
+        if (fovCollider != null)
+        {
+            character.Animator.IsMoving = false;
+            OnEnterTrainersView?.Invoke(fovCollider);
         }
     }
 

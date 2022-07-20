@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public enum GameState { FreeRoam, Battle, Dialog }
+public enum GameState { FreeRoam, Battle, Dialog, Cutscene }
 
 /// <summary>
 /// The GameController class manages all core game logic
@@ -22,6 +22,18 @@ public class GameController : MonoBehaviour
     {
         playerController.OnEncounter += StartBattle;
         battleSystem.OnBattleOver += EndBattle;
+
+        playerController.OnEnterTrainersView += (Collider2D fovCollider) =>
+        {
+            TrainerController trainer = fovCollider.GetComponentInParent<TrainerController>();
+
+            if (trainer != null)
+            {
+                state = GameState.Cutscene;
+
+                StartCoroutine(trainer.TriggerTrainerBattle(playerController));
+            }
+        };
 
         DialogManager.Instance.OnShowDialog += () =>
         {
