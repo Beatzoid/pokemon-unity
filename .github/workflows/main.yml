@@ -18,9 +18,7 @@ jobs:
                     - Android # Build an Android player.
         steps:
             - uses: actions/checkout@v2
-              with:
-                  fetch-depth: 0
-                  lfs: true
+
             - uses: actions/cache@v2
               with:
                   path: Library
@@ -59,9 +57,7 @@ jobs:
 
         steps:
             - uses: actions/checkout@v2
-              with:
-                  fetch-depth: 0
-                  lfs: true
+
             - uses: actions/cache@v2
               with:
                   path: Library
@@ -99,9 +95,6 @@ jobs:
 
         steps:
             - uses: actions/checkout@v2
-              with:
-                  fetch-depth: 0
-                  lfs: true
 
             - uses: actions/cache@v2
               with:
