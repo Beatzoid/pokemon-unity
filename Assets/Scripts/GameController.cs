@@ -14,6 +14,7 @@ public class GameController : MonoBehaviour
     public static GameController instance { get; private set; }
 
     private GameState state;
+    private TrainerController trainer;
 
     public void Awake()
     {
@@ -69,6 +70,7 @@ public class GameController : MonoBehaviour
     public void StartTrainerBattle(TrainerController trainer)
     {
         state = GameState.Battle;
+        this.trainer = trainer;
 
         battleSystem.gameObject.SetActive(true);
         worldCamera.gameObject.SetActive(false);
@@ -82,6 +84,12 @@ public class GameController : MonoBehaviour
     private void EndBattle(bool won)
     {
         state = GameState.FreeRoam;
+
+        if (trainer != null && won == true)
+        {
+            trainer.BattleLost();
+            trainer = null;
+        }
 
         battleSystem.gameObject.SetActive(false);
         worldCamera.gameObject.SetActive(true);

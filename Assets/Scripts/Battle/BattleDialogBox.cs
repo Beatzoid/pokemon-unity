@@ -8,18 +8,32 @@ using UnityEngine;
 /// </summary>
 public class BattleDialogBox : MonoBehaviour
 {
+    [Header("Settings")]
+
     [SerializeField] private int lettersPerSecond;
     [SerializeField] private Color highlightedColor;
-    [SerializeField] private TextMeshProUGUI dialogText;
+
+    [Space(5)]
+    [Header("Objects")]
+
     [SerializeField] private GameObject actionSelector;
     [SerializeField] private GameObject moveSelector;
     [SerializeField] private GameObject moveDetails;
+    [SerializeField] private GameObject choiceBox;
 
-    [SerializeField] private List<TextMeshProUGUI> actionTexts;
-    [SerializeField] private List<TextMeshProUGUI> moveTexts;
+    [Space(5)]
+    [Header("Text")]
+
+    [SerializeField] private List<TextMeshProUGUI> actionText;
+    [SerializeField] private List<TextMeshProUGUI> moveText;
+
+    [SerializeField] private TextMeshProUGUI dialogText;
 
     [SerializeField] private TextMeshProUGUI ppText;
     [SerializeField] private TextMeshProUGUI typeText;
+
+    [SerializeField] private TextMeshProUGUI yesText;
+    [SerializeField] private TextMeshProUGUI noText;
 
     /// <summary>
     /// Set the dialog box text
@@ -76,17 +90,26 @@ public class BattleDialogBox : MonoBehaviour
     }
 
     /// <summary>
+    /// Show/hide the choice box
+    /// </summary>
+    /// <param name="enabled">Whether to show or hide the choice box </param>
+    public void SetChoiceBoxActive(bool enabled)
+    {
+        choiceBox.SetActive(enabled);
+    }
+
+    /// <summary>
     /// Update the move selection UI with the move names
     /// </summary>
     /// <param name="moves">The list of moves </param>
     public void SetMoveNames(List<Move> moves)
     {
-        for (int i = 0; i < moveTexts.Count; ++i)
+        for (int i = 0; i < moveText.Count; ++i)
         {
             if (i < moves.Count)
-                moveTexts[i].text = moves[i].Base.MoveName;
+                moveText[i].text = moves[i].Base.MoveName;
             else
-                moveTexts[i].text = "-";
+                moveText[i].text = "-";
         }
     }
 
@@ -96,12 +119,12 @@ public class BattleDialogBox : MonoBehaviour
     /// <param name="selectedAction">The selected action </param>
     public void UpdateActionSelection(int selectedAction)
     {
-        for (int i = 0; i < actionTexts.Count; ++i)
+        for (int i = 0; i < actionText.Count; ++i)
         {
             if (i == selectedAction)
-                actionTexts[i].color = highlightedColor;
+                actionText[i].color = highlightedColor;
             else
-                actionTexts[i].color = Color.black;
+                actionText[i].color = Color.black;
         }
     }
 
@@ -112,12 +135,12 @@ public class BattleDialogBox : MonoBehaviour
     /// <param name="move">The selected move </param>
     public void UpdateMoveSelection(int selectedMove, Move move)
     {
-        for (int i = 0; i < moveTexts.Count; ++i)
+        for (int i = 0; i < moveText.Count; ++i)
         {
             if (i == selectedMove)
-                moveTexts[i].color = highlightedColor;
+                moveText[i].color = highlightedColor;
             else
-                moveTexts[i].color = Color.black;
+                moveText[i].color = Color.black;
         }
 
         ppText.text = $"PP {move.PP}/{move.Base.PP}";
@@ -129,5 +152,23 @@ public class BattleDialogBox : MonoBehaviour
             ppText.color = new Color(1f, 0.647f, 0f);
         else
             ppText.color = Color.black;
+    }
+
+    /// <summary>
+    /// Update the choice box
+    /// </summary>
+    /// <param name="selectedChoice">The selected choice </param>
+    public void UpdateChoiceBox(bool yesSelected)
+    {
+        if (yesSelected)
+        {
+            yesText.color = highlightedColor;
+            noText.color = Color.black;
+        }
+        else
+        {
+            yesText.color = Color.black;
+            noText.color = highlightedColor;
+        }
     }
 }

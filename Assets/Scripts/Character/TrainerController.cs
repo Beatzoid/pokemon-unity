@@ -1,13 +1,16 @@
 using System.Collections;
 using UnityEngine;
 
-public class TrainerController : MonoBehaviour
+public class TrainerController : MonoBehaviour, Interactable
 {
-    [SerializeField] private string name;
+    [SerializeField] private new string name;
     [SerializeField] private Sprite sprite;
     [SerializeField] private Dialog dialog;
+    [SerializeField] private Dialog dialogAfterBattle;
     [SerializeField] private GameObject exclamation;
     [SerializeField] private GameObject fov;
+
+    private bool battleLost = false;
 
     private Character character;
 
@@ -26,6 +29,32 @@ public class TrainerController : MonoBehaviour
         character.HandleUpdate();
     }
 
+    /// <summary>
+    /// Initiates trainer battle
+    /// </summary>
+    /// <param name="Transform">The transform of the object that is interacting with the trainer </param>
+    public void Interact(Transform initiator)
+    {
+        character.LookTowards(initiator.position);
+
+        if (!battleLost)
+            StartCoroutine(DialogManager.Instance.ShowDialog(dialog, () =>
+            {
+                GameController.instance.StartTrainerBattle(this);
+            }));
+        else
+            StartCoroutine(DialogManager.Instance.ShowDialog(dialogAfterBattle));
+    }
+
+
+    /// <summary>
+    /// Called when the player loses a battle
+    /// </summary>
+    public void BattleLost()
+    {
+        battleLost = true;
+        fov.SetActive(false);
+    }
 
     /// <summary>
     /// Trigger a trainer battle
@@ -45,6 +74,7 @@ public class TrainerController : MonoBehaviour
         moveVec = new Vector2(Mathf.Round(moveVec.x), Mathf.Round(moveVec.y));
 
         yield return character.Move(moveVec);
+        player.Character.LookTowards(transform.position);
 
         StartCoroutine(DialogManager.Instance.ShowDialog(dialog, () =>
         {

@@ -11,7 +11,8 @@ public enum BattleState
     RunningTurn,
     Busy,
     PartyScreen,
-    BattleOver
+    BattleOver,
+    AboutToUse
 }
 
 public enum BattleAction
@@ -38,9 +39,11 @@ public class BattleSystem : MonoBehaviour
 
     private BattleState state;
     private BattleState? prevState;
+
     private int currentActionIndex;
     private int currentMoveIndex;
     private int currentPartyMemberIndex;
+    private bool aboutToUseChoice = true;
 
     private PokemonParty playerParty;
     private PokemonParty trainerParty;
@@ -159,6 +162,34 @@ public class BattleSystem : MonoBehaviour
         {
             HandlePartyScreenSelection();
         }
+        else if (state == BattleState.AboutToUse)
+        {
+            HandleAboutToUse();
+        }
+    }
+
+    private void HandleAboutToUse()
+    {
+        if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.UpArrow))
+            aboutToUseChoice = !aboutToUseChoice;
+
+        dialogBox.UpdateChoiceBox(aboutToUseChoice);
+
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            dialogBox.SetChoiceBoxActive(false);
+            if (aboutToUseChoice)
+            {
+                // Yes
+                prevState = BattleState.AboutToUse;
+                OpenPartyScreen();
+            }
+            else
+            {
+                // No
+                StartCoroutine(SendNextTrainerPokemon());
+            }
+        }
     }
 
     private void HandlePartyScreenSelection()
@@ -207,8 +238,21 @@ public class BattleSystem : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.X))
         {
+            if (playerUnit.Pokemon.HP <= 0)
+            {
+                partyScreen.SetMessageText("You have to choose a pokemon to continue!");
+                return;
+            }
+
             partyScreen.gameObject.SetActive(false);
-            ActionSelection();
+
+            if (prevState == BattleState.AboutToUse)
+            {
+                prevState = null;
+                StartCoroutine(SendNextTrainerPokemon());
+            }
+            else
+                ActionSelection();
         }
     }
 
@@ -311,6 +355,19 @@ public class BattleSystem : MonoBehaviour
 
     #endregion
 
+    #region Events
+
+    private IEnumerator AboutToUse(Pokemon newPokemon)
+    {
+        state = BattleState.Busy;
+        yield return dialogBox.TypeDialog($"{trainer.Name} is about to use {newPokemon.Base.Name}. Do you want to switch pokemon?");
+
+        state = BattleState.AboutToUse;
+        dialogBox.SetChoiceBoxActive(true);
+    }
+
+    #endregion
+
     #region Checks
 
     private void BattleOver(bool won)
@@ -342,7 +399,7 @@ public class BattleSystem : MonoBehaviour
                 Pokemon nextPokemon = trainerParty.GetHealthyPokemon();
                 if (nextPokemon != null)
                 {
-                    StartCoroutine(SendNextTrainerPokemon(nextPokemon));
+                    StartCoroutine(AboutToUse(nextPokemon));
                 }
                 else
                 {
@@ -487,6 +544,7 @@ public class BattleSystem : MonoBehaviour
             yield return new WaitForSeconds(1.5f);
 
             CheckForBattleOver(source);
+            yield return new WaitUntil(() => state == BattleState.RunningTurn);
         }
     }
 
@@ -599,12 +657,20 @@ public class BattleSystem : MonoBehaviour
 
         yield return dialogBox.TypeDialog($"Go {newPokemon.Base.Name}!");
 
-        state = BattleState.RunningTurn;
+        if (prevState == null)
+            state = BattleState.RunningTurn;
+        else if (prevState == BattleState.AboutToUse)
+        {
+            prevState = null;
+            StartCoroutine(SendNextTrainerPokemon());
+        }
     }
 
-    private IEnumerator SendNextTrainerPokemon(Pokemon nextPokemon)
+    private IEnumerator SendNextTrainerPokemon()
     {
         state = BattleState.Busy;
+
+        Pokemon nextPokemon = trainerParty.GetHealthyPokemon();
 
         enemyUnit.Setup(nextPokemon);
         yield return dialogBox.TypeDialog($"{trainer.Name} send out {nextPokemon.Base.Name}");

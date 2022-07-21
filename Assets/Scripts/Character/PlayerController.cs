@@ -6,23 +6,23 @@ using UnityEngine;
 /// </summary>
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private string name;
+    [SerializeField] private new string name;
     [SerializeField] private Sprite sprite;
 
     public event Action OnEncounter;
     public event Action<Collider2D> OnEnterTrainersView;
+    public Character Character { get; private set; }
 
     private Vector2 input;
-    private Character character;
 
     public void Awake()
     {
-        character = GetComponent<Character>();
+        Character = GetComponent<Character>();
     }
 
     public void HandleUpdate()
     {
-        if (!character.IsMoving)
+        if (!Character.IsMoving)
         {
             input.x = Input.GetAxisRaw("Horizontal");
             input.y = Input.GetAxisRaw("Vertical");
@@ -32,11 +32,11 @@ public class PlayerController : MonoBehaviour
 
             if (input != Vector2.zero)
             {
-                StartCoroutine(character.Move(input, OnMoveOver));
+                StartCoroutine(Character.Move(input, OnMoveOver));
             }
         }
 
-        character.HandleUpdate();
+        Character.HandleUpdate();
 
         if (Input.GetKeyDown(KeyCode.Return)) Interact();
     }
@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviour
             // 10% chance to encounter a wild pokemon
             if (UnityEngine.Random.Range(1, 101) <= 10)
             {
-                character.Animator.IsMoving = false;
+                Character.Animator.IsMoving = false;
                 OnEncounter();
             }
         }
@@ -67,14 +67,14 @@ public class PlayerController : MonoBehaviour
 
         if (fovCollider != null)
         {
-            character.Animator.IsMoving = false;
+            Character.Animator.IsMoving = false;
             OnEnterTrainersView?.Invoke(fovCollider);
         }
     }
 
     private void Interact()
     {
-        Vector3 facingDir = new Vector3(character.Animator.MoveX, character.Animator.MoveY);
+        Vector3 facingDir = new Vector3(Character.Animator.MoveX, Character.Animator.MoveY);
         // Position of the tile that the player is facing
         Vector3 interactPos = transform.position + facingDir;
 
