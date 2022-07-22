@@ -29,4 +29,20 @@ public class PokemonParty : MonoBehaviour
     {
         return pokemon.FirstOrDefault(pokemon => pokemon.HP > 0);
     }
+
+    /// <summary>
+    /// Add a pokemon to the party
+    /// </summary>
+    public void AddPokemon(Pokemon newPokemon)
+    {
+        if (pokemon.Count < 6)
+        {
+            pokemon.Add(newPokemon);
+        }
+        else
+        {
+            // TODO: Add to PC
+            Debug.Log("Added to PC");
+        }
+    }
 }

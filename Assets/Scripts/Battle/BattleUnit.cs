@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using System.Collections;
 
 /// <summary>
 /// The BattleUnit class manages a unit (pokemon) in the battle scene
@@ -41,6 +42,7 @@ public class BattleUnit : MonoBehaviour
         hud.gameObject.SetActive(true);
         hud.SetData(pokemon);
 
+        transform.localScale = new Vector3(1, 1, 1);
         image.color = originalColor;
 
         PlayEnterAnimation();
@@ -96,6 +98,34 @@ public class BattleUnit : MonoBehaviour
 
         sequence.Append(image.transform.DOLocalMoveY(originalPos.y - 150f, 2f));
         sequence.Join(image.DOFade(0f, 1f));
+    }
+
+    /// <summary>
+    /// Play the capture animation
+    /// </summary>
+    public IEnumerator PlayCaptureAnimation()
+    {
+        Sequence sequence = DOTween.Sequence();
+
+        sequence.Append(image.DOFade(0, 0.5f));
+        sequence.Join(transform.DOLocalMoveY(originalPos.y + 50f, 0.5f));
+        sequence.Join(transform.DOScale(new Vector3(0.3f, 0.3f, 1f), 0.5f));
+
+        yield return sequence.WaitForCompletion();
+    }
+
+    /// <summary>
+    /// Play the breakout animation
+    /// </summary>
+    public IEnumerator PlayBreakoutAnimation()
+    {
+        Sequence sequence = DOTween.Sequence();
+
+        sequence.Append(image.DOFade(1, 0.5f));
+        sequence.Join(transform.DOLocalMoveY(originalPos.y, 0.5f));
+        sequence.Join(transform.DOScale(new Vector3(1f, 1f, 1f), 0.5f));
+
+        yield return sequence.WaitForCompletion();
     }
 
     public void Clear()

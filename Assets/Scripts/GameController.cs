@@ -105,6 +105,10 @@ public class GameController : MonoBehaviour
         PokemonParty playerParty = playerController.GetComponent<PokemonParty>();
         Pokemon wildPokemon = FindObjectOfType<MapArea>().GetComponent<MapArea>().GetRandomWildPokemon();
 
-        battleSystem.StartBattle(playerParty, wildPokemon);
+        // Prevents us from adding the pokemon in the map area
+        // to our party
+        Pokemon wildPokemonCopy = new Pokemon(wildPokemon.Base, wildPokemon.Level);
+
+        battleSystem.StartBattle(playerParty, wildPokemonCopy);
     }
 }

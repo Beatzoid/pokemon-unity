@@ -24,10 +24,18 @@ public class Pokemon
     public Condition VolatileStatus { get; private set; }
     public int StatusTime { get; set; }
     public int VolatileStatusTime { get; set; }
-    public Queue<string> StatusChanges { get; private set; } = new Queue<string>();
+    public Queue<string> StatusChanges { get; private set; }
 
     public bool HPChanged { get; set; }
     public event System.Action OnStatusChanged;
+
+    public Pokemon(PokemonBase pBase, int pLevel)
+    {
+        _base = pBase;
+        level = pLevel;
+
+        Init();
+    }
 
     /// <summary>
     /// Initializes the Pokemon
@@ -52,6 +60,7 @@ public class Pokemon
         ResetStatBoosts();
         Status = null;
         VolatileStatus = null;
+        StatusChanges = new Queue<string>();
     }
 
     #region Battle
