@@ -24,6 +24,9 @@ MonoBehaviour:
   specialAttack: 50
   specialDefense: 50
   speed: 90
+  expYield: 112
+  growthRate: 2
+  catchRate: 255
   learnableMoves:
   - moveBase: {fileID: 11400000, guid: a702da29404d06649a54d95c4d93340e, type: 2}
     level: 1

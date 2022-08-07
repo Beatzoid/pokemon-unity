@@ -503,12 +503,7 @@ public class BattleSystem : MonoBehaviour
 
             if (target.Pokemon.HP <= 0)
             {
-                yield return dialogBox.TypeDialog($"{target.Pokemon.Base.Name} Fainted");
-                target.PlayFaintAnimation();
-
-                yield return new WaitForSeconds(1.5f);
-
-                CheckForBattleOver(target);
+                yield return HandlePokemonFainted(target);
             }
         }
         else
@@ -544,12 +539,7 @@ public class BattleSystem : MonoBehaviour
         // so this if statement checks if that is the case and handles it accordingly
         if (source.Pokemon.HP <= 0)
         {
-            yield return dialogBox.TypeDialog($"{source.Pokemon.Base.Name} Fainted");
-            source.PlayFaintAnimation();
-
-            yield return new WaitForSeconds(1.5f);
-
-            CheckForBattleOver(source);
+            yield return HandlePokemonFainted(source);
             yield return new WaitUntil(() => state == BattleState.RunningTurn);
         }
     }
@@ -654,6 +644,30 @@ public class BattleSystem : MonoBehaviour
 
     #region Pokemon
 
+    private IEnumerator HandlePokemonFainted(BattleUnit faintedUnit)
+    {
+        yield return dialogBox.TypeDialog($"{faintedUnit.Pokemon.Base.Name} Fainted");
+        faintedUnit.PlayFaintAnimation();
+
+        yield return new WaitForSeconds(1.5f);
+
+        if (!faintedUnit.IsPlayerUnit)
+        {
+            int expYield = faintedUnit.Pokemon.Base.ExpYield;
+            int enemyLevel = faintedUnit.Pokemon.Level;
+            float trainerBonus = isTrainerBattle ? 1.5f : 1f;
+
+            int expGain = Mathf.FloorToInt(expYield * enemyLevel * trainerBonus / 7);
+            playerUnit.Pokemon.Exp += expGain;
+
+            yield return dialogBox.TypeDialog($"{playerUnit.Pokemon.Base.Name} gained {expGain} exp!");
+            yield return playerUnit.Hud.SetExpSmooth();
+
+            yield return new WaitForSeconds(1f);
+        }
+
+        CheckForBattleOver(faintedUnit);
+    }
     private IEnumerator ThrowPokeball()
     {
         state = BattleState.Busy;
