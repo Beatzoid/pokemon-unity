@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public enum GameState { FreeRoam, Battle, Dialog, Cutscene }
+public enum GameState { FreeRoam, Battle, Dialog, Cutscene, Paused }
 
 /// <summary>
 /// The GameController class manages all core game logic
@@ -14,6 +14,7 @@ public class GameController : MonoBehaviour
     public static GameController instance { get; private set; }
 
     private GameState state;
+    private GameState stateBeforePause;
     private TrainerController trainer;
 
     public void Awake()
@@ -51,6 +52,19 @@ public class GameController : MonoBehaviour
         else if (state == GameState.Dialog)
         {
             DialogManager.Instance.HandleUpdate();
+        }
+    }
+
+    public void PauseGame(bool pause)
+    {
+        if (pause)
+        {
+            stateBeforePause = state;
+            state = GameState.Paused;
+        }
+        else
+        {
+            state = stateBeforePause;
         }
     }
 
