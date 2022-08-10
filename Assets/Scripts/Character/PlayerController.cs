@@ -10,7 +10,6 @@ public class PlayerController : MonoBehaviour
     public Character Character { get; private set; }
 
     private Vector2 input;
-    private const float offsetY = 0.3f;
 
     public void Awake()
     {
@@ -40,7 +39,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnMoveOver()
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position - new Vector3(0, offsetY), 0.2f, GameLayers.L.TriggerableLayers);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position - new Vector3(0, Character.OffsetY), 0.2f, GameLayers.L.TriggerableLayers);
 
         foreach (Collider2D collider in colliders)
         {
