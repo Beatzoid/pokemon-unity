@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 /// <summary>
@@ -8,9 +7,6 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private new string name;
     [SerializeField] private Sprite sprite;
-
-    public event Action OnEncounter;
-    public event Action<Collider2D> OnEnterTrainersView;
     public Character Character { get; private set; }
 
     private Vector2 input;
@@ -44,35 +40,20 @@ public class PlayerController : MonoBehaviour
 
     private void OnMoveOver()
     {
-        CheckForEncounters();
-        CheckIfInTrainersView();
-    }
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position - new Vector3(0, offsetY), 0.2f, GameLayers.L.TriggerableLayers);
 
-    private void CheckForEncounters()
-    {
-        // If touching a sprite with the grass layer
-        if (Physics2D.OverlapCircle(transform.position - new Vector3(0, offsetY), 0.2f, GameLayers.L.GrassLayer) != null)
+        foreach (Collider2D collider in colliders)
         {
-            // 10% chance to encounter a wild pokemon
-            if (UnityEngine.Random.Range(1, 101) <= 10)
+            IPlayerTriggerable triggerable = collider.GetComponent<IPlayerTriggerable>();
+
+            if (triggerable != null)
             {
                 Character.Animator.IsMoving = false;
-                OnEncounter();
+                triggerable.OnPlayerTriggered(this);
+                break;
             }
         }
     }
-
-    private void CheckIfInTrainersView()
-    {
-        Collider2D fovCollider = Physics2D.OverlapCircle(transform.position - new Vector3(0, offsetY), 0.2f, GameLayers.L.FovLayer);
-
-        if (fovCollider != null)
-        {
-            Character.Animator.IsMoving = false;
-            OnEnterTrainersView?.Invoke(fovCollider);
-        }
-    }
-
     private void Interact()
     {
         Vector3 facingDir = new Vector3(Character.Animator.MoveX, Character.Animator.MoveY);

@@ -24,20 +24,7 @@ public class GameController : MonoBehaviour
 
     public void Start()
     {
-        playerController.OnEncounter += StartBattle;
         battleSystem.OnBattleOver += EndBattle;
-
-        playerController.OnEnterTrainersView += (Collider2D fovCollider) =>
-        {
-            TrainerController trainer = fovCollider.GetComponentInParent<TrainerController>();
-
-            if (trainer != null)
-            {
-                state = GameState.Cutscene;
-
-                StartCoroutine(trainer.TriggerTrainerBattle(playerController));
-            }
-        };
 
         DialogManager.Instance.OnShowDialog += () =>
         {
@@ -81,21 +68,7 @@ public class GameController : MonoBehaviour
         battleSystem.StartTrainerBattle(playerParty, trainerParty);
     }
 
-    private void EndBattle(bool won)
-    {
-        state = GameState.FreeRoam;
-
-        if (trainer != null && won == true)
-        {
-            trainer.BattleLost();
-            trainer = null;
-        }
-
-        battleSystem.gameObject.SetActive(false);
-        worldCamera.gameObject.SetActive(true);
-    }
-
-    private void StartBattle()
+    public void StartBattle()
     {
         state = GameState.Battle;
 
@@ -110,5 +83,25 @@ public class GameController : MonoBehaviour
         Pokemon wildPokemonCopy = new Pokemon(wildPokemon.Base, wildPokemon.Level);
 
         battleSystem.StartBattle(playerParty, wildPokemonCopy);
+    }
+
+    public void OnEnterTrainersView(TrainerController trainer)
+    {
+        state = GameState.Cutscene;
+        StartCoroutine(trainer.TriggerTrainerBattle(playerController));
+    }
+
+    private void EndBattle(bool won)
+    {
+        state = GameState.FreeRoam;
+
+        if (trainer != null && won == true)
+        {
+            trainer.BattleLost();
+            trainer = null;
+        }
+
+        battleSystem.gameObject.SetActive(false);
+        worldCamera.gameObject.SetActive(true);
     }
 }
