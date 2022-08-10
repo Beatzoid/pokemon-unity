@@ -14217,8 +14217,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wildPokemon:
-  - _base: {fileID: 11400000, guid: a619fcf8e808e924aad53c218010381e, type: 2}
-    level: 8
+  - _base: {fileID: 11400000, guid: 06fcbbd1cb5271f4fa84e38678c754b1, type: 2}
+    level: 10
 --- !u!1 &1940516000
 GameObject:
   m_ObjectHideFlags: 0
@@ -14610,7 +14610,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.3333334, y: 1}
+    m_SensorSize: {x: 1.4065934, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -14770,7 +14770,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pokemon:
   - _base: {fileID: 11400000, guid: c152396595429184e84dc07d5aaa12d2, type: 2}
-    level: 10
+    level: 12
   - _base: {fileID: 11400000, guid: 3bc6ea44e66e7da46ae9dcb5131ebb41, type: 2}
     level: 10
   - _base: {fileID: 11400000, guid: f2db162f2a9da06469aa6d341529299b, type: 2}
