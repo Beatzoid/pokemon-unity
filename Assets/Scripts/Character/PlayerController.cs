@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     public Character Character { get; private set; }
 
     private Vector2 input;
+    private const float offsetY = 0.3f;
 
     public void Awake()
     {
@@ -50,7 +51,7 @@ public class PlayerController : MonoBehaviour
     private void CheckForEncounters()
     {
         // If touching a sprite with the grass layer
-        if (Physics2D.OverlapCircle(transform.position, 0.2f, GameLayers.L.GrassLayer) != null)
+        if (Physics2D.OverlapCircle(transform.position - new Vector3(0, offsetY), 0.2f, GameLayers.L.GrassLayer) != null)
         {
             // 10% chance to encounter a wild pokemon
             if (UnityEngine.Random.Range(1, 101) <= 10)
@@ -63,7 +64,7 @@ public class PlayerController : MonoBehaviour
 
     private void CheckIfInTrainersView()
     {
-        Collider2D fovCollider = Physics2D.OverlapCircle(transform.position, 0.2f, GameLayers.L.FovLayer);
+        Collider2D fovCollider = Physics2D.OverlapCircle(transform.position - new Vector3(0, offsetY), 0.2f, GameLayers.L.FovLayer);
 
         if (fovCollider != null)
         {

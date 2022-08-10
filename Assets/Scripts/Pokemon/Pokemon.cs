@@ -239,6 +239,24 @@ public class Pokemon
 
     #region Stats
 
+    /// <summary>
+    /// Check if the pokemon should level up
+    /// and if it should, then level it up
+    /// </summary>
+    /// <returns>
+    /// Whether the pokemon leveled up
+    /// </returns>
+    public bool CheckForLevelUp()
+    {
+        if (Exp > Base.GetExpForLevel(level + 1))
+        {
+            ++level;
+            return true;
+        }
+
+        return false;
+    }
+
     private void ResetStatBoosts()
     {
         StatBoosts = new Dictionary<Stat, int>()
