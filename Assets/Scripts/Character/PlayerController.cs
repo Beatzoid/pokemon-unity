@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 /// <summary>
@@ -39,14 +41,25 @@ public class PlayerController : MonoBehaviour, ISavable
 
     public object CaptureState()
     {
-        float[] position = new float[] { transform.position.x, transform.position.y };
-        return position;
+        PlayerSaveData saveData = new PlayerSaveData()
+        {
+            position = new float[] { transform.position.x, transform.position.y },
+            pokemon = GetComponent<PokemonParty>().Pokemon.Select(p => p.GetSaveData()).ToList()
+        };
+
+        return saveData;
     }
 
     public void RestoreState(object state)
     {
-        float[] position = (float[])state;
-        transform.position = new Vector3(position[0], position[1]);
+        PlayerSaveData saveData = (PlayerSaveData)state;
+
+        // Restore position
+        float[] pos = saveData.position;
+        transform.position = new Vector3(pos[0], pos[1]);
+
+        // Restore party
+        GetComponent<PokemonParty>().Pokemon = saveData.pokemon.Select(p => new Pokemon(p)).ToList();
     }
 
     private void OnMoveOver()
@@ -88,4 +101,11 @@ public class PlayerController : MonoBehaviour, ISavable
     {
         get => name;
     }
+}
+
+[System.Serializable]
+public class PlayerSaveData
+{
+    public float[] position;
+    public List<PokemonSaveData> pokemon;
 }

@@ -137,7 +137,7 @@ public class ConditionsDB
                     pokemon.VolatileStatusTime--;
 
                     // 50% chance to do move
-                    if (Random.Range(1,3)==1)
+                    if (Random.Range(1, 3) ==1 )
                         return true;
 
                     // Hurt by confusion

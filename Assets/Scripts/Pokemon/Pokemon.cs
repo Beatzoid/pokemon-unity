@@ -38,6 +38,26 @@ public class Pokemon
         Init();
     }
 
+    public Pokemon(PokemonSaveData saveData)
+    {
+        _base = PokemonDB.GetPokemonByName(saveData.name);
+        HP = saveData.hp;
+        level = saveData.level;
+        Exp = saveData.exp;
+
+        if (saveData.statusID != null)
+            Status = ConditionsDB.Conditions[saveData.statusID.Value];
+        else
+            Status = null;
+
+        Moves = saveData.moves.Select(m => new Move(m)).ToList();
+
+        CalculateStats();
+        StatusChanges = new Queue<string>();
+        ResetStatBoosts();
+        VolatileStatus = null;
+    }
+
     /// <summary>
     /// Initializes the Pokemon
     /// </summary>
@@ -64,6 +84,21 @@ public class Pokemon
         Status = null;
         VolatileStatus = null;
         StatusChanges = new Queue<string>();
+    }
+
+    public PokemonSaveData GetSaveData()
+    {
+        PokemonSaveData saveData = new PokemonSaveData()
+        {
+            name = Base.name,
+            hp = HP,
+            level = Level,
+            exp = Exp,
+            statusID = Status?.Id,
+            moves = Moves.Select(m => m.GetSaveData()).ToList()
+        };
+
+        return saveData;
     }
 
     #region Battle
@@ -342,4 +377,15 @@ public class Pokemon
     public int MaxHp { get; private set; }
 
     #endregion
+}
+
+[System.Serializable]
+public class PokemonSaveData
+{
+    public string name;
+    public int hp;
+    public int level;
+    public int exp;
+    public ConditionID? statusID;
+    public List<MoveSaveData> moves;
 }
