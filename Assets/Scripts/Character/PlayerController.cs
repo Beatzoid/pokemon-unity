@@ -3,7 +3,7 @@ using UnityEngine;
 /// <summary>
 /// The PlayerController manages player logic
 /// </summary>
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, ISavable
 {
     [SerializeField] private new string name;
     [SerializeField] private Sprite sprite;
@@ -35,6 +35,18 @@ public class PlayerController : MonoBehaviour
         Character.HandleUpdate();
 
         if (Input.GetKeyDown(KeyCode.Return)) Interact();
+    }
+
+    public object CaptureState()
+    {
+        float[] position = new float[] { transform.position.x, transform.position.y };
+        return position;
+    }
+
+    public void RestoreState(object state)
+    {
+        float[] position = (float[])state;
+        transform.position = new Vector3(position[0], position[1]);
     }
 
     private void OnMoveOver()
