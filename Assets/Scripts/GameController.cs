@@ -13,6 +13,9 @@ public class GameController : MonoBehaviour
 
     public static GameController instance { get; private set; }
 
+    public SceneDetails CurrentScene { get; private set; }
+    public SceneDetails PrevScene { get; private set; }
+
     private GameState state;
     private GameState stateBeforePause;
     private TrainerController trainer;
@@ -103,6 +106,12 @@ public class GameController : MonoBehaviour
     {
         state = GameState.Cutscene;
         StartCoroutine(trainer.TriggerTrainerBattle(playerController));
+    }
+
+    public void SetCurrentScene(SceneDetails currScene)
+    {
+        PrevScene = CurrentScene;
+        CurrentScene = currScene;
     }
 
     private void EndBattle(bool won)
