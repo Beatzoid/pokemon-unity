@@ -93,7 +93,7 @@ public class GameController : MonoBehaviour
         worldCamera.gameObject.SetActive(false);
 
         PokemonParty playerParty = playerController.GetComponent<PokemonParty>();
-        Pokemon wildPokemon = FindObjectOfType<MapArea>().GetComponent<MapArea>().GetRandomWildPokemon();
+        Pokemon wildPokemon = CurrentScene.GetComponent<MapArea>().GetRandomWildPokemon();
 
         // Prevents us from adding the pokemon in the map area
         // to our party

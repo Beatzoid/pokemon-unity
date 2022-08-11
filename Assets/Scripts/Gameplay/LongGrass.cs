@@ -7,6 +7,7 @@ public class LongGrass : MonoBehaviour, IPlayerTriggerable
         // 10% chance to encounter a wild pokemon
         if (Random.Range(1, 101) <= 10)
         {
+            player.Character.Animator.IsMoving = false;
             GameController.instance.StartBattle();
         }
     }

@@ -8,6 +8,14 @@ public class EssentialObjectsSpawner : MonoBehaviour
     {
         EssentialObjects[] existingObjects = FindObjectsOfType<EssentialObjects>();
         if (existingObjects.Length == 0)
-            Instantiate(essentialObjectsPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+        {
+            Vector3 spawnPos = new Vector3(0, 0, 0);
+
+            Grid grid = FindObjectOfType<Grid>();
+            if (grid)
+                spawnPos = grid.transform.position;
+
+            Instantiate(essentialObjectsPrefab, spawnPos, Quaternion.identity);
+        }
     }
 }
