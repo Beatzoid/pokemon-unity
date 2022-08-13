@@ -9,7 +9,6 @@ public class PartyMemberUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI nameText;
     [SerializeField] private TextMeshProUGUI levelText;
     [SerializeField] private HPBar hpBar;
-    [SerializeField] private Color highlightedColor;
 
     /// <summary>
     /// Set the data for the Party Member UI
@@ -29,7 +28,7 @@ public class PartyMemberUI : MonoBehaviour
     public void SetSelected(bool selected)
     {
         if (selected)
-            nameText.color = highlightedColor;
+            nameText.color = GlobalSettings.I.HighlightedColor;
         else
             nameText.color = Color.black;
     }

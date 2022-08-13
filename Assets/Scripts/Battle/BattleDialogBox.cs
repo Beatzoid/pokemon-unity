@@ -11,7 +11,6 @@ public class BattleDialogBox : MonoBehaviour
     [Header("Settings")]
 
     [SerializeField] private int lettersPerSecond;
-    [SerializeField] private Color highlightedColor;
 
     [Space(5)]
     [Header("Objects")]
@@ -122,7 +121,7 @@ public class BattleDialogBox : MonoBehaviour
         for (int i = 0; i < actionText.Count; ++i)
         {
             if (i == selectedAction)
-                actionText[i].color = highlightedColor;
+                actionText[i].color = GlobalSettings.I.HighlightedColor;
             else
                 actionText[i].color = Color.black;
         }
@@ -138,7 +137,7 @@ public class BattleDialogBox : MonoBehaviour
         for (int i = 0; i < moveText.Count; ++i)
         {
             if (i == selectedMove)
-                moveText[i].color = highlightedColor;
+                moveText[i].color = GlobalSettings.I.HighlightedColor;
             else
                 moveText[i].color = Color.black;
         }
@@ -162,13 +161,13 @@ public class BattleDialogBox : MonoBehaviour
     {
         if (yesSelected)
         {
-            yesText.color = highlightedColor;
+            yesText.color = GlobalSettings.I.HighlightedColor;
             noText.color = Color.black;
         }
         else
         {
             yesText.color = Color.black;
-            noText.color = highlightedColor;
+            noText.color = GlobalSettings.I.HighlightedColor;
         }
     }
 }
