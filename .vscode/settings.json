@@ -50,5 +50,6 @@
         "temp/": true,
         "Temp/": true,
         "**/Plugins/**": true
-    }
+    },
+    "cSpell.words": ["Pokeball"]
 }

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public enum GameState { FreeRoam, Battle, Dialog, Cutscene, Paused, Menu }
+public enum GameState { FreeRoam, Battle, Dialog, Cutscene, Paused, Menu, PartyScreen }
 
 /// <summary>
 /// The GameController class manages all core game logic
@@ -10,6 +10,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private PlayerController playerController;
     [SerializeField] private BattleSystem battleSystem;
     [SerializeField] private Camera worldCamera;
+    [SerializeField] private PartyScreen partyScreen;
 
     public static GameController instance { get; private set; }
 
@@ -32,6 +33,8 @@ public class GameController : MonoBehaviour
 
     public void Start()
     {
+        partyScreen.Init();
+
         battleSystem.OnBattleOver += EndBattle;
 
         DialogManager.Instance.OnShowDialog += () =>
@@ -76,6 +79,21 @@ public class GameController : MonoBehaviour
         else if (state == GameState.Menu)
         {
             menuController.HandleUpdate();
+        }
+        else if (state == GameState.PartyScreen)
+        {
+            void onSelected()
+            {
+                // TODO: Go to summary screen
+            }
+
+            void onBack()
+            {
+                partyScreen.gameObject.SetActive(false);
+                state = GameState.FreeRoam;
+            }
+
+            partyScreen.HandleUpdate(onSelected, onBack);
         }
     }
 
@@ -139,7 +157,9 @@ public class GameController : MonoBehaviour
     {
         if (selectedItem == 0)
         {
-            // Pokemon
+            partyScreen.gameObject.SetActive(true);
+            partyScreen.SetPartyData(playerController.GetComponent<PokemonParty>().Pokemon);
+            state = GameState.PartyScreen;
         }
         else if (selectedItem == 1)
         {
@@ -148,13 +168,13 @@ public class GameController : MonoBehaviour
         else if (selectedItem == 2)
         {
             SavingSystem.i.Save("saveSlot1");
+            state = GameState.FreeRoam;
         }
         else if (selectedItem == 3)
         {
             SavingSystem.i.Load("saveSlot1");
+            state = GameState.FreeRoam;
         }
-
-        state = GameState.FreeRoam;
     }
 
     private void EndBattle(bool won)
