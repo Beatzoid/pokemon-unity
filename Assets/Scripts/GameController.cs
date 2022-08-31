@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public enum GameState { FreeRoam, Battle, Dialog, Cutscene, Paused, Menu, PartyScreen }
+public enum GameState { FreeRoam, Battle, Dialog, Cutscene, Paused, Menu, PartyScreen, Bag }
 
 /// <summary>
 /// The GameController class manages all core game logic
@@ -11,8 +11,9 @@ public class GameController : MonoBehaviour
     [SerializeField] private BattleSystem battleSystem;
     [SerializeField] private Camera worldCamera;
     [SerializeField] private PartyScreen partyScreen;
+    [SerializeField] private InventoryUI inventoryUI;
 
-    public static GameController instance { get; private set; }
+    public static GameController Instance { get; private set; }
 
     public SceneDetails CurrentScene { get; private set; }
     public SceneDetails PrevScene { get; private set; }
@@ -24,7 +25,7 @@ public class GameController : MonoBehaviour
 
     public void Awake()
     {
-        instance = this;
+        Instance = this;
         menuController = GetComponent<MenuController>();
         PokemonDB.Init();
         MoveDB.Init();
@@ -95,6 +96,16 @@ public class GameController : MonoBehaviour
 
             partyScreen.HandleUpdate(onSelected, onBack);
         }
+        else if (state == GameState.Bag)
+        {
+            void onBack()
+            {
+                inventoryUI.gameObject.SetActive(false);
+                state = GameState.FreeRoam;
+            }
+
+            inventoryUI.HandleUpdate(onBack);
+        }
     }
 
     public void PauseGame(bool pause)
@@ -163,7 +174,8 @@ public class GameController : MonoBehaviour
         }
         else if (selectedItem == 1)
         {
-            // Bag
+            inventoryUI.gameObject.SetActive(true);
+            state = GameState.Bag;
         }
         else if (selectedItem == 2)
         {

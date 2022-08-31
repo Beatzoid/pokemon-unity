@@ -40,7 +40,7 @@ public class TrainerController : MonoBehaviour, Interactable, ISavable
         if (!battleLost)
             StartCoroutine(DialogManager.Instance.ShowDialog(dialog, () =>
             {
-                GameController.instance.StartTrainerBattle(this);
+                GameController.Instance.StartTrainerBattle(this);
             }));
         else
             StartCoroutine(DialogManager.Instance.ShowDialog(dialogAfterBattle));
@@ -78,7 +78,7 @@ public class TrainerController : MonoBehaviour, Interactable, ISavable
 
         StartCoroutine(DialogManager.Instance.ShowDialog(dialog, () =>
         {
-            GameController.instance.StartTrainerBattle(this);
+            GameController.Instance.StartTrainerBattle(this);
         }));
     }
 

@@ -18,14 +18,14 @@ public class SceneDetails : MonoBehaviour
             Debug.Log($"Entered {gameObject.name}");
 
             LoadScene();
-            GameController.instance.SetCurrentScene(this);
+            GameController.Instance.SetCurrentScene(this);
 
             foreach (SceneDetails scene in connectedScenes)
             {
                 scene.LoadScene();
             }
 
-            SceneDetails prevScene = GameController.instance.PrevScene;
+            SceneDetails prevScene = GameController.Instance.PrevScene;
 
             if (prevScene != null)
             {

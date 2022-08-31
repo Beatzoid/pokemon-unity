@@ -12,11 +12,16 @@ public class MenuController : MonoBehaviour
     public event Action onBack;
 
     private List<TextMeshProUGUI> menuItems;
-    private int selectedItem = 0;
+    private int selectedItem;
 
     public void Awake()
     {
+        selectedItem = 0;
         menuItems = menu.GetComponentsInChildren<TextMeshProUGUI>().ToList();
+    }
+
+    public void Start()
+    {
         UpdateItemSelection();
     }
 

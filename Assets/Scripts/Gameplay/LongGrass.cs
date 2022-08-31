@@ -8,7 +8,7 @@ public class LongGrass : MonoBehaviour, IPlayerTriggerable
         if (Random.Range(1, 101) <= 10)
         {
             player.Character.Animator.IsMoving = false;
-            GameController.instance.StartBattle();
+            GameController.Instance.StartBattle();
         }
     }
 }
