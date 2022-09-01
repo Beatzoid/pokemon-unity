@@ -100,6 +100,7 @@ GameObject:
   - component: {fileID: 7312618619564681315}
   - component: {fileID: 7312618619564681316}
   - component: {fileID: 7312618619564681317}
+  - component: {fileID: 4108958369875778773}
   - component: {fileID: 497093016847531237}
   m_Layer: 9
   m_Name: Player
@@ -122,7 +123,7 @@ Transform:
   m_Children:
   - {fileID: 7312618617982113063}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7312618619564681241
 SpriteRenderer:
@@ -304,6 +305,35 @@ MonoBehaviour:
     level: 10
   - _base: {fileID: 11400000, guid: 06fcbbd1cb5271f4fa84e38678c754b1, type: 2}
     level: 10
+--- !u!114 &4108958369875778773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7312618619564681242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 021bc524d211e4e29912eac08d7f4d4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slots:
+  - item: {fileID: 11400000, guid: d609c38b440984d16ae15737f67f4c93, type: 2}
+    itemCount: 3
+  - item: {fileID: 11400000, guid: 5fcf6888591e0473ea84921bd34dad4e, type: 2}
+    itemCount: 5
+  - item: {fileID: 11400000, guid: 724560bda9caf41168f7457d2fb51085, type: 2}
+    itemCount: 7
+  - item: {fileID: 11400000, guid: ffcad7ac2a5574a7fadd30946fa7297c, type: 2}
+    itemCount: 1
+  - item: {fileID: 11400000, guid: 85c3382f42be14c449ff030ea8d61ce6, type: 2}
+    itemCount: 1
+  - item: {fileID: 11400000, guid: fe4771b82c2984f9cb8bb4c032099875, type: 2}
+    itemCount: 7
+  - item: {fileID: 11400000, guid: 77452b9cf762f43ce815057d6cdf14b8, type: 2}
+    itemCount: 5
+  - item: {fileID: 11400000, guid: 2a5f7a92b2c9546f1a5afd1452d3f1ee, type: 2}
+    itemCount: 4
 --- !u!114 &497093016847531237
 MonoBehaviour:
   m_ObjectHideFlags: 0
