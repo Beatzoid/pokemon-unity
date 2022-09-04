@@ -25,6 +25,9 @@ public class GameController : MonoBehaviour
 
     public void Awake()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
         Instance = this;
         menuController = GetComponent<MenuController>();
         PokemonDB.Init();
