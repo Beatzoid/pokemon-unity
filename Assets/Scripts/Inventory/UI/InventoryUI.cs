@@ -4,6 +4,8 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum InventoryUIState { ItemSelection, PartySelection, Busy };
+
 public class InventoryUI : MonoBehaviour
 {
     [SerializeField] private GameObject itemList;
@@ -15,6 +17,8 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] private Image upArrow;
     [SerializeField] private Image downArrow;
 
+    [SerializeField] private PartyScreen partyScreen;
+
     private const int numItemsInViewport = 8;
 
     private Inventory inventory;
@@ -23,6 +27,8 @@ public class InventoryUI : MonoBehaviour
     private List<ItemSlotUI> slotUIList;
 
     private RectTransform itemListRect;
+
+    private InventoryUIState state;
 
     public void Awake()
     {
@@ -38,22 +44,53 @@ public class InventoryUI : MonoBehaviour
 
     public void HandleUpdate(Action onBack)
     {
-        if (Input.GetKeyDown(KeyCode.X))
+        if (state == InventoryUIState.ItemSelection)
         {
-            onBack?.Invoke();
+            if (Input.GetKeyDown(KeyCode.Return))
+                OpenPartyScreen();
+            else if (Input.GetKeyDown(KeyCode.X))
+                onBack?.Invoke();
+
+            int prevSelectedItem = selectedItem;
+
+            if (Input.GetKeyDown(KeyCode.DownArrow))
+                ++selectedItem;
+            else if (Input.GetKeyDown(KeyCode.UpArrow))
+                selectedItem--;
+
+            selectedItem = Mathf.Clamp(selectedItem, 0, inventory.Slots.Count - 1);
+
+            if (prevSelectedItem != selectedItem)
+                UpdateItemSelection();
         }
+        else if (state == InventoryUIState.PartySelection)
+        {
+            static void OnSelected()
+            {
+                // Use the item on the pokemon
+            }
 
-        int prevSelectedItem = selectedItem;
+            void OnBackPartyScreen()
+            {
+                ClosePartyScreen();
+            }
 
-        if (Input.GetKeyDown(KeyCode.DownArrow))
-            ++selectedItem;
-        else if (Input.GetKeyDown(KeyCode.UpArrow))
-            selectedItem--;
+            partyScreen.HandleUpdate(OnSelected, OnBackPartyScreen);
+        }
+    }
 
-        selectedItem = Mathf.Clamp(selectedItem, 0, inventory.Slots.Count - 1);
+    private void OpenPartyScreen()
+    {
+        state = InventoryUIState.PartySelection;
 
-        if (prevSelectedItem != selectedItem)
-            UpdateItemSelection();
+        partyScreen.gameObject.SetActive(true);
+    }
+
+    private void ClosePartyScreen()
+    {
+        state = InventoryUIState.ItemSelection;
+
+        partyScreen.gameObject.SetActive(false);
     }
 
     private void UpdateItemSelection()
@@ -75,6 +112,8 @@ public class InventoryUI : MonoBehaviour
 
     private void HandleScrolling()
     {
+        if (slotUIList.Count <= numItemsInViewport) return;
+
         float scrollPos = Mathf.Clamp(selectedItem - (numItemsInViewport / 2), 0, selectedItem) * slotUIList[0].Height;
 
         itemListRect.localPosition = new Vector2(itemListRect.localPosition.x, scrollPos);

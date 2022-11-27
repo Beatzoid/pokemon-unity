@@ -14,6 +14,7 @@ public class PartyScreen : MonoBehaviour
 
     private PartyMemberUI[] memberSlots;
     private List<Pokemon> pokemon;
+    private PokemonParty party;
 
     private int selectionIndex = 0;
 
@@ -28,15 +29,19 @@ public class PartyScreen : MonoBehaviour
     public void Init()
     {
         memberSlots = GetComponentsInChildren<PartyMemberUI>(true);
+
+        party = PokemonParty.GetPlayerParty();
+        SetPartyData();
+
+        party.OnUpdated += SetPartyData;
     }
 
     /// <summary>
     /// Set the data for the party screen
     /// </summary>
-    /// <param name="pokemon">The pokemon to display </param>
-    public void SetPartyData(List<Pokemon> pokemon)
+    public void SetPartyData()
     {
-        this.pokemon = pokemon;
+        pokemon = party.Pokemon;
 
         for (int i = 0; i < memberSlots.Length; i++)
         {

@@ -172,7 +172,6 @@ public class GameController : MonoBehaviour
         if (selectedItem == 0)
         {
             partyScreen.gameObject.SetActive(true);
-            partyScreen.SetPartyData(playerController.GetComponent<PokemonParty>().Pokemon);
             state = GameState.PartyScreen;
         }
         else if (selectedItem == 1)
