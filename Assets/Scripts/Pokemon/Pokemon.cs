@@ -29,6 +29,7 @@ public class Pokemon
 
     public bool HPChanged { get; set; }
     public event System.Action OnStatusChanged;
+    public event System.Action OnHPChanged;
 
     public Pokemon(PokemonBase pBase, int pLevel)
     {
@@ -137,7 +138,7 @@ public class Pokemon
         float d = (a * move.Base.Power * ((float)attack / defense)) + 2;
         int damage = Mathf.FloorToInt(d * modifiers);
 
-        UpdateHP(damage);
+        DecreaseHP(damage);
 
         return damageDetails;
     }
@@ -220,13 +221,21 @@ public class Pokemon
     }
 
     /// <summary>
-    /// Set the HP of the pokemon
+    /// Decrease the HP of the pokemon
     /// </summary>
-    /// <param name="damage">How much HP to take off/add </param>
-    public void UpdateHP(int damage)
+    /// <param name="damage">How much HP to decrease by </param>
+    public void DecreaseHP(int damage)
     {
-        HPChanged = true;
         HP = Mathf.Clamp(HP - damage, 0, MaxHp);
+        OnHPChanged?.Invoke();
+        HPChanged = true;
+    }
+
+    public void IncreaseHP(int amt)
+    {
+        HP = Mathf.Clamp(HP + amt, 0, MaxHp);
+        OnHPChanged?.Invoke();
+        HPChanged = true;
     }
 
     #endregion

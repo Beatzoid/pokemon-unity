@@ -18,6 +18,7 @@ public class PokemonParty : MonoBehaviour
         set
         {
             pokemon = value;
+            OnUpdated?.Invoke();
         }
     }
 

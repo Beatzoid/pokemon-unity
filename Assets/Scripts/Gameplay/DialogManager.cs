@@ -64,6 +64,19 @@ public class DialogManager : MonoBehaviour
         StartCoroutine(TypeDialog(dialog.Lines[0]));
     }
 
+    public IEnumerator ShowDialogText(string text, bool waitForInput = true)
+    {
+        IsShowing = true;
+        dialogBox.SetActive(true);
+
+        yield return TypeDialog(text);
+        if (waitForInput)
+            yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
+
+        dialogBox.SetActive(false);
+        IsShowing = false;
+    }
+
     public IEnumerator TypeDialog(string line)
     {
         isTyping = true;

@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -40,6 +41,8 @@ public class InventoryUI : MonoBehaviour
     public void Start()
     {
         UpdateItemList();
+
+        inventory.OnUpdated += UpdateItemList;
     }
 
     public void HandleUpdate(Action onBack)
@@ -65,9 +68,10 @@ public class InventoryUI : MonoBehaviour
         }
         else if (state == InventoryUIState.PartySelection)
         {
-            static void OnSelected()
+            void OnSelected()
             {
-                // Use the item on the pokemon
+                Debug.Log("Selected item");
+                StartCoroutine(UseItem());
             }
 
             void OnBackPartyScreen()
@@ -77,6 +81,24 @@ public class InventoryUI : MonoBehaviour
 
             partyScreen.HandleUpdate(OnSelected, OnBackPartyScreen);
         }
+    }
+
+    private IEnumerator UseItem()
+    {
+        state = InventoryUIState.Busy;
+
+        ItemBase usedItem = inventory.UseItem(selectedItem, partyScreen.SelectedMember);
+        Debug.Log($"Used {usedItem.Name}");
+        if (usedItem != null)
+        {
+            yield return DialogManager.Instance.ShowDialogText($"Successfully used {usedItem.Name}");
+        }
+        else
+        {
+            yield return DialogManager.Instance.ShowDialogText($"It won't have any effect!");
+        }
+
+        ClosePartyScreen();
     }
 
     private void OpenPartyScreen()
