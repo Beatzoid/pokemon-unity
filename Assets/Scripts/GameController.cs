@@ -25,6 +25,7 @@ public class GameController : MonoBehaviour
 
     public void Awake()
     {
+        Debug.Log(Application.persistentDataPath);
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
@@ -66,7 +67,7 @@ public class GameController : MonoBehaviour
         {
             playerController.HandleUpdate();
 
-            if (Input.GetKeyDown(KeyCode.Return))
+            if (Input.GetKeyDown(KeyCode.Z))
             {
                 menuController.OpenMenu();
                 state = GameState.Menu;

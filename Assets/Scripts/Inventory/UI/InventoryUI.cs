@@ -20,13 +20,13 @@ public class InventoryUI : MonoBehaviour
 
     [SerializeField] private PartyScreen partyScreen;
 
+    private Action onItemUsed;
+
     private const int numItemsInViewport = 8;
 
     private Inventory inventory;
-
     private int selectedItem;
     private List<ItemSlotUI> slotUIList;
-
     private RectTransform itemListRect;
 
     private InventoryUIState state;
@@ -45,8 +45,10 @@ public class InventoryUI : MonoBehaviour
         inventory.OnUpdated += UpdateItemList;
     }
 
-    public void HandleUpdate(Action onBack)
+    public void HandleUpdate(Action onBack, Action onItemUsed = null)
     {
+        this.onItemUsed = onItemUsed;
+
         if (state == InventoryUIState.ItemSelection)
         {
             if (Input.GetKeyDown(KeyCode.Return))
@@ -92,6 +94,7 @@ public class InventoryUI : MonoBehaviour
         if (usedItem != null)
         {
             yield return DialogManager.Instance.ShowDialogText($"Successfully used {usedItem.Name}");
+            onItemUsed?.Invoke();
         }
         else
         {

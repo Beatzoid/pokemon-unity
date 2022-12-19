@@ -32,6 +32,12 @@ public class BattleHud : MonoBehaviour
     /// <param name="pokemon">The pokemon to get the data from </param>
     public void SetData(Pokemon pokemon)
     {
+        if (_pokemon != null)
+        {
+            _pokemon.OnHPChanged -= UpdateHP;
+            _pokemon.OnStatusChanged -= SetStatusText;
+        }
+
         _pokemon = pokemon;
 
         nameText.text = pokemon.Base.Name;
@@ -50,6 +56,7 @@ public class BattleHud : MonoBehaviour
 
         SetStatusText();
         _pokemon.OnStatusChanged += SetStatusText;
+        _pokemon.OnHPChanged += UpdateHP;
     }
 
     /// </summary>
@@ -98,17 +105,24 @@ public class BattleHud : MonoBehaviour
         yield return expBar.transform.DOScaleX(normalizedExp, 1.5f).WaitForCompletion();
     }
 
+    public void UpdateHP()
+    {
+        StartCoroutine(UpdateHPAsync());
+    }
+
     /// <summary>
     /// Update the HP bar smoothly
     /// </summary>
-    public IEnumerator UpdateHP()
+    public IEnumerator UpdateHPAsync()
     {
-        if (_pokemon.HPChanged)
-        {
-            yield return hpBar.SetHPSmoothly((float)_pokemon.HP / _pokemon.MaxHp);
-            _pokemon.HPChanged = false;
-        }
+        yield return hpBar.SetHPSmoothly((float)_pokemon.HP / _pokemon.MaxHp);
     }
+
+    public IEnumerator WaitForHPUpdate()
+    {
+        yield return new WaitUntil(() => hpBar.IsUpdating == false);
+    }
+
     private float GetNormalizedExp()
     {
         int currentLevelExp = _pokemon.Base.GetExpForLevel(_pokemon.Level);
