@@ -90,9 +90,9 @@ public class InventoryUI : MonoBehaviour
         state = InventoryUIState.Busy;
 
         ItemBase usedItem = inventory.UseItem(selectedItem, partyScreen.SelectedMember);
-        Debug.Log($"Used {usedItem.Name}");
         if (usedItem != null)
         {
+            Debug.Log($"Used {usedItem.Name}");
             yield return DialogManager.Instance.ShowDialogText($"Successfully used {usedItem.Name}");
             onItemUsed?.Invoke();
         }
@@ -127,6 +127,8 @@ public class InventoryUI : MonoBehaviour
             else
                 slotUIList[i].NameText.color = Color.black;
         }
+
+        selectedItem = Mathf.Clamp(selectedItem, 0, inventory.Slots.Count - 1);
 
         ItemBase slotItem = inventory.Slots[selectedItem].Item;
         itemIcon.sprite = slotItem.Icon;

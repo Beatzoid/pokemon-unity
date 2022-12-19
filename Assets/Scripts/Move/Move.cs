@@ -1,3 +1,5 @@
+using UnityEngine;
+
 /// <summary>
 /// The Move class manages all moves for pokemon 
 /// </summary>
@@ -14,6 +16,11 @@ public class Move
     {
         Base = pBase;
         PP = pBase.PP;
+    }
+
+    public void IncreasePP(int amt)
+    {
+        PP = Mathf.Clamp(PP + amt, 0, Base.PP);
     }
 
     public Move(MoveSaveData saveData)
