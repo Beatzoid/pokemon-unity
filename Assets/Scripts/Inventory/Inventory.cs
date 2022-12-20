@@ -20,10 +20,29 @@ public class ItemSlot
 public class Inventory : MonoBehaviour
 {
     [SerializeField] private List<ItemSlot> slots;
+    [SerializeField] private List<ItemSlot> pokeballSlots;
+    [SerializeField] private List<ItemSlot> tmSlots;
 
     public event Action OnUpdated;
 
-    public List<ItemSlot> Slots => slots;
+    public static List<string> ItemCategories { get; set; } = new List<string>()
+    {
+        "ITEMS",
+        "POKEBALLS",
+        "TMs & HMs"
+    };
+
+    private List<List<ItemSlot>> allSlots;
+
+    public void Awake()
+    {
+        allSlots = new List<List<ItemSlot>>() { slots, pokeballSlots, tmSlots };
+    }
+
+    public List<ItemSlot> GetSlotsByCategory(int categoryIndex)
+    {
+        return allSlots[categoryIndex];
+    }
 
     public ItemBase UseItem(int itemIndex, Pokemon selectedPokemon)
     {

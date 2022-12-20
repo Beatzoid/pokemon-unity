@@ -346,6 +346,12 @@ MonoBehaviour:
     itemCount: 8
   - item: {fileID: 11400000, guid: 2a5f7a92b2c9546f1a5afd1452d3f1ee, type: 2}
     itemCount: 4
+  pokeballSlots:
+  - item: {fileID: 11400000, guid: a78c08fe2be944ed39dce7eedf2e6e2a, type: 2}
+    itemCount: 4
+  - item: {fileID: 11400000, guid: c95c0110cd87842afa1c9e61f8e9ad7d, type: 2}
+    itemCount: 2
+  tmSlots: []
 --- !u!114 &497093016847531237
 MonoBehaviour:
   m_ObjectHideFlags: 0

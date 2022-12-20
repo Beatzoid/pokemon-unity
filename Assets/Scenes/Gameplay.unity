@@ -410,6 +410,42 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 626609996271911293, guid: ef2002bf7c3f24fcea4642fb18bc0d23, type: 3}
+      propertyPath: pokemon.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 626609996271911293, guid: ef2002bf7c3f24fcea4642fb18bc0d23, type: 3}
+      propertyPath: pokemon.Array.data[0]._base
+      value: 
+      objectReference: {fileID: 11400000, guid: c152396595429184e84dc07d5aaa12d2, type: 2}
+    - target: {fileID: 626609996271911293, guid: ef2002bf7c3f24fcea4642fb18bc0d23, type: 3}
+      propertyPath: pokemon.Array.data[0].level
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 626609996271911293, guid: ef2002bf7c3f24fcea4642fb18bc0d23, type: 3}
+      propertyPath: pokemon.Array.data[1]._base
+      value: 
+      objectReference: {fileID: 11400000, guid: 06fcbbd1cb5271f4fa84e38678c754b1, type: 2}
+    - target: {fileID: 626609996271911293, guid: ef2002bf7c3f24fcea4642fb18bc0d23, type: 3}
+      propertyPath: pokemon.Array.data[1].level
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 626609996271911293, guid: ef2002bf7c3f24fcea4642fb18bc0d23, type: 3}
+      propertyPath: pokemon.Array.data[2]._base
+      value: 
+      objectReference: {fileID: 11400000, guid: f2db162f2a9da06469aa6d341529299b, type: 2}
+    - target: {fileID: 626609996271911293, guid: ef2002bf7c3f24fcea4642fb18bc0d23, type: 3}
+      propertyPath: pokemon.Array.data[2].level
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 626609996271911293, guid: ef2002bf7c3f24fcea4642fb18bc0d23, type: 3}
+      propertyPath: pokemon.Array.data[3]._base
+      value: 
+      objectReference: {fileID: 11400000, guid: 3bc6ea44e66e7da46ae9dcb5131ebb41, type: 2}
+    - target: {fileID: 626609996271911293, guid: ef2002bf7c3f24fcea4642fb18bc0d23, type: 3}
+      propertyPath: pokemon.Array.data[3].level
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 626609996461127299, guid: ef2002bf7c3f24fcea4642fb18bc0d23, type: 3}
       propertyPath: inventoryUI
       value: 
