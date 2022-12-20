@@ -53,7 +53,7 @@ public class RecoveryItem : ItemBase
 
         if (recoverAllStatus || status != ConditionID.none)
         {
-            if (pokemon.Status == null && pokemon.VolatileStatus != null) return false;
+            if (pokemon.Status == null && pokemon.VolatileStatus == null) return false;
 
             if (recoverAllStatus)
             {

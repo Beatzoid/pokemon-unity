@@ -16,7 +16,7 @@ public class HPBar : MonoBehaviour
     /// <param name="hpNormalized">The HP (normalized) </param>
     public void SetHP(float hpNormalized)
     {
-        if (float.IsNaN(hpNormalized)) hpNormalized = 1;
+        // if (float.IsNaN(hpNormalized)) hpNormalized = 1;
         health.transform.localScale = new Vector3(hpNormalized, 1f);
     }
 

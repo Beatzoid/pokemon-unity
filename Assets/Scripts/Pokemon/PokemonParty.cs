@@ -22,7 +22,7 @@ public class PokemonParty : MonoBehaviour
         }
     }
 
-    public void Start()
+    public void Awake()
     {
         foreach (Pokemon pokemon in pokemon)
         {
