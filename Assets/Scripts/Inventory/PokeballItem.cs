@@ -7,8 +7,15 @@ using UnityEngine;
 
 public class PokeballItem : ItemBase
 {
+    [SerializeField] private float catchRateModifier = 1f;
+
+    public float CatchRateModifier => catchRateModifier;
+
     public override bool Use(Pokemon pokemon)
     {
-        return true;
+        if (GameController.Instance.State == GameState.Battle)
+            return true;
+
+        return false;
     }
 }

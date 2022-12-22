@@ -27,7 +27,7 @@ public class InventoryUI : MonoBehaviour
 
     [SerializeField] private PartyScreen partyScreen;
 
-    private Action onItemUsed;
+    private Action<ItemBase> onItemUsed;
 
     private const int numItemsInViewport = 8;
 
@@ -59,14 +59,14 @@ public class InventoryUI : MonoBehaviour
     /// </summary>
     /// <param name="onBack"> The action to invoke when the user pressed the back button </param>
     /// <param name="onItemUsed"> The action to invoke when the user used an item </param>
-    public void HandleUpdate(Action onBack, Action onItemUsed = null)
+    public void HandleUpdate(Action onBack, Action<ItemBase> onItemUsed = null)
     {
         this.onItemUsed = onItemUsed;
 
         if (state == InventoryUIState.ItemSelection)
         {
             if (Input.GetKeyDown(KeyCode.Return))
-                OpenPartyScreen();
+                ItemSelected();
             else if (Input.GetKeyDown(KeyCode.X))
                 onBack?.Invoke();
 
@@ -122,9 +122,10 @@ public class InventoryUI : MonoBehaviour
         ItemBase usedItem = inventory.UseItem(selectedItem, partyScreen.SelectedMember, selectedCategory);
         if (usedItem != null)
         {
-            Debug.Log($"Used {usedItem.Name}");
-            yield return DialogManager.Instance.ShowDialogText($"Successfully used {usedItem.Name}");
-            onItemUsed?.Invoke();
+            if (!(usedItem is PokeballItem))
+                yield return DialogManager.Instance.ShowDialogText($"{GameController.Instance.Player.Name} used {usedItem.Name}!");
+
+            onItemUsed?.Invoke(usedItem);
         }
         else
         {
@@ -132,6 +133,18 @@ public class InventoryUI : MonoBehaviour
         }
 
         ClosePartyScreen();
+    }
+
+    private void ItemSelected()
+    {
+        if (selectedCategory == (int)ItemCategory.Pokeballs)
+        {
+            StartCoroutine(UseItem());
+        }
+        else
+        {
+            OpenPartyScreen();
+        }
     }
 
     private void ResetSelection()

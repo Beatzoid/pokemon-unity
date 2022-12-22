@@ -4,6 +4,14 @@ using System.Linq;
 using UnityEngine;
 
 /// <summary>
+/// The ItemCategory enum is used to keep track of the indexes of the item categories
+/// </summary>
+public enum ItemCategory
+{
+    Items, Pokeballs, TMs
+}
+
+/// <summary>
 /// The ItemSlot class manages the individual item slots the Inventory
 /// </summary>
 [Serializable]
