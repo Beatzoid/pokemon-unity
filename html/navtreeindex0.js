@@ -137,7 +137,7 @@ var NAVTREEINDEX0 =
 "classInventory.html#aa049c9b7beba9dff280ac8e22db5bc0e":[0,0,19,1],
 "classInventory.html#ae1c100c14cb5123507ba89ebb92a387d":[0,0,19,2],
 "classInventoryUI.html":[0,0,20],
-"classInventoryUI.html#a1fc1a2fab7a81a1cbf9320e4b72ff76e":[0,0,20,0],
+"classInventoryUI.html#a38342b367966392f01b9b3c09a90c107":[0,0,20,0],
 "classInvisibleTileMap.html":[0,0,21],
 "classItemBase.html":[0,0,24],
 "classItemSlot.html":[0,0,25],
