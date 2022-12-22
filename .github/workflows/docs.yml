@@ -13,4 +13,4 @@ jobs:
         steps:
             - uses: actions/checkout@v2
 
-            - uses: langroodi/doxygenize@1.7
+            - uses: langroodi/doxygenize@v1
