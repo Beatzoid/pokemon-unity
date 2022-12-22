@@ -1,0 +1,18 @@
+<map id="BattleSystem.StartTrainerBattle" name="BattleSystem.StartTrainerBattle">
+<area shape="rect" id="node1" title="Start a trainer battle" alt="" coords="5,97,179,137"/>
+<area shape="rect" id="node2" href="$class_battle_system.html#a106ea7579bf0b7756b9b6ed9ae40d38c" title="Setup the battle by setting up the player and enemy units, setting the HUD stats, and showing a messa..." alt="" coords="227,104,400,129"/>
+<area shape="rect" id="node3" href="$class_pokemon_party.html#a01a7ca8602b6ced4c3af07043102e922" title="Returns the first pokemon in the party that has not fainted" alt="" coords="448,5,679,31"/>
+<area shape="rect" id="node4" href="$class_party_screen.html#a2212e4e746c7dfc8d10f71f8462b4002" title="Initialize the party screen" alt="" coords="505,55,621,80"/>
+<area shape="rect" id="node9" href="$class_battle_dialog_box.html#a6b185ea64636bff1607fd41d3cfa791c" title="Update the move selection UI with the move names" alt="" coords="456,104,671,129"/>
+<area shape="rect" id="node10" href="$class_battle_unit.html#a476b1c2ae39178c48403654875b049ff" title="Setup the battle unit (image sprite, hud, animation, etc)" alt="" coords="504,153,623,179"/>
+<area shape="rect" id="node16" href="$class_battle_dialog_box.html#a3da7eec593dff6e8e0e91f8852b15843" title="Smoothly animate the dialog on the dialog box" alt="" coords="471,203,656,228"/>
+<area shape="rect" id="node5" href="$class_party_screen.html#a5051bbd3830720ea15929dcf94a686e4" title="Set the data for the party screen" alt="" coords="737,55,915,80"/>
+<area shape="rect" id="node6" href="$class_party_member_u_i.html#a16c530b158bdb32b1786b6a2fbdebf9f" title="Set the data for the Party Member UI" alt="" coords="999,8,1135,33"/>
+<area shape="rect" id="node7" href="$class_party_screen.html#ab0dbaf6625761aa441a7f894f26bd73e" title="Update the member selection UI in the party screen" alt="" coords="973,58,1160,98"/>
+<area shape="rect" id="node8" href="$class_party_member_u_i.html#a3e4dfa9aceeca00568da82c21b808cce" title="Set whether the party member is selected (highlighted)" alt="" coords="1208,65,1397,91"/>
+<area shape="rect" id="node11" href="$class_battle_unit.html#a1a8203783a9ccfe0a19e6debea92fb20" title="Play the enter animation" alt="" coords="727,133,925,159"/>
+<area shape="rect" id="node12" href="$class_battle_hud.html#a1e54f39921b607c1b91d2513359ad023" title="Set the data for the battle HUD" alt="" coords="760,183,892,208"/>
+<area shape="rect" id="node13" href="$class_battle_hud.html#aa19955c5d34ab4ecab9549488e65ffab" title="Set the exp on the exp bar" alt="" coords="1003,133,1130,159"/>
+<area shape="rect" id="node14" href="$class_h_p_bar.html#aba22b99c9a2b5b1e2912e004eb785411" title="Set the HP of the HP bar" alt="" coords="1015,183,1118,208"/>
+<area shape="rect" id="node15" href="$class_battle_hud.html#a83c7a9addf55ce5db2ece648c076cdb3" title=" " alt="" coords="983,232,1150,257"/>
+</map>

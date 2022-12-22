@@ -1,0 +1,4 @@
+<map id="BattleSystem.HandleUpdate" name="BattleSystem.HandleUpdate">
+<area shape="rect" id="node1" title="Update the battle system" alt="" coords="5,5,193,31"/>
+<area shape="rect" id="node2" href="$class_battle_dialog_box.html#a3da7eec593dff6e8e0e91f8852b15843" title="Smoothly animate the dialog on the dialog box" alt="" coords="241,5,427,31"/>
+</map>

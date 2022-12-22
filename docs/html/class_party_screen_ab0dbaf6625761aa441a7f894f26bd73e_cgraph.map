@@ -1,0 +1,4 @@
+<map id="PartyScreen.UpdateMemberSelection" name="PartyScreen.UpdateMemberSelection">
+<area shape="rect" id="node1" title="Update the member selection UI in the party screen" alt="" coords="5,5,192,45"/>
+<area shape="rect" id="node2" href="$class_party_member_u_i.html#a3e4dfa9aceeca00568da82c21b808cce" title="Set whether the party member is selected (highlighted)" alt="" coords="240,13,429,38"/>
+</map>

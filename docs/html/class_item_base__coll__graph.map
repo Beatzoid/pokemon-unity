@@ -1,0 +1,4 @@
+<map id="ItemBase" name="ItemBase">
+<area shape="rect" id="node1" title="The ItemBase class manage the basic data for all items" alt="" coords="25,79,104,104"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,5,124,31"/>
+</map>

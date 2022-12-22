@@ -1,0 +1,4 @@
+<map id="MapArea.GetRandomWildPokemon" name="MapArea.GetRandomWildPokemon">
+<area shape="rect" id="node1" title="Get a wild pokemon from the current map area" alt="" coords="5,5,235,31"/>
+<area shape="rect" id="node2" href="$class_pokemon.html#aac29b4b4c365a166c9793ff4f0fa9315" title="Initializes the Pokemon" alt="" coords="283,5,381,31"/>
+</map>

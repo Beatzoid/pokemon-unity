@@ -1,0 +1,12 @@
+<map id="SceneDetails.OnTriggerEnter2D" name="SceneDetails.OnTriggerEnter2D">
+<area shape="rect" id="node1" title=" " alt="" coords="5,70,215,95"/>
+<area shape="rect" id="node2" href="$class_scene_details.html#a9337fceead5f2fd4253e4c6346740c12" title=" " alt="" coords="269,13,439,38"/>
+<area shape="rect" id="node6" href="$class_game_controller.html#a305bea979dc49ebf6376dd2355baa134" title=" " alt="" coords="265,63,443,103"/>
+<area shape="rect" id="node7" href="$class_scene_details.html#a3460fe53ed5b39152f7a5b1904e8dfcc" title=" " alt="" coords="263,127,445,153"/>
+<area shape="rect" id="node3" href="$class_saving_system.html#ac442a333a84b1c69694d56a6453fef09" title=" " alt="" coords="493,5,684,45"/>
+<area shape="rect" id="node4" href="$class_savable_entity.html#aa1196f1f017dafea47de841db1b3aef2" title=" " alt="" coords="732,13,915,38"/>
+<area shape="rect" id="node5" href="$interface_i_savable.html#a64e8a35faff0e4640bf60ffcb6c45fa3" title=" " alt="" coords="963,13,1117,38"/>
+<area shape="rect" id="node8" href="$class_saving_system.html#a382bc3ca30ba8279beb173d35f3462e0" title=" " alt="" coords="493,120,684,160"/>
+<area shape="rect" id="node9" href="$class_savable_entity.html#a399fb0725a7228641020a5dbb59ccc1e" title=" " alt="" coords="732,127,915,153"/>
+<area shape="rect" id="node10" href="$interface_i_savable.html#a1b44bbc93b2228dfbede0fe86ef2d5ff" title=" " alt="" coords="963,127,1117,153"/>
+</map>

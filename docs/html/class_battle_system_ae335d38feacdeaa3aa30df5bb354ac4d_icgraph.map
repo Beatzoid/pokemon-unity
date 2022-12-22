@@ -1,0 +1,4 @@
+<map id="BattleSystem.StartTrainerBattle" name="BattleSystem.StartTrainerBattle">
+<area shape="rect" id="node1" title="Start a trainer battle" alt="" coords="237,5,411,45"/>
+<area shape="rect" id="node2" href="$class_game_controller.html#aab9d440f9bb6e4259cb9671dca63ab53" title=" " alt="" coords="5,5,189,45"/>
+</map>

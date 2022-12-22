@@ -1,0 +1,5 @@
+<map id="BattleHud.UpdateHP" name="BattleHud.UpdateHP">
+<area shape="rect" id="node1" title=" " alt="" coords="5,5,151,31"/>
+<area shape="rect" id="node2" href="$class_battle_hud.html#afb5f1eac547d204de182f0083fde49b3" title="Update the HP bar smoothly" alt="" coords="199,5,379,31"/>
+<area shape="rect" id="node3" href="$class_h_p_bar.html#a8411b534b1fc6a7d474a5786381220d4" title="Smoothly set the HP of the HP bar" alt="" coords="427,5,585,31"/>
+</map>

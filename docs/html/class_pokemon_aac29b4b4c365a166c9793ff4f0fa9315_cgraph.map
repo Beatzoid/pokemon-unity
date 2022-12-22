@@ -1,0 +1,5 @@
+<map id="Pokemon.Init" name="Pokemon.Init">
+<area shape="rect" id="node1" title="Initializes the Pokemon" alt="" coords="5,5,104,31"/>
+<area shape="rect" id="node2" href="$class_pokemon_base.html#a8a8c604c2343050f84386341444e08ce" title=" " alt="" coords="152,5,357,31"/>
+<area shape="rect" id="node3" href="$class_pokemon_base.html#a8f1da10ca957076405a2b00335ca22d1" title=" " alt="" coords="405,5,601,31"/>
+</map>

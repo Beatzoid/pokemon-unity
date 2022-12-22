@@ -1,0 +1,6 @@
+<map id="Pokemon.Pokemon" name="Pokemon.Pokemon">
+<area shape="rect" id="node1" title=" " alt="" coords="5,5,141,31"/>
+<area shape="rect" id="node2" href="$class_pokemon.html#aac29b4b4c365a166c9793ff4f0fa9315" title="Initializes the Pokemon" alt="" coords="189,5,288,31"/>
+<area shape="rect" id="node3" href="$class_pokemon_base.html#a8a8c604c2343050f84386341444e08ce" title=" " alt="" coords="336,5,541,31"/>
+<area shape="rect" id="node4" href="$class_pokemon_base.html#a8f1da10ca957076405a2b00335ca22d1" title=" " alt="" coords="589,5,785,31"/>
+</map>

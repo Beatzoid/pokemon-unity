@@ -1,0 +1,8 @@
+<map id="Inventory.GetSlotsByCategory" name="Inventory.GetSlotsByCategory">
+<area shape="rect" id="node1" title=" " alt="" coords="673,92,872,117"/>
+<area shape="rect" id="node2" href="$class_inventory_u_i.html#a1fc1a2fab7a81a1cbf9320e4b72ff76e" title=" " alt="" coords="448,43,625,68"/>
+<area shape="rect" id="node5" href="$class_inventory.html#aa049c9b7beba9dff280ac8e22db5bc0e" title=" " alt="" coords="460,92,613,117"/>
+<area shape="rect" id="node6" href="$class_inventory.html#ae1c100c14cb5123507ba89ebb92a387d" title=" " alt="" coords="242,119,370,144"/>
+<area shape="rect" id="node3" href="$class_battle_system.html#a73b3bbdcebdfe896f1d5983f8daf485b" title="Update the battle system" alt="" coords="212,5,400,31"/>
+<area shape="rect" id="node4" href="$class_game_controller.html#a5a89277529cadb49af7d55eba3bbf056" title=" " alt="" coords="5,31,164,56"/>
+</map>

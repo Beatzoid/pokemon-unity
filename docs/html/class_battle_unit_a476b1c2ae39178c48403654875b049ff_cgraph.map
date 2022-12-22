@@ -1,0 +1,8 @@
+<map id="BattleUnit.Setup" name="BattleUnit.Setup">
+<area shape="rect" id="node1" title="Setup the battle unit (image sprite, hud, animation, etc)" alt="" coords="5,31,124,56"/>
+<area shape="rect" id="node2" href="$class_battle_unit.html#a1a8203783a9ccfe0a19e6debea92fb20" title="Play the enter animation" alt="" coords="172,5,371,31"/>
+<area shape="rect" id="node3" href="$class_battle_hud.html#a1e54f39921b607c1b91d2513359ad023" title="Set the data for the battle HUD" alt="" coords="205,55,337,80"/>
+<area shape="rect" id="node4" href="$class_battle_hud.html#aa19955c5d34ab4ecab9549488e65ffab" title="Set the exp on the exp bar" alt="" coords="439,5,565,31"/>
+<area shape="rect" id="node5" href="$class_h_p_bar.html#aba22b99c9a2b5b1e2912e004eb785411" title="Set the HP of the HP bar" alt="" coords="451,55,553,80"/>
+<area shape="rect" id="node6" href="$class_battle_hud.html#a83c7a9addf55ce5db2ece648c076cdb3" title=" " alt="" coords="419,104,585,129"/>
+</map>

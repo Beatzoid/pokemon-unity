@@ -1,0 +1,6 @@
+<map id="ItemBase" name="ItemBase">
+<area shape="rect" id="node1" title="The ItemBase class manage the basic data for all items" alt="" coords="78,79,157,104"/>
+<area shape="rect" id="node3" href="$class_pokeball_item.html" title="The PokeballItem manages all pokeball&#45;related logic" alt="" coords="5,152,104,177"/>
+<area shape="rect" id="node4" href="$class_recovery_item.html" title="The RecoveryItem class manages all the recovery item logic" alt="" coords="128,152,232,177"/>
+<area shape="rect" id="node2" title=" " alt="" coords="58,5,177,31"/>
+</map>

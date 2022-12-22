@@ -1,0 +1,4 @@
+<map id="PartyScreen" name="PartyScreen">
+<area shape="rect" id="node1" title="The PartyScreen text manages the core party screen logic" alt="" coords="14,79,109,104"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,5,117,31"/>
+</map>

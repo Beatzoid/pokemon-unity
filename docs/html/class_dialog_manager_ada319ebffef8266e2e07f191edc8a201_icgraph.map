@@ -1,0 +1,6 @@
+<map id="DialogManager.ShowDialog" name="DialogManager.ShowDialog">
+<area shape="rect" id="node1" title="Show dialog in the dialog box" alt="" coords="219,55,401,80"/>
+<area shape="rect" id="node2" href="$class_n_p_c_controller.html#a8d2d6453e329e65e5e9ab90269bc9dce" title="Trigger the NPC&#39;s interact function" alt="" coords="11,5,165,31"/>
+<area shape="rect" id="node3" href="$class_trainer_controller.html#aa4b36b4bb59c2a3f0d48fe0484edf28f" title="Initiates trainer battle" alt="" coords="5,55,171,80"/>
+<area shape="rect" id="node4" href="$class_trainer_controller.html#a09e07e21f53eaf253f7eb2680f5cfa10" title="Trigger a trainer battle" alt="" coords="7,105,169,145"/>
+</map>

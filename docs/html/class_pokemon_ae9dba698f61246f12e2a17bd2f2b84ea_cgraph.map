@@ -1,0 +1,4 @@
+<map id="Pokemon.OnBattleOver" name="Pokemon.OnBattleOver">
+<area shape="rect" id="node1" title="Resets pokemon" alt="" coords="5,5,165,31"/>
+<area shape="rect" id="node2" href="$class_pokemon.html#a7f3a0cda3842f18b946e8e172005eaa8" title="Remove all volatile status effects from the pokemon" alt="" coords="213,5,404,31"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="Pokemon.TakeDamage" name="Pokemon.TakeDamage">
+<area shape="rect" id="node1" title="Causes the specified pokemon to take damage" alt="" coords="5,31,164,56"/>
+<area shape="rect" id="node2" href="$class_pokemon.html#aa8a95047efaff1df5fc3d620490cb4bf" title="Decrease the HP of the pokemon" alt="" coords="227,5,383,31"/>
+<area shape="rect" id="node3" href="$class_type_chart.html#ae55d24fa54bf7d4846976f6ed6da7417" title="Get the effectiveness of one pokemon against another" alt="" coords="212,55,399,80"/>
+</map>

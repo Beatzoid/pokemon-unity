@@ -1,0 +1,4 @@
+<map id="SpriteAnimator.Start" name="SpriteAnimator.Start">
+<area shape="rect" id="node1" title="Start the animation" alt="" coords="229,5,368,31"/>
+<area shape="rect" id="node2" href="$class_character_animator.html#aa00597e81da1721e1f02fbd0e27368c0" title=" " alt="" coords="5,5,181,31"/>
+</map>

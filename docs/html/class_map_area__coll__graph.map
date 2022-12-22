@@ -1,0 +1,4 @@
+<map id="MapArea" name="MapArea">
+<area shape="rect" id="node1" title="The MapArea class manages all map&#45;related data" alt="" coords="24,79,99,104"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,5,117,31"/>
+</map>

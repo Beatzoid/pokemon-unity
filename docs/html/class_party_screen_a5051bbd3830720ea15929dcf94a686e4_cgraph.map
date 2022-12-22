@@ -1,0 +1,6 @@
+<map id="PartyScreen.SetPartyData" name="PartyScreen.SetPartyData">
+<area shape="rect" id="node1" title="Set the data for the party screen" alt="" coords="5,35,183,60"/>
+<area shape="rect" id="node2" href="$class_party_member_u_i.html#a16c530b158bdb32b1786b6a2fbdebf9f" title="Set the data for the Party Member UI" alt="" coords="256,5,392,31"/>
+<area shape="rect" id="node3" href="$class_party_screen.html#ab0dbaf6625761aa441a7f894f26bd73e" title="Update the member selection UI in the party screen" alt="" coords="231,55,417,95"/>
+<area shape="rect" id="node4" href="$class_party_member_u_i.html#a3e4dfa9aceeca00568da82c21b808cce" title="Set whether the party member is selected (highlighted)" alt="" coords="465,63,655,88"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="TrainerController.TriggerTrainerBattle" name="TrainerController.TriggerTrainerBattle">
+<area shape="rect" id="node1" title="Trigger a trainer battle" alt="" coords="540,5,701,45"/>
+<area shape="rect" id="node2" href="$class_game_controller.html#a3aca7f99f41a0ab858045d41d3a5450c" title=" " alt="" coords="252,13,492,38"/>
+<area shape="rect" id="node3" href="$class_trainer_f_o_v.html#a3505d104bfec5b73b3de73c1e518d5ef" title=" " alt="" coords="5,13,204,38"/>
+</map>

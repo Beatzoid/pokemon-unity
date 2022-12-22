@@ -1,0 +1,5 @@
+<map id="RecoveryItem" name="RecoveryItem">
+<area shape="rect" id="node1" title="The RecoveryItem class manages all the recovery item logic" alt="" coords="13,152,117,177"/>
+<area shape="rect" id="node2" href="$class_item_base.html" title="The ItemBase class manage the basic data for all items" alt="" coords="25,79,104,104"/>
+<area shape="rect" id="node3" title=" " alt="" coords="5,5,124,31"/>
+</map>

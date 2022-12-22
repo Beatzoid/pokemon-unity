@@ -1,0 +1,6 @@
+<map id="Inventory.UseItem" name="Inventory.UseItem">
+<area shape="rect" id="node1" title=" " alt="" coords="5,31,133,56"/>
+<area shape="rect" id="node2" href="$class_inventory.html#a2b5afbff029c6d3b3cf8b971c40dcbf4" title=" " alt="" coords="383,5,581,31"/>
+<area shape="rect" id="node3" href="$class_inventory.html#aa049c9b7beba9dff280ac8e22db5bc0e" title=" " alt="" coords="181,31,335,56"/>
+<area shape="rect" id="node4" href="$class_item_base.html#a4f76089840f01d1ae96ad35dd916046c" title=" " alt="" coords="205,80,311,105"/>
+</map>

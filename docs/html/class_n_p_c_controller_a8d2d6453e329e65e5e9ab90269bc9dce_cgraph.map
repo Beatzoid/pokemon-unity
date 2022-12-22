@@ -1,0 +1,5 @@
+<map id="NPCController.Interact" name="NPCController.Interact">
+<area shape="rect" id="node1" title="Trigger the NPC&#39;s interact function" alt="" coords="5,31,160,56"/>
+<area shape="rect" id="node2" href="$class_character.html#a14c8f6d3d6d397d977d70c007414ec08" title="Make the character look towards the target position" alt="" coords="220,5,379,31"/>
+<area shape="rect" id="node3" href="$class_dialog_manager.html#ada319ebffef8266e2e07f191edc8a201" title="Show dialog in the dialog box" alt="" coords="208,55,391,80"/>
+</map>
