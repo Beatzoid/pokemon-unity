@@ -2,9 +2,9 @@
 
 A Pokemon-style game made using Unity
 
-# Demo
+# Documentation
 
-Soon
+[Here](https://beatzoid.js.org/pokemon-unity/html/)
 
 # Usage
 
