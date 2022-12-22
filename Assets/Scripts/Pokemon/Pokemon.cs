@@ -30,6 +30,33 @@ public class Pokemon
     public event System.Action OnStatusChanged;
     public event System.Action OnHPChanged;
 
+    public int Attack
+    {
+        get { return GetStat(Stat.Attack); }
+    }
+
+    public int Defense
+    {
+        get { return GetStat(Stat.Defense); }
+    }
+
+    public int SpecialAttack
+    {
+        get { return GetStat(Stat.SpecialAttack); }
+    }
+
+    public int SpecialDefense
+    {
+        get { return GetStat(Stat.SpecialDefense); }
+    }
+
+    public int Speed
+    {
+        get { return GetStat(Stat.Speed); }
+    }
+
+    public int MaxHp { get; private set; }
+
     public Pokemon(PokemonBase pBase, int pLevel)
     {
         _base = pBase;
@@ -102,6 +129,7 @@ public class Pokemon
     }
 
     #region Battle
+
     /// <summary>
     /// Causes the specified pokemon to take damage
     /// </summary>
@@ -352,35 +380,6 @@ public class Pokemon
 
         return statVal;
     }
-
-    #endregion
-
-    #region Properties
-
-    public int Attack
-    {
-        get { return GetStat(Stat.Attack); }
-    }
-
-    public int Defense
-    {
-        get { return GetStat(Stat.Defense); }
-    }
-
-    public int SpecialAttack
-    {
-        get { return GetStat(Stat.SpecialAttack); }
-    }
-
-    public int SpecialDefense
-    {
-        get { return GetStat(Stat.SpecialDefense); }
-    }
-    public int Speed
-    {
-        get { return GetStat(Stat.Speed); }
-    }
-    public int MaxHp { get; private set; }
 
     #endregion
 }

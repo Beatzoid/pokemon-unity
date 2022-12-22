@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// The game layers class manages all the layers in the game
+/// </summary>
 public class GameLayers : MonoBehaviour
 {
     [SerializeField] private LayerMask solidObjectsLayer;
@@ -9,11 +12,11 @@ public class GameLayers : MonoBehaviour
     [SerializeField] private LayerMask fovLayer;
     [SerializeField] private LayerMask portalLayer;
 
-    public static GameLayers L { get; set; }
+    public static GameLayers Instance { get; set; }
 
     public void Awake()
     {
-        L = this;
+        Instance = this;
     }
 
     public LayerMask SolidObjectsLayer => solidObjectsLayer;

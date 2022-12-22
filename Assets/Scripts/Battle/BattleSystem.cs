@@ -5,6 +5,9 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// The BattleState is used to keep track of the current state that the battle is in
+/// </summary>
 public enum BattleState
 {
     Start,
@@ -19,6 +22,9 @@ public enum BattleState
     Bag
 }
 
+/// <summary>
+/// The BattleAction is used to keep track of which action is being performed during the battle
+/// </summary>
 public enum BattleAction
 {
     Move,
@@ -42,6 +48,7 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] private MoveSelectionUI moveSelectionUI;
     [SerializeField] private InventoryUI inventoryUI;
 
+    /// <summary> Called when the battle ends </summary>
     public event Action<bool> OnBattleOver;
 
     private BattleState state;
@@ -62,11 +69,12 @@ public class BattleSystem : MonoBehaviour
     private MoveBase moveToLearn;
 
     #region Setup
+
     /// <summary>
     /// Start a battle
     /// </summary>
     /// <param name="playerParty">The players PokemonParty </param>
-    /// <param name="wildPokemon">The enemy's pokemon </param>
+    /// <param name="wildPokemon">The wild pokemon </param>
     public void StartBattle(PokemonParty playerParty, Pokemon wildPokemon)
     {
         this.playerParty = playerParty;
@@ -82,7 +90,7 @@ public class BattleSystem : MonoBehaviour
     /// Start a trainer battle
     /// </summary>
     /// <param name="playerParty">The players PokemonParty </param>
-    /// <param name="wildPokemon">The enemy's pokemon </param>
+    /// <param name="wildPokemon">The trainer's pokemon party </param>
     public void StartTrainerBattle(PokemonParty playerParty, PokemonParty trainerParty)
     {
         this.playerParty = playerParty;
@@ -97,8 +105,7 @@ public class BattleSystem : MonoBehaviour
     }
 
     /// <summary>
-    /// Setup the battle by setting up the player and enemy units, setting the HUD stats, and
-    /// showing a message on the dialog box
+    /// Setup and initialize all the variables necessary for the battle scene
     /// </summary>
     public IEnumerator SetupBattle()
     {
@@ -157,7 +164,7 @@ public class BattleSystem : MonoBehaviour
     #region Handlers
 
     /// <summary>
-    /// Update the battle system
+    /// Update the battle scene based on the current BattleState
     /// </summary>
     public void HandleUpdate()
     {
@@ -377,6 +384,18 @@ public class BattleSystem : MonoBehaviour
 
     #region Selection
 
+    private IEnumerator ChooseMoveToForget(Pokemon pokemon, MoveBase newMove)
+    {
+        state = BattleState.Busy;
+        yield return dialogBox.TypeDialog($"Choose a move you want to forget");
+        moveToLearn = newMove;
+
+        moveSelectionUI.gameObject.SetActive(true);
+        moveSelectionUI.SetMoveData(pokemon.Moves.Select(x => x.Base).ToList(), newMove);
+
+        state = BattleState.MoveToForget;
+    }
+
     private void OpenBag()
     {
         state = BattleState.Bag;
@@ -405,17 +424,7 @@ public class BattleSystem : MonoBehaviour
         dialogBox.SetMoveSelectorActive(true);
     }
 
-    private IEnumerator ChooseMoveToForget(Pokemon pokemon, MoveBase newMove)
-    {
-        state = BattleState.Busy;
-        yield return dialogBox.TypeDialog($"Choose a move you want to forget");
-        moveToLearn = newMove;
 
-        moveSelectionUI.gameObject.SetActive(true);
-        moveSelectionUI.SetMoveData(pokemon.Moves.Select(x => x.Base).ToList(), newMove);
-
-        state = BattleState.MoveToForget;
-    }
 
     #endregion
 
@@ -438,8 +447,8 @@ public class BattleSystem : MonoBehaviour
     {
         state = BattleState.BattleOver;
         playerParty.Pokemon.ForEach(p => p.OnBattleOver());
-        playerUnit.Hud.ClearData();
-        enemyUnit.Hud.ClearData();
+        playerUnit.Hud.ClearEvents();
+        enemyUnit.Hud.ClearEvents();
         OnBattleOver(won);
     }
 
@@ -760,6 +769,7 @@ public class BattleSystem : MonoBehaviour
 
         CheckForBattleOver(faintedUnit);
     }
+
     private IEnumerator ThrowPokeball()
     {
         state = BattleState.Busy;
@@ -822,28 +832,6 @@ public class BattleSystem : MonoBehaviour
             Destroy(pokeballObject);
             state = BattleState.RunningTurn;
         }
-    }
-
-    private int GetShakeCount(Pokemon pokemon)
-    {
-        float a = ((3 * pokemon.MaxHp) - (2 * pokemon.HP)) * pokemon.Base.CatchRate * ConditionsDB.GetStatusBonus(pokemon.Status) / (3 * pokemon.MaxHp);
-
-        if (a >= 255)
-            // Pokemon caught
-            return 4;
-
-        float b = 1048560 / Mathf.Sqrt(Mathf.Sqrt(16711680 / a));
-
-        int shakeCount = 0;
-
-        while (shakeCount < 4)
-        {
-            if (UnityEngine.Random.Range(0, 65535) >= b) break;
-
-            ++shakeCount;
-        }
-
-        return shakeCount;
     }
 
     private IEnumerator SwitchPokemon(Pokemon newPokemon, bool isTrainerAboutToUse = false)
@@ -923,6 +911,28 @@ public class BattleSystem : MonoBehaviour
                 state = BattleState.RunningTurn;
             }
         }
+    }
+
+    private int GetShakeCount(Pokemon pokemon)
+    {
+        float a = ((3 * pokemon.MaxHp) - (2 * pokemon.HP)) * pokemon.Base.CatchRate * ConditionsDB.GetStatusBonus(pokemon.Status) / (3 * pokemon.MaxHp);
+
+        if (a >= 255)
+            // Pokemon caught
+            return 4;
+
+        float b = 1048560 / Mathf.Sqrt(Mathf.Sqrt(16711680 / a));
+
+        int shakeCount = 0;
+
+        while (shakeCount < 4)
+        {
+            if (UnityEngine.Random.Range(0, 65535) >= b) break;
+
+            ++shakeCount;
+        }
+
+        return shakeCount;
     }
 
     #endregion

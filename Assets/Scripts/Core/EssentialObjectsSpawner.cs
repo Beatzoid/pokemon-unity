@@ -1,5 +1,9 @@
 using UnityEngine;
 
+/// <summary>
+/// The EssentialObjectsSpawner manages the initiating of the 
+/// EssentialObjects gameobject
+/// </summary>
 public class EssentialObjectsSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject essentialObjectsPrefab;

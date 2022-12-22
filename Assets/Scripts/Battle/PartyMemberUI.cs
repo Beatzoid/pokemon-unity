@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 
 /// <summary>
-/// The PartyMemberUI class manages all the UI in the party member screen
+/// The PartyMemberUI class manages the individual party members UI in the party screen
 /// </summary>
 public class PartyMemberUI : MonoBehaviour
 {
@@ -13,7 +13,7 @@ public class PartyMemberUI : MonoBehaviour
     private Pokemon _pokemon;
 
     /// <summary>
-    /// Set the data for the Party Member UI
+    /// Initializes the party member UI with the specified pokemon's data
     /// </summary>
     /// <param name="pokemon">The pokemon to get the data from </param>
     public void Init(Pokemon pokemon)
@@ -31,7 +31,7 @@ public class PartyMemberUI : MonoBehaviour
     public void SetSelected(bool selected)
     {
         if (selected)
-            nameText.color = GlobalSettings.I.HighlightedColor;
+            nameText.color = GlobalSettings.Instance.HighlightedColor;
         else
             nameText.color = Color.black;
     }

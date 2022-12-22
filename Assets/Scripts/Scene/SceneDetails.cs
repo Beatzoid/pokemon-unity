@@ -3,6 +3,9 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// The SceneDetails class manages all data and details about a scene
+/// </summary>
 public class SceneDetails : MonoBehaviour
 {
     [SerializeField] private List<SceneDetails> connectedScenes;

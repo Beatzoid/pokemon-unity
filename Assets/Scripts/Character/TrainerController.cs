@@ -1,6 +1,9 @@
 using System.Collections;
 using UnityEngine;
 
+/// <summary>
+/// The TrainerController class manages all trainer-related logic
+/// </summary>
 public class TrainerController : MonoBehaviour, Interactable, ISavable
 {
     [SerializeField] private new string name;
@@ -9,6 +12,18 @@ public class TrainerController : MonoBehaviour, Interactable, ISavable
     [SerializeField] private Dialog dialogAfterBattle;
     [SerializeField] private GameObject exclamation;
     [SerializeField] private GameObject fov;
+
+    /// <summary> The Sprite of the trainer </summary>
+    public Sprite Sprite
+    {
+        get => sprite;
+    }
+
+    /// <summary>The Name of the trainer </summary>
+    public string Name
+    {
+        get => name;
+    }
 
     private bool battleLost = false;
 
@@ -30,9 +45,9 @@ public class TrainerController : MonoBehaviour, Interactable, ISavable
     }
 
     /// <summary>
-    /// Initiates trainer battle
+    /// Initiates the trainer battle
     /// </summary>
-    /// <param name="Transform">The transform of the object that is interacting with the trainer </param>
+    /// <param name="Transform">The transform of the object that is initiating the battle </param>
     public void Interact(Transform initiator)
     {
         character.LookTowards(initiator.position);
@@ -46,9 +61,8 @@ public class TrainerController : MonoBehaviour, Interactable, ISavable
             StartCoroutine(DialogManager.Instance.ShowDialog(dialogAfterBattle));
     }
 
-
     /// <summary>
-    /// Called when the player loses a battle
+    /// Called when the battle is lost
     /// </summary>
     public void BattleLost()
     {
@@ -83,7 +97,7 @@ public class TrainerController : MonoBehaviour, Interactable, ISavable
     }
 
     /// <summary>
-    /// Set the Fov collider rotation
+    /// Set the fov collider rotation
     /// </summary>
     /// <param name="FacingDirection">The direction to face the collider in </param>
     public void SetFovRotation(FacingDirection dir)
@@ -117,15 +131,5 @@ public class TrainerController : MonoBehaviour, Interactable, ISavable
 
         if (battleLost)
             fov.SetActive(false);
-    }
-
-    public Sprite Sprite
-    {
-        get => sprite;
-    }
-
-    public string Name
-    {
-        get => name;
     }
 }

@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// The PokeballItem manages all pokeball-related logic
+/// </summary>
 [CreateAssetMenu(menuName = "Items/Create new pokeball")]
 
 public class PokeballItem : ItemBase

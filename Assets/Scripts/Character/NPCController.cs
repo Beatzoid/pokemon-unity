@@ -2,8 +2,12 @@ using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
 
+/// <summary> The NPCState is used to keep track of the current state of the NPC </summary>
 public enum NPCState { Idle, Walking, Dialog }
 
+/// <summary>
+/// The NPCController class manages all NPC-related logic
+/// </summary>
 public class NPCController : MonoBehaviour, Interactable
 {
     [SerializeField] private Dialog dialog;
@@ -38,7 +42,7 @@ public class NPCController : MonoBehaviour, Interactable
     }
 
     /// <summary>
-    /// Trigger the NPC's interact function
+    /// Interact with the NPC (set the state, look towards the initiator, and start the dialog sequence)
     /// </summary>
     /// <param name="initiator">The transform of the character to interact with </param>
     public void Interact(Transform initiator)

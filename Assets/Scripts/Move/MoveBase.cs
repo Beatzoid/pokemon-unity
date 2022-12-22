@@ -1,10 +1,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// The MoveCategory enum is used to store the category of the move
+/// </summary>
 public enum MoveCategory
 {
     Physical, Special, Status
 }
+
 
 public enum MoveTarget
 {
@@ -12,7 +16,7 @@ public enum MoveTarget
 }
 
 /// <summary>
-/// The MoveBase class holds all data for a move
+/// The MoveBase class stores all data for a move
 /// </summary>
 [CreateAssetMenu(fileName = "Move", menuName = "Pokemon/Create new move")]
 public class MoveBase : ScriptableObject

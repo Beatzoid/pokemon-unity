@@ -24,7 +24,10 @@ public class BattleHud : MonoBehaviour
     [SerializeField] private Color freezeColor;
 
     private Pokemon _pokemon;
+
     private Dictionary<ConditionID, Color> statusColors;
+
+    #region Setters
 
     /// <summary>
     /// Set the data for the battle HUD
@@ -32,7 +35,7 @@ public class BattleHud : MonoBehaviour
     /// <param name="pokemon">The pokemon to get the data from </param>
     public void SetData(Pokemon pokemon)
     {
-        ClearData();
+        ClearEvents();
 
         _pokemon = pokemon;
 
@@ -82,6 +85,9 @@ public class BattleHud : MonoBehaviour
         expBar.transform.localScale = new Vector3(normalizedExp, 1, 1);
     }
 
+    /// <summary>
+    /// Set the level text in the HUD with the pokemon's level
+    /// </summary>
     public void SetLevel()
     {
         levelText.text = "Lvl " + _pokemon.Level;
@@ -101,6 +107,13 @@ public class BattleHud : MonoBehaviour
         yield return expBar.transform.DOScaleX(normalizedExp, 1.5f).WaitForCompletion();
     }
 
+    #endregion
+
+    #region Updaters
+
+    /// <summary>
+    /// Update the HP of the pokemon in the HUD
+    /// </summary>
     public void UpdateHP()
     {
         StartCoroutine(UpdateHPAsync());
@@ -114,12 +127,22 @@ public class BattleHud : MonoBehaviour
         yield return hpBar.SetHPSmoothly((float)_pokemon.HP / _pokemon.MaxHp);
     }
 
+    /// <summary>
+    /// Wait until the HP Bar is done updating
+    /// </summary>
     public IEnumerator WaitForHPUpdate()
     {
         yield return new WaitUntil(() => hpBar.IsUpdating == false);
     }
 
-    public void ClearData()
+    #endregion
+
+    #region Utils
+
+    /// <summary>
+    /// Unsubscribe the BattleHUD to the pokemon's events
+    /// </summary>
+    public void ClearEvents()
     {
         if (_pokemon != null)
         {
@@ -136,4 +159,6 @@ public class BattleHud : MonoBehaviour
         float normalizedExp = (float)(_pokemon.Exp - currentLevelExp) / (nextLevelExp - currentLevelExp);
         return Mathf.Clamp01(normalizedExp);
     }
+
+    #endregion
 }

@@ -5,11 +5,16 @@ using UnityEngine.SceneManagement;
 
 public enum DestinationIdentifier { A, B, C, D, E, F, G, H, I, J, K, L }
 
+/// <summary>
+/// The Portal class manages all portal-related logic
+/// </summary>
 public class Portal : MonoBehaviour, IPlayerTriggerable
 {
     [SerializeField] private int sceneToLoad = -1;
     [SerializeField] private Transform spawnPoint;
     [SerializeField] private DestinationIdentifier destinationPortal;
+
+    public Transform SpawnPoint => spawnPoint;
 
     private PlayerController player;
     private Fader fader;
@@ -44,6 +49,4 @@ public class Portal : MonoBehaviour, IPlayerTriggerable
 
         Destroy(gameObject);
     }
-
-    public Transform SpawnPoint => spawnPoint;
 }

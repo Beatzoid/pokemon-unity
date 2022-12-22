@@ -3,6 +3,9 @@ using System.Collections;
 using UnityEngine;
 using TMPro;
 
+/// <summary>
+/// The DialogManager class manages all the dialog-related logic
+/// </summary>
 public class DialogManager : MonoBehaviour
 {
     [SerializeField] private GameObject dialogBox;
@@ -64,6 +67,11 @@ public class DialogManager : MonoBehaviour
         StartCoroutine(TypeDialog(dialog.Lines[0]));
     }
 
+    /// <summary>
+    /// Show the text on the dialog
+    /// </summary>
+    /// <param name="text">The text to show </param>
+    /// <param name="waitForInput">Whether or not to wait for an input before clearing the dialog box </param>
     public IEnumerator ShowDialogText(string text, bool waitForInput = true)
     {
         IsShowing = true;
@@ -77,6 +85,10 @@ public class DialogManager : MonoBehaviour
         IsShowing = false;
     }
 
+    /// <summary>
+    /// Smoothly type a line on the dialog box
+    /// </summary>
+    /// <param name="line">The line to type </param>
     public IEnumerator TypeDialog(string line)
     {
         isTyping = true;

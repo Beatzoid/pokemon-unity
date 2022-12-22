@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// The ItemBase class manage the basic data for all items
+/// </summary>
 public class ItemBase : ScriptableObject
 {
     [SerializeField] private string itemName;

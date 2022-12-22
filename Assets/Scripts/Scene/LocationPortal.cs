@@ -2,11 +2,15 @@ using System.Collections;
 using System.Linq;
 using UnityEngine;
 
-// Teleports the player to a different position without switching scenes
+/// <summary>
+/// The LocationPortal manages all logic for the location portals
+/// </summary>
 public class LocationPortal : MonoBehaviour, IPlayerTriggerable
 {
     [SerializeField] private Transform spawnPoint;
     [SerializeField] private DestinationIdentifier destinationPortal;
+
+    public Transform SpawnPoint => spawnPoint;
 
     private PlayerController player;
     private Fader fader;
@@ -36,6 +40,4 @@ public class LocationPortal : MonoBehaviour, IPlayerTriggerable
         yield return fader.FadeOut(0.5f);
         GameController.Instance.PauseGame(false);
     }
-
-    public Transform SpawnPoint => spawnPoint;
 }

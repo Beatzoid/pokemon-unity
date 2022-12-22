@@ -4,6 +4,8 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 
+/// <summary>
+/// The MenuController class manages all menu-related logic
 public class MenuController : MonoBehaviour
 {
     [SerializeField] private GameObject menu;
@@ -61,13 +63,12 @@ public class MenuController : MonoBehaviour
         menu.SetActive(false);
     }
 
-
     private void UpdateItemSelection()
     {
         for (int i = 0; i < menuItems.Count; i++)
         {
             if (i == selectedItem)
-                menuItems[i].color = GlobalSettings.I.HighlightedColor;
+                menuItems[i].color = GlobalSettings.Instance.HighlightedColor;
             else
                 menuItems[i].color = Color.black;
         }

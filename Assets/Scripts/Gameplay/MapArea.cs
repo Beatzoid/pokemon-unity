@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// The MapArea class manages data for the map
+/// The MapArea class manages all map-related data
 /// </summary>
 public class MapArea : MonoBehaviour
 {

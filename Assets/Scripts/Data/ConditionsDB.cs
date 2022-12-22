@@ -1,11 +1,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// The ConditionID enum stores all the IDs for the pokemon status's
+/// </summary>
 public enum ConditionID
 {
     none, PSN, BRN, SLP, PRZ, FRZ, confusion
 }
 
+/// <summary>
+/// The COnditionsDB class manages all the pokemon conditions
+/// </summary>
 public class ConditionsDB
 {
     /// <summary>
@@ -22,6 +28,7 @@ public class ConditionsDB
         }
     }
 
+    /// <summary> All the possible Conditions a pokemon can have </summary>
     public static Dictionary<ConditionID, Condition> Conditions { get; set; } = new Dictionary<ConditionID, Condition>()
     {
         {
@@ -150,6 +157,10 @@ public class ConditionsDB
         }
     };
 
+    /// <summary>
+    /// Get the status bonus for a certain condition
+    /// </summary>
+    /// <param name="condition"> THe condition to get the bonus for </param>
     public static float GetStatusBonus(Condition condition)
     {
         if (condition == null)

@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 
 /// <summary>
-/// The BattleDialogBox manages the dialog box in the battle scene
+/// The BattleDialogBox manages the dialog boxes in the battle scene
 /// </summary>
 public class BattleDialogBox : MonoBehaviour
 {
@@ -34,10 +34,12 @@ public class BattleDialogBox : MonoBehaviour
     [SerializeField] private TextMeshProUGUI yesText;
     [SerializeField] private TextMeshProUGUI noText;
 
+    #region Dialog
+
     /// <summary>
     /// Set the dialog box text
     /// </summary>
-    /// <param name="dialog">The dialog text to set </param>
+    /// <param name="dialog">The text to set </param>
     public void SetDialog(string dialog)
     {
         dialogText.text = dialog;
@@ -46,7 +48,7 @@ public class BattleDialogBox : MonoBehaviour
     /// <summary>
     /// Smoothly animate the dialog on the dialog box
     /// </summary>
-    /// <param name="dialog">The dialog to animate </param>
+    /// <param name="dialog">The text to animate </param>
     public IEnumerator TypeDialog(string dialog)
     {
         dialogText.text = "";
@@ -59,6 +61,10 @@ public class BattleDialogBox : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
     }
+
+    #endregion
+
+    #region Setters
 
     /// <summary>
     /// Show/hide the dialog text
@@ -100,7 +106,7 @@ public class BattleDialogBox : MonoBehaviour
     /// <summary>
     /// Update the move selection UI with the move names
     /// </summary>
-    /// <param name="moves">The list of moves </param>
+    /// <param name="moves">The list of moves to set on the UI</param>
     public void SetMoveNames(List<Move> moves)
     {
         for (int i = 0; i < moveText.Count; ++i)
@@ -112,6 +118,10 @@ public class BattleDialogBox : MonoBehaviour
         }
     }
 
+    #endregion
+
+    #region Update
+
     /// <summary>
     /// Update the action selection UI with the selected action
     /// </summary>
@@ -121,7 +131,7 @@ public class BattleDialogBox : MonoBehaviour
         for (int i = 0; i < actionText.Count; ++i)
         {
             if (i == selectedAction)
-                actionText[i].color = GlobalSettings.I.HighlightedColor;
+                actionText[i].color = GlobalSettings.Instance.HighlightedColor;
             else
                 actionText[i].color = Color.black;
         }
@@ -137,7 +147,7 @@ public class BattleDialogBox : MonoBehaviour
         for (int i = 0; i < moveText.Count; ++i)
         {
             if (i == selectedMove)
-                moveText[i].color = GlobalSettings.I.HighlightedColor;
+                moveText[i].color = GlobalSettings.Instance.HighlightedColor;
             else
                 moveText[i].color = Color.black;
         }
@@ -156,18 +166,20 @@ public class BattleDialogBox : MonoBehaviour
     /// <summary>
     /// Update the choice box
     /// </summary>
-    /// <param name="selectedChoice">The selected choice </param>
+    /// <param name="selectedChoice">Whether or not the "yes" options is selected </param>
     public void UpdateChoiceBox(bool yesSelected)
     {
         if (yesSelected)
         {
-            yesText.color = GlobalSettings.I.HighlightedColor;
+            yesText.color = GlobalSettings.Instance.HighlightedColor;
             noText.color = Color.black;
         }
         else
         {
             yesText.color = Color.black;
-            noText.color = GlobalSettings.I.HighlightedColor;
+            noText.color = GlobalSettings.Instance.HighlightedColor;
         }
     }
+
+    #endregion
 }

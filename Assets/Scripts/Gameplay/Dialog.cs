@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// The Dialog class holds the data for the dialogs in the game
+/// </summary>
 [System.Serializable]
 public class Dialog
 {

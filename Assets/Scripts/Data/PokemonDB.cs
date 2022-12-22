@@ -1,10 +1,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// The PokemonDB class manages all the pokemon
+/// </summary>
 public class PokemonDB
 {
     private static Dictionary<string, PokemonBase> pokemon;
 
+    /// <summary>
+    /// Initialize the Pokemon DB
+    /// </summary>
     public static void Init()
     {
         pokemon = new();
@@ -23,6 +29,10 @@ public class PokemonDB
         }
     }
 
+    /// <summary>
+    /// Get a pokemon by it's name
+    /// </summary>
+    /// <param name="name">The name of the pokemon to get </param>
     public static PokemonBase GetPokemonByName(string name)
     {
         if (!pokemon.ContainsKey(name))

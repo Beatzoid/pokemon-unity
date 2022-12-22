@@ -5,8 +5,14 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// The InventoryUIState is used to keep track of the current state of the inventory UI
+/// </summary>
 public enum InventoryUIState { ItemSelection, PartySelection, Busy };
 
+/// <summary>
+/// The InventoryUI class manages the inventory UI
+/// </summary>
 public class InventoryUI : MonoBehaviour
 {
     [SerializeField] private GameObject itemList;
@@ -48,6 +54,11 @@ public class InventoryUI : MonoBehaviour
         inventory.OnUpdated += UpdateItemList;
     }
 
+    /// <summary>
+    /// Update the InventoryUI
+    /// </summary>
+    /// <param name="onBack"> The action to invoke when the user pressed the back button </param>
+    /// <param name="onItemUsed"> The action to invoke when the user used an item </param>
     public void HandleUpdate(Action onBack, Action onItemUsed = null)
     {
         this.onItemUsed = onItemUsed;
@@ -157,7 +168,7 @@ public class InventoryUI : MonoBehaviour
         for (int i = 0; i < slotUIList.Count; i++)
         {
             if (i == selectedItem)
-                slotUIList[i].NameText.color = GlobalSettings.I.HighlightedColor;
+                slotUIList[i].NameText.color = GlobalSettings.Instance.HighlightedColor;
             else
                 slotUIList[i].NameText.color = Color.black;
         }

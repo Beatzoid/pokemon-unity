@@ -3,6 +3,9 @@ using UnityEngine;
 
 public enum FacingDirection { Up, Down, Left, Right }
 
+/// <summary>
+/// The CharacterAnimator class manages all character animations
+/// </summary>
 public class CharacterAnimator : MonoBehaviour
 {
     [SerializeField] private List<Sprite> walkDownSprites;
@@ -11,12 +14,19 @@ public class CharacterAnimator : MonoBehaviour
     [SerializeField] private List<Sprite> walkRightSprites;
     [SerializeField] private FacingDirection defaultDirection = FacingDirection.Down;
 
-    // Parameters
+    /// <summary> The current moveX of this animator </summary>
     public float MoveX { get; set; }
+    /// <summary> The current moveY of this animator </summary>
     public float MoveY { get; set; }
+    /// <summary> Whether or not the animator is currently in the moving state </summary>
     public bool IsMoving { get; set; }
 
-    // States
+    /// <summary> The default direction of the animator </summary>
+    public FacingDirection DefaultDirection
+    {
+        get => defaultDirection;
+    }
+
     private SpriteAnimator walkDownAnim;
     private SpriteAnimator walkUpAnim;
     private SpriteAnimator walkRightAnim;
@@ -25,6 +35,7 @@ public class CharacterAnimator : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private SpriteAnimator currentAnim;
     private bool wasPrevMoving;
+
 
     public void Start()
     {
@@ -62,6 +73,10 @@ public class CharacterAnimator : MonoBehaviour
         wasPrevMoving = IsMoving;
     }
 
+    /// <summary>
+    /// Set the facing direction for the animator
+    /// </summary>
+    /// <param name="dir">The direction to face </param>
     public void SetFacingDirection(FacingDirection dir)
     {
         switch (dir)
@@ -79,10 +94,5 @@ public class CharacterAnimator : MonoBehaviour
                 MoveY = 1;
                 break;
         }
-    }
-
-    public FacingDirection DefaultDirection
-    {
-        get => defaultDirection;
     }
 }

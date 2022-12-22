@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// The SpriteAnimator class manages all sprite animation logic
 public class SpriteAnimator
 {
     public List<Sprite> Frames { get; }
@@ -11,7 +13,7 @@ public class SpriteAnimator
     private float timer;
 
     /// <summary>
-    /// The SpriteAnimator class handles all sprite animations
+    /// The SpriteAnimator class manages all sprite animation logic
     /// </summary>
     /// <param name="frames">The frames of the animation </param>
     /// <param name="spriteRenderer">The SpriteRenderer to render to </param>
@@ -23,9 +25,6 @@ public class SpriteAnimator
         this.frameRate = frameRate;
     }
 
-    /// <summary>
-    /// Start the animation
-    /// </summary>
     public void Start()
     {
         currentFrame = 1;
@@ -33,9 +32,6 @@ public class SpriteAnimator
         spriteRenderer.sprite = Frames[1];
     }
 
-    /// <summary>
-    /// Ran every frame
-    /// </summary>
     public void HandleUpdate()
     {
         timer += Time.deltaTime;

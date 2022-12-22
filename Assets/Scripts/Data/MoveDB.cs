@@ -1,10 +1,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// The MoveDB class manages all the moves for the pokemon
+/// </summary>
 public class MoveDB
 {
     private static Dictionary<string, MoveBase> moves;
 
+    /// <summary>
+    /// Initialize the MoveDB class
+    /// </summary>
     public static void Init()
     {
         moves = new();
@@ -23,6 +29,10 @@ public class MoveDB
         }
     }
 
+    /// <summary>
+    /// Get a move by it's name
+    /// </summary>
+    /// <param name="name">The name of the move to get </param>
     public static MoveBase GetMoveByName(string name)
     {
         if (!moves.ContainsKey(name))

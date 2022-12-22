@@ -1,5 +1,8 @@
 using System;
 
+/// <summary>
+/// The Condition class manages all pokemon conditions
+/// </summary>
 public class Condition
 {
     public ConditionID Id { get; set; }

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+/// <summary>
+/// The ItemSlot class manages the individual item slots the Inventory
+/// </summary>
 [Serializable]
 public class ItemSlot
 {
@@ -17,6 +20,9 @@ public class ItemSlot
     }
 }
 
+/// <summary>
+/// The Inventory class manages all Inventory-related logic
+/// </summary>
 public class Inventory : MonoBehaviour
 {
     [SerializeField] private List<ItemSlot> slots;
@@ -39,11 +45,21 @@ public class Inventory : MonoBehaviour
         allSlots = new List<List<ItemSlot>>() { slots, pokeballSlots, tmSlots };
     }
 
+    /// <summary>
+    /// Get the List of ItemSlots for the specific category
+    /// </summary>
+    /// <param name="categoryIndex"> The index of the category </param>
     public List<ItemSlot> GetSlotsByCategory(int categoryIndex)
     {
         return allSlots[categoryIndex];
     }
 
+    /// <summary>
+    /// Use an item
+    /// </summary>
+    /// <param name="itemIndex">The index of the item to use </param>
+    /// <param name="selectedPokemon">The selected pokemon to use the item on </param>
+    /// <param name="selectedCategory">The index of the selected category <param>
     public ItemBase UseItem(int itemIndex, Pokemon selectedPokemon, int selectedCategory)
     {
         List<ItemSlot> currentSlots = GetSlotsByCategory(selectedCategory);
@@ -60,6 +76,11 @@ public class Inventory : MonoBehaviour
         return null;
     }
 
+    /// <summary>
+    /// Remove an item from the Inventory
+    /// </summary>
+    /// <param name="item">The item to remove </param>
+    /// <param name="selectedCategory">The index of the selected category <param>
     public void RemoveItem(ItemBase item, int selectedCategory)
     {
         List<ItemSlot> currentSlots = GetSlotsByCategory(selectedCategory);

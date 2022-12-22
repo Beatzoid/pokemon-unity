@@ -8,6 +8,7 @@ public class HPBar : MonoBehaviour
 {
     [SerializeField] private GameObject health;
 
+    /// <summary> Whether or not the HPBar is currently updating
     public bool IsUpdating { get; private set; }
 
     /// <summary>

@@ -27,6 +27,9 @@ public class MoveEffects
     }
 }
 
+/// <summary>
+/// The SecondaryEffects class manages all secondary effects for pokemon moves
+/// </summary>
 [System.Serializable]
 public class SecondaryEffects : MoveEffects
 {

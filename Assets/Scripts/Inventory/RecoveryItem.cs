@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// The RecoveryItem class manages all the recovery item logic
+/// </summary>
 [CreateAssetMenu(menuName = "Items/Create new recovery item")]
 public class RecoveryItem : ItemBase
 {
@@ -19,6 +22,10 @@ public class RecoveryItem : ItemBase
     [SerializeField] private bool revive;
     [SerializeField] private bool maxRevive;
 
+    /// <summary>
+    /// Use the recovery item
+    /// </summary>
+    /// <param name="pokemon">The pokemon to use the item on </param>
     public override bool Use(Pokemon pokemon)
     {
         if (revive || maxRevive)

@@ -3,13 +3,17 @@ using System.Collections;
 using UnityEngine;
 
 /// <summary>
-/// The character class manages all character-related logic
+/// The Character class manages all character-related logic
 /// </summary>
 public class Character : MonoBehaviour
 {
+    /// <summary> The animator for this character </summary>
     public CharacterAnimator Animator { get; private set; }
+    /// <summary> The movement speed of this character </summary>
     public float moveSpeed;
+    /// <summary> Whether or not this character is moving </summary>
     public bool IsMoving { get; private set; }
+    /// <summary> The offset for the Y position of this character </summary>
     public float OffsetY { get; private set; } = 0.3f;
 
     public void Awake()
@@ -18,6 +22,10 @@ public class Character : MonoBehaviour
         SetPositionAndSnapToTile(transform.position);
     }
 
+    /// <summary>
+    /// Snap the position to the tile grid and then set that as the position for this character
+    /// </summary>
+    /// <param name="pos"> The position to set </param>
     public void SetPositionAndSnapToTile(Vector2 pos)
     {
         // 2.3 => Floor => 2 => +0.5f => 2.5f
@@ -28,10 +36,10 @@ public class Character : MonoBehaviour
     }
 
     /// <summary>
-    /// Move the character
+    /// Moves the character
     /// </summary>
     /// <param name="moveVector">The position to move to </param>
-    /// <param name="OnMoveOver">A function to call after the character is done moving </param>
+    /// <param name="OnMoveOver">The event to invoke after the character is done moving </param>
     public IEnumerator Move(Vector2 moveVector, Action OnMoveOver = null)
     {
         Animator.MoveX = Mathf.Clamp(moveVector.x, -1f, 1f);
@@ -60,6 +68,9 @@ public class Character : MonoBehaviour
         OnMoveOver?.Invoke();
     }
 
+    /// <summary>
+    /// Update the character
+    /// </summary>
     public void HandleUpdate()
     {
         Animator.IsMoving = IsMoving;
@@ -82,6 +93,7 @@ public class Character : MonoBehaviour
         else
             Debug.LogError("Error in LookTowards: You can't ask the character to look diagonally");
     }
+
     private bool IsPathClear(Vector3 targetPos)
     {
         Vector3 diff = targetPos - transform.position;
@@ -93,7 +105,7 @@ public class Character : MonoBehaviour
             0f, // Angle
             direction,
             diff.magnitude - 1, // Distance
-            GameLayers.L.SolidObjectsLayer | GameLayers.L.InteractablesLayer | GameLayers.L.PlayerLayer) == true
+            GameLayers.Instance.SolidObjectsLayer | GameLayers.Instance.InteractablesLayer | GameLayers.Instance.PlayerLayer) == true
         )
             return false;
 

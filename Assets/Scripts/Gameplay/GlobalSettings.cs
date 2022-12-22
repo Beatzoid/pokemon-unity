@@ -1,14 +1,17 @@
 using UnityEngine;
 
+/// <summary>
+/// The GlobalSettings class manages all global settings for the game
+/// </summary>
 public class GlobalSettings : MonoBehaviour
 {
     [SerializeField] private Color highlightedColor;
 
-    public static GlobalSettings I { get; private set; }
+    public static GlobalSettings Instance { get; private set; }
 
     public void Awake()
     {
-        I = this;
+        Instance = this;
     }
 
     public Color HighlightedColor => highlightedColor;
