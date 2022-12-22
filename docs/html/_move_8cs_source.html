@@ -17,6 +17,7 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome-theme.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -113,7 +114,7 @@ $(document).ready(function(){initNavTree('_move_8cs_source.html',''); initResiza
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="keyword">public</span> <a class="code hl_class" href="class_move.html">Move</a>(<a class="code hl_class" href="class_move_save_data.html">MoveSaveData</a> saveData)</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    {</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        Base = <a class="code hl_class" href="class_move_d_b.html">MoveDB</a>.GetMoveByName(saveData.name);</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        Base = <a class="code hl_class" href="class_move_d_b.html">MoveDB</a>.<a class="code hl_function" href="class_move_d_b.html#ab959f9ab1040fd22c8ae629a10ef0c5f">GetMoveByName</a>(saveData.name);</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        PP = saveData.pp;</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    }</div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
@@ -136,10 +137,11 @@ $(document).ready(function(){initNavTree('_move_8cs_source.html',''); initResiza
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keyword">public</span> <span class="keywordtype">string</span> name;</div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keyword">public</span> <span class="keywordtype">int</span> pp;</div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>}</div>
-<div class="ttc" id="aclass_move_base_html"><div class="ttname"><a href="class_move_base.html">MoveBase</a></div><div class="ttdoc">The MoveBase class holds all data for a move</div><div class="ttdef"><b>Definition:</b> <a href="_move_base_8cs_source.html#l00018">MoveBase.cs:19</a></div></div>
-<div class="ttc" id="aclass_move_d_b_html"><div class="ttname"><a href="class_move_d_b.html">MoveDB</a></div><div class="ttdef"><b>Definition:</b> <a href="_move_d_b_8cs_source.html#l00004">MoveDB.cs:5</a></div></div>
-<div class="ttc" id="aclass_move_html"><div class="ttname"><a href="class_move.html">Move</a></div><div class="ttdoc">The Move class manages all moves for pokemon</div><div class="ttdef"><b>Definition:</b> <a href="_move_8cs_source.html#l00006">Move.cs:7</a></div></div>
-<div class="ttc" id="aclass_move_html_a5cb54c01b3b19194664dcd00ee1e4387"><div class="ttname"><a href="class_move.html#a5cb54c01b3b19194664dcd00ee1e4387">Move.Move</a></div><div class="ttdeci">Move(MoveBase pBase)</div><div class="ttdoc">The Move class stores info about a pokemon's move</div><div class="ttdef"><b>Definition:</b> <a href="_move_8cs_source.html#l00015">Move.cs:15</a></div></div>
+<div class="ttc" id="aclass_move_base_html"><div class="ttname"><a href="class_move_base.html">MoveBase</a></div><div class="ttdoc">The MoveBase class stores all data for a move</div><div class="ttdef"><b>Definition:</b> <a href="_move_base_8cs_source.html#l00022">MoveBase.cs:23</a></div></div>
+<div class="ttc" id="aclass_move_d_b_html"><div class="ttname"><a href="class_move_d_b.html">MoveDB</a></div><div class="ttdoc">The MoveDB class manages all the moves for the pokemon</div><div class="ttdef"><b>Definition:</b> <a href="_move_d_b_8cs_source.html#l00007">MoveDB.cs:8</a></div></div>
+<div class="ttc" id="aclass_move_d_b_html_ab959f9ab1040fd22c8ae629a10ef0c5f"><div class="ttname"><a href="class_move_d_b.html#ab959f9ab1040fd22c8ae629a10ef0c5f">MoveDB.GetMoveByName</a></div><div class="ttdeci">static MoveBase GetMoveByName(string name)</div><div class="ttdoc">Get a move by it's name</div><div class="ttdef"><b>Definition:</b> <a href="_move_d_b_8cs_source.html#l00036">MoveDB.cs:36</a></div></div>
+<div class="ttc" id="aclass_move_html"><div class="ttname"><a href="class_move.html">Move</a></div><div class="ttdoc">The Move class manages all moves for pokemon and stores info about a pokemon's move</div><div class="ttdef"><b>Definition:</b> <a href="_move_8cs_source.html#l00006">Move.cs:7</a></div></div>
+<div class="ttc" id="aclass_move_html_a5cb54c01b3b19194664dcd00ee1e4387"><div class="ttname"><a href="class_move.html#a5cb54c01b3b19194664dcd00ee1e4387">Move.Move</a></div><div class="ttdeci">Move(MoveBase pBase)</div><div class="ttdoc">The Move class manages all moves for pokemon and stores info about a pokemon's move</div><div class="ttdef"><b>Definition:</b> <a href="_move_8cs_source.html#l00015">Move.cs:15</a></div></div>
 <div class="ttc" id="aclass_move_save_data_html"><div class="ttname"><a href="class_move_save_data.html">MoveSaveData</a></div><div class="ttdef"><b>Definition:</b> <a href="_move_8cs_source.html#l00046">Move.cs:47</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

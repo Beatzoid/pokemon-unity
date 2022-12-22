@@ -17,6 +17,7 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome-theme.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -95,17 +96,18 @@ $(document).ready(function(){initNavTree('_trainer_f_o_v_8cs_source.html',''); i
 <div class="contents">
 <div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="keyword">using </span>UnityEngine;</div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno"><a class="line" href="class_trainer_f_o_v.html">    3</a></span><span class="keyword">public</span> <span class="keyword">class </span><a class="code hl_class" href="class_trainer_f_o_v.html">TrainerFOV</a> : MonoBehaviour, <a class="code hl_interface" href="interface_i_player_triggerable.html">IPlayerTriggerable</a></div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span>{</div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span>    <span class="keyword">public</span> <span class="keywordtype">void</span> OnPlayerTriggered(<a class="code hl_class" href="class_player_controller.html">PlayerController</a> player)</div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>    {</div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>        player.Character.Animator.IsMoving = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>        <a class="code hl_class" href="class_game_controller.html">GameController</a>.Instance.OnEnterTrainersView(GetComponentInParent&lt;TrainerController&gt;());</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    }</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>}</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno"><a class="line" href="class_trainer_f_o_v.html">    6</a></span><span class="keyword">public</span> <span class="keyword">class </span><a class="code hl_class" href="class_trainer_f_o_v.html">TrainerFOV</a> : MonoBehaviour, <a class="code hl_interface" href="interface_i_player_triggerable.html">IPlayerTriggerable</a></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>{</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="class_trainer_f_o_v.html#a3505d104bfec5b73b3de73c1e518d5ef">   11</a></span>    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_trainer_f_o_v.html#a3505d104bfec5b73b3de73c1e518d5ef">OnPlayerTriggered</a>(<a class="code hl_class" href="class_player_controller.html">PlayerController</a> player)</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    {</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>        player.Character.Animator.IsMoving = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>        <a class="code hl_class" href="class_game_controller.html">GameController</a>.Instance.OnEnterTrainersView(GetComponentInParent&lt;TrainerController&gt;());</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    }</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>}</div>
 <div class="ttc" id="aclass_game_controller_html"><div class="ttname"><a href="class_game_controller.html">GameController</a></div><div class="ttdoc">The GameController class manages all core game logic</div><div class="ttdef"><b>Definition:</b> <a href="_game_controller_8cs_source.html#l00008">GameController.cs:9</a></div></div>
-<div class="ttc" id="aclass_player_controller_html"><div class="ttname"><a href="class_player_controller.html">PlayerController</a></div><div class="ttdoc">The PlayerController manages player logic</div><div class="ttdef"><b>Definition:</b> <a href="_player_controller_8cs_source.html#l00008">PlayerController.cs:9</a></div></div>
-<div class="ttc" id="aclass_trainer_f_o_v_html"><div class="ttname"><a href="class_trainer_f_o_v.html">TrainerFOV</a></div><div class="ttdef"><b>Definition:</b> <a href="_trainer_f_o_v_8cs_source.html#l00003">TrainerFOV.cs:4</a></div></div>
+<div class="ttc" id="aclass_player_controller_html"><div class="ttname"><a href="class_player_controller.html">PlayerController</a></div><div class="ttdoc">The PlayerController manages all player-related logic</div><div class="ttdef"><b>Definition:</b> <a href="_player_controller_8cs_source.html#l00015">PlayerController.cs:16</a></div></div>
+<div class="ttc" id="aclass_trainer_f_o_v_html"><div class="ttname"><a href="class_trainer_f_o_v.html">TrainerFOV</a></div><div class="ttdoc">The TrainerFOV class manages the FOV of all trainers</div><div class="ttdef"><b>Definition:</b> <a href="_trainer_f_o_v_8cs_source.html#l00006">TrainerFOV.cs:7</a></div></div>
+<div class="ttc" id="aclass_trainer_f_o_v_html_a3505d104bfec5b73b3de73c1e518d5ef"><div class="ttname"><a href="class_trainer_f_o_v.html#a3505d104bfec5b73b3de73c1e518d5ef">TrainerFOV.OnPlayerTriggered</a></div><div class="ttdeci">void OnPlayerTriggered(PlayerController player)</div><div class="ttdoc">Called whenever the player enters the trainers FOV</div><div class="ttdef"><b>Definition:</b> <a href="_trainer_f_o_v_8cs_source.html#l00011">TrainerFOV.cs:11</a></div></div>
 <div class="ttc" id="ainterface_i_player_triggerable_html"><div class="ttname"><a href="interface_i_player_triggerable.html">IPlayerTriggerable</a></div><div class="ttdef"><b>Definition:</b> <a href="_i_player_triggerable_8cs_source.html#l00001">IPlayerTriggerable.cs:2</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

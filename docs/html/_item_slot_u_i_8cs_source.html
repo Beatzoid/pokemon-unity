@@ -17,6 +17,7 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome-theme.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -96,30 +97,31 @@ $(document).ready(function(){initNavTree('_item_slot_u_i_8cs_source.html',''); i
 <div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="keyword">using </span>UnityEngine;</div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="keyword">using </span>TMPro;</div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno"><a class="line" href="class_item_slot_u_i.html">    4</a></span><span class="keyword">public</span> <span class="keyword">class </span><a class="code hl_class" href="class_item_slot_u_i.html">ItemSlotUI</a> : MonoBehaviour</div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span>{</div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span>    [SerializeField] <span class="keyword">private</span> TextMeshProUGUI nameText;</div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>    [SerializeField] <span class="keyword">private</span> TextMeshProUGUI countText;</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    <span class="keyword">private</span> RectTransform rectTransform;</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    <span class="keyword">public</span> <span class="keywordtype">void</span> Awake()</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    {</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>        rectTransform = GetComponent&lt;RectTransform&gt;();</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    }</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno"><a class="line" href="class_item_slot_u_i.html">    7</a></span><span class="keyword">public</span> <span class="keyword">class </span><a class="code hl_class" href="class_item_slot_u_i.html">ItemSlotUI</a> : MonoBehaviour</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>{</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    [SerializeField] <span class="keyword">private</span> TextMeshProUGUI nameText;</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    [SerializeField] <span class="keyword">private</span> TextMeshProUGUI countText;</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    <span class="keyword">public</span> <span class="keywordtype">float</span> Height =&gt; rectTransform.rect.height;</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <span class="keyword">public</span> TextMeshProUGUI NameText =&gt; nameText;</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="keyword">public</span> TextMeshProUGUI CountText =&gt; countText;</div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="keyword">public</span> <span class="keywordtype">void</span> SetData(<a class="code hl_class" href="class_item_slot.html">ItemSlot</a> itemSlot)</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    {</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        nameText.text = itemSlot.Item.Name;</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        countText.text = $<span class="stringliteral">&quot;X {itemSlot.ItemCount}&quot;</span>;</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    }</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="keyword">public</span> <span class="keywordtype">float</span> Height =&gt; rectTransform.rect.height;</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keyword">public</span> TextMeshProUGUI NameText =&gt; nameText;</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keyword">public</span> TextMeshProUGUI CountText =&gt; countText;</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>}</div>
-<div class="ttc" id="aclass_item_slot_html"><div class="ttname"><a href="class_item_slot.html">ItemSlot</a></div><div class="ttdef"><b>Definition:</b> <a href="_inventory_8cs_source.html#l00007">Inventory.cs:8</a></div></div>
-<div class="ttc" id="aclass_item_slot_u_i_html"><div class="ttname"><a href="class_item_slot_u_i.html">ItemSlotUI</a></div><div class="ttdef"><b>Definition:</b> <a href="_item_slot_u_i_8cs_source.html#l00004">ItemSlotUI.cs:5</a></div></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="keyword">private</span> RectTransform rectTransform;</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="keyword">public</span> <span class="keywordtype">void</span> Awake()</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    {</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        rectTransform = GetComponent&lt;RectTransform&gt;();</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    }</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="class_item_slot_u_i.html#a96ff212e33dbbc0bff1dc1b037275e89">   27</a></span>    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_item_slot_u_i.html#a96ff212e33dbbc0bff1dc1b037275e89">SetData</a>(<a class="code hl_class" href="class_item_slot.html">ItemSlot</a> itemSlot)</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    {</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        nameText.text = itemSlot.Item.Name;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        countText.text = $<span class="stringliteral">&quot;X {itemSlot.ItemCount}&quot;</span>;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    }</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>}</div>
+<div class="ttc" id="aclass_item_slot_html"><div class="ttname"><a href="class_item_slot.html">ItemSlot</a></div><div class="ttdoc">The ItemSlot class manages the individual item slots the Inventory</div><div class="ttdef"><b>Definition:</b> <a href="_inventory_8cs_source.html#l00010">Inventory.cs:11</a></div></div>
+<div class="ttc" id="aclass_item_slot_u_i_html"><div class="ttname"><a href="class_item_slot_u_i.html">ItemSlotUI</a></div><div class="ttdoc">The ItemSlotUI class manages all the ItemSlot UI</div><div class="ttdef"><b>Definition:</b> <a href="_item_slot_u_i_8cs_source.html#l00007">ItemSlotUI.cs:8</a></div></div>
+<div class="ttc" id="aclass_item_slot_u_i_html_a96ff212e33dbbc0bff1dc1b037275e89"><div class="ttname"><a href="class_item_slot_u_i.html#a96ff212e33dbbc0bff1dc1b037275e89">ItemSlotUI.SetData</a></div><div class="ttdeci">void SetData(ItemSlot itemSlot)</div><div class="ttdoc">Set the data for the UI</div><div class="ttdef"><b>Definition:</b> <a href="_item_slot_u_i_8cs_source.html#l00027">ItemSlotUI.cs:27</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

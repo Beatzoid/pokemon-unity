@@ -17,6 +17,7 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome-theme.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -102,98 +103,100 @@ $(document).ready(function(){initNavTree('_party_screen_8cs_source.html',''); in
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>{</div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    [SerializeField] <span class="keyword">private</span> TextMeshProUGUI messageText;</div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <span class="keyword">public</span> <a class="code hl_class" href="class_pokemon.html">Pokemon</a> SelectedMember =&gt; pokemon[selectionIndex];</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="keyword">private</span> <a class="code hl_class" href="class_party_member_u_i.html">PartyMemberUI</a>[] memberSlots;</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="keyword">private</span> List&lt;Pokemon&gt; pokemon;</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <span class="keyword">private</span> <a class="code hl_class" href="class_pokemon_party.html">PokemonParty</a> party;</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="keyword">private</span> <span class="keywordtype">int</span> selectionIndex = 0;</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="class_party_screen.html#a2b896ec62560cade230ff12f892db374">   24</a></span>    <span class="keyword">public</span> BattleState? <a class="code hl_property" href="class_party_screen.html#a2b896ec62560cade230ff12f892db374">CalledFrom</a> { <span class="keyword">get</span>; <span class="keyword">set</span>; }</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="class_party_screen.html#a2212e4e746c7dfc8d10f71f8462b4002">   29</a></span>    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_party_screen.html#a2212e4e746c7dfc8d10f71f8462b4002">Init</a>()</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    {</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        memberSlots = GetComponentsInChildren&lt;PartyMemberUI&gt;(<span class="keyword">true</span>);</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        party = <a class="code hl_class" href="class_pokemon_party.html">PokemonParty</a>.GetPlayerParty();</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        <a class="code hl_function" href="class_party_screen.html#a5051bbd3830720ea15929dcf94a686e4">SetPartyData</a>();</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        party.OnUpdated += <a class="code hl_function" href="class_party_screen.html#a5051bbd3830720ea15929dcf94a686e4">SetPartyData</a>;</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    }</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="class_party_screen.html#a5051bbd3830720ea15929dcf94a686e4">   42</a></span>    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_party_screen.html#a5051bbd3830720ea15929dcf94a686e4">SetPartyData</a>()</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    {</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        pokemon = party.Pokemon;</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; memberSlots.Length; i++)</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        {</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>            <span class="keywordflow">if</span> (i &lt; pokemon.Count)</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>            {</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>                memberSlots[i].gameObject.SetActive(<span class="keyword">true</span>);</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>                memberSlots[i].<a class="code hl_function" href="class_party_member_u_i.html#a16c530b158bdb32b1786b6a2fbdebf9f">Init</a>(pokemon[i]);</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>            }</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>            <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>                memberSlots[i].gameObject.SetActive(<span class="keyword">false</span>);</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        }</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <a class="code hl_function" href="class_party_screen.html#ab0dbaf6625761aa441a7f894f26bd73e">UpdateMemberSelection</a>(selectionIndex);</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        messageText.text = <span class="stringliteral">&quot;Choose a Pokemon&quot;</span>;</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    }</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="class_party_screen.html#a0d4081843eed02cd8a91240028c73d57">   66</a></span>    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_party_screen.html#a0d4081843eed02cd8a91240028c73d57">SetMessageText</a>(<span class="keywordtype">string</span> message)</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    {</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        messageText.text = message;</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    }</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="class_party_screen.html#ab0dbaf6625761aa441a7f894f26bd73e">   75</a></span>    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_party_screen.html#ab0dbaf6625761aa441a7f894f26bd73e">UpdateMemberSelection</a>(<span class="keywordtype">int</span> selectedMemberIndex)</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    {</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; pokemon.Count; i++)</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        {</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>            <span class="keywordflow">if</span> (i == selectedMemberIndex)</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>                memberSlots[i].<a class="code hl_function" href="class_party_member_u_i.html#a3e4dfa9aceeca00568da82c21b808cce">SetSelected</a>(<span class="keyword">true</span>);</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>            <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>                memberSlots[i].<a class="code hl_function" href="class_party_member_u_i.html#a3e4dfa9aceeca00568da82c21b808cce">SetSelected</a>(<span class="keyword">false</span>);</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        }</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    }</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <span class="keyword">public</span> <span class="keywordtype">void</span> HandleUpdate(Action onSelected, Action onBack)</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    {</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        <span class="keywordtype">int</span> prevSelectionIndex = selectionIndex;</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        <span class="keywordflow">if</span> (Input.GetKeyDown(KeyCode.RightArrow))</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>            ++selectionIndex;</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (Input.GetKeyDown(KeyCode.LeftArrow))</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>            --selectionIndex;</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (Input.GetKeyDown(KeyCode.DownArrow))</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>            selectionIndex += 2;</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (Input.GetKeyDown(KeyCode.UpArrow))</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>            selectionIndex -= 2;</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>        selectionIndex = Mathf.Clamp(selectionIndex, 0, pokemon.Count - 1);</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>        <span class="keywordflow">if</span> (selectionIndex != prevSelectionIndex) <a class="code hl_function" href="class_party_screen.html#ab0dbaf6625761aa441a7f894f26bd73e">UpdateMemberSelection</a>(selectionIndex);</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>        <span class="keywordflow">if</span> (Input.GetKeyDown(KeyCode.Return))</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        {</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>            onSelected?.Invoke();</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>        }</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (Input.GetKeyDown(KeyCode.X))</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>        {</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>            onBack?.Invoke();</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>        }</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    }</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>}</div>
-<div class="ttc" id="aclass_party_member_u_i_html"><div class="ttname"><a href="class_party_member_u_i.html">PartyMemberUI</a></div><div class="ttdoc">The PartyMemberUI class manages all the UI in the party member screen</div><div class="ttdef"><b>Definition:</b> <a href="_party_member_u_i_8cs_source.html#l00007">PartyMemberUI.cs:8</a></div></div>
-<div class="ttc" id="aclass_party_member_u_i_html_a16c530b158bdb32b1786b6a2fbdebf9f"><div class="ttname"><a href="class_party_member_u_i.html#a16c530b158bdb32b1786b6a2fbdebf9f">PartyMemberUI.Init</a></div><div class="ttdeci">void Init(Pokemon pokemon)</div><div class="ttdoc">Set the data for the Party Member UI</div><div class="ttdef"><b>Definition:</b> <a href="_party_member_u_i_8cs_source.html#l00019">PartyMemberUI.cs:19</a></div></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="class_party_screen.html#a666b1b44c71794385c1aa4dc133d5cd8">   14</a></span>    <span class="keyword">public</span> <a class="code hl_class" href="class_pokemon.html">Pokemon</a> <a class="code hl_property" href="class_party_screen.html#a666b1b44c71794385c1aa4dc133d5cd8">SelectedMember</a> =&gt; pokemon[selectionIndex];</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="keyword">private</span> <a class="code hl_class" href="class_party_member_u_i.html">PartyMemberUI</a>[] memberSlots;</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <span class="keyword">private</span> List&lt;Pokemon&gt; pokemon;</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="keyword">private</span> <a class="code hl_class" href="class_pokemon_party.html">PokemonParty</a> party;</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="keyword">private</span> <span class="keywordtype">int</span> selectionIndex = 0;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="class_party_screen.html#a2b896ec62560cade230ff12f892db374">   25</a></span>    <span class="keyword">public</span> BattleState? <a class="code hl_property" href="class_party_screen.html#a2b896ec62560cade230ff12f892db374">CalledFrom</a> { <span class="keyword">get</span>; <span class="keyword">set</span>; }</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="class_party_screen.html#a2212e4e746c7dfc8d10f71f8462b4002">   30</a></span>    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_party_screen.html#a2212e4e746c7dfc8d10f71f8462b4002">Init</a>()</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    {</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        memberSlots = GetComponentsInChildren&lt;PartyMemberUI&gt;(<span class="keyword">true</span>);</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        party = <a class="code hl_class" href="class_pokemon_party.html">PokemonParty</a>.GetPlayerParty();</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        <a class="code hl_function" href="class_party_screen.html#a5051bbd3830720ea15929dcf94a686e4">SetPartyData</a>();</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        party.OnUpdated += <a class="code hl_function" href="class_party_screen.html#a5051bbd3830720ea15929dcf94a686e4">SetPartyData</a>;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    }</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="class_party_screen.html#a5051bbd3830720ea15929dcf94a686e4">   43</a></span>    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_party_screen.html#a5051bbd3830720ea15929dcf94a686e4">SetPartyData</a>()</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    {</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        pokemon = party.Pokemon;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; memberSlots.Length; i++)</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        {</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>            <span class="keywordflow">if</span> (i &lt; pokemon.Count)</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>            {</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>                memberSlots[i].gameObject.SetActive(<span class="keyword">true</span>);</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>                memberSlots[i].<a class="code hl_function" href="class_party_member_u_i.html#a16c530b158bdb32b1786b6a2fbdebf9f">Init</a>(pokemon[i]);</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>            }</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>            <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>                memberSlots[i].gameObject.SetActive(<span class="keyword">false</span>);</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        }</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        <a class="code hl_function" href="class_party_screen.html#ab0dbaf6625761aa441a7f894f26bd73e">UpdateMemberSelection</a>(selectionIndex);</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        messageText.text = <span class="stringliteral">&quot;Choose a Pokemon&quot;</span>;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    }</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="class_party_screen.html#a0d4081843eed02cd8a91240028c73d57">   67</a></span>    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_party_screen.html#a0d4081843eed02cd8a91240028c73d57">SetMessageText</a>(<span class="keywordtype">string</span> message)</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    {</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        messageText.text = message;</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    }</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="class_party_screen.html#ab0dbaf6625761aa441a7f894f26bd73e">   76</a></span>    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_party_screen.html#ab0dbaf6625761aa441a7f894f26bd73e">UpdateMemberSelection</a>(<span class="keywordtype">int</span> selectedMemberIndex)</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    {</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; pokemon.Count; i++)</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        {</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>            <span class="keywordflow">if</span> (i == selectedMemberIndex)</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>                memberSlots[i].<a class="code hl_function" href="class_party_member_u_i.html#a3e4dfa9aceeca00568da82c21b808cce">SetSelected</a>(<span class="keyword">true</span>);</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>            <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>                memberSlots[i].<a class="code hl_function" href="class_party_member_u_i.html#a3e4dfa9aceeca00568da82c21b808cce">SetSelected</a>(<span class="keyword">false</span>);</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        }</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    }</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno"><a class="line" href="class_party_screen.html#ac19d7482aed78ef45006612dd460de6d">   92</a></span>    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_party_screen.html#ac19d7482aed78ef45006612dd460de6d">HandleUpdate</a>(Action onSelected, Action onBack)</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    {</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        <span class="keywordtype">int</span> prevSelectionIndex = selectionIndex;</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        <span class="keywordflow">if</span> (Input.GetKeyDown(KeyCode.RightArrow))</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>            ++selectionIndex;</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (Input.GetKeyDown(KeyCode.LeftArrow))</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>            --selectionIndex;</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (Input.GetKeyDown(KeyCode.DownArrow))</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>            selectionIndex += 2;</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (Input.GetKeyDown(KeyCode.UpArrow))</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>            selectionIndex -= 2;</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        selectionIndex = Mathf.Clamp(selectionIndex, 0, pokemon.Count - 1);</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        <span class="keywordflow">if</span> (selectionIndex != prevSelectionIndex) <a class="code hl_function" href="class_party_screen.html#ab0dbaf6625761aa441a7f894f26bd73e">UpdateMemberSelection</a>(selectionIndex);</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>        <span class="keywordflow">if</span> (Input.GetKeyDown(KeyCode.Return))</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>        {</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>            onSelected?.Invoke();</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>        }</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (Input.GetKeyDown(KeyCode.X))</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>        {</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>            onBack?.Invoke();</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>        }</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    }</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>}</div>
+<div class="ttc" id="aclass_party_member_u_i_html"><div class="ttname"><a href="class_party_member_u_i.html">PartyMemberUI</a></div><div class="ttdoc">The PartyMemberUI class manages the individual party members UI in the party screen</div><div class="ttdef"><b>Definition:</b> <a href="_party_member_u_i_8cs_source.html#l00007">PartyMemberUI.cs:8</a></div></div>
+<div class="ttc" id="aclass_party_member_u_i_html_a16c530b158bdb32b1786b6a2fbdebf9f"><div class="ttname"><a href="class_party_member_u_i.html#a16c530b158bdb32b1786b6a2fbdebf9f">PartyMemberUI.Init</a></div><div class="ttdeci">void Init(Pokemon pokemon)</div><div class="ttdoc">Initializes the party member UI with the specified pokemon's data</div><div class="ttdef"><b>Definition:</b> <a href="_party_member_u_i_8cs_source.html#l00019">PartyMemberUI.cs:19</a></div></div>
 <div class="ttc" id="aclass_party_member_u_i_html_a3e4dfa9aceeca00568da82c21b808cce"><div class="ttname"><a href="class_party_member_u_i.html#a3e4dfa9aceeca00568da82c21b808cce">PartyMemberUI.SetSelected</a></div><div class="ttdeci">void SetSelected(bool selected)</div><div class="ttdoc">Set whether the party member is selected (highlighted)</div><div class="ttdef"><b>Definition:</b> <a href="_party_member_u_i_8cs_source.html#l00031">PartyMemberUI.cs:31</a></div></div>
 <div class="ttc" id="aclass_party_screen_html"><div class="ttname"><a href="class_party_screen.html">PartyScreen</a></div><div class="ttdoc">The PartyScreen text manages the core party screen logic</div><div class="ttdef"><b>Definition:</b> <a href="_party_screen_8cs_source.html#l00009">PartyScreen.cs:10</a></div></div>
-<div class="ttc" id="aclass_party_screen_html_a0d4081843eed02cd8a91240028c73d57"><div class="ttname"><a href="class_party_screen.html#a0d4081843eed02cd8a91240028c73d57">PartyScreen.SetMessageText</a></div><div class="ttdeci">void SetMessageText(string message)</div><div class="ttdoc">Set the message text for the party screen</div><div class="ttdef"><b>Definition:</b> <a href="_party_screen_8cs_source.html#l00066">PartyScreen.cs:66</a></div></div>
-<div class="ttc" id="aclass_party_screen_html_a2212e4e746c7dfc8d10f71f8462b4002"><div class="ttname"><a href="class_party_screen.html#a2212e4e746c7dfc8d10f71f8462b4002">PartyScreen.Init</a></div><div class="ttdeci">void Init()</div><div class="ttdoc">Initialize the party screen</div><div class="ttdef"><b>Definition:</b> <a href="_party_screen_8cs_source.html#l00029">PartyScreen.cs:29</a></div></div>
-<div class="ttc" id="aclass_party_screen_html_a2b896ec62560cade230ff12f892db374"><div class="ttname"><a href="class_party_screen.html#a2b896ec62560cade230ff12f892db374">PartyScreen.CalledFrom</a></div><div class="ttdeci">BattleState? CalledFrom</div><div class="ttdoc">Party screen can be called from different states like ActionSelection, RunningTurn,...</div><div class="ttdef"><b>Definition:</b> <a href="_party_screen_8cs_source.html#l00024">PartyScreen.cs:24</a></div></div>
-<div class="ttc" id="aclass_party_screen_html_a5051bbd3830720ea15929dcf94a686e4"><div class="ttname"><a href="class_party_screen.html#a5051bbd3830720ea15929dcf94a686e4">PartyScreen.SetPartyData</a></div><div class="ttdeci">void SetPartyData()</div><div class="ttdoc">Set the data for the party screen</div><div class="ttdef"><b>Definition:</b> <a href="_party_screen_8cs_source.html#l00042">PartyScreen.cs:42</a></div></div>
-<div class="ttc" id="aclass_party_screen_html_ab0dbaf6625761aa441a7f894f26bd73e"><div class="ttname"><a href="class_party_screen.html#ab0dbaf6625761aa441a7f894f26bd73e">PartyScreen.UpdateMemberSelection</a></div><div class="ttdeci">void UpdateMemberSelection(int selectedMemberIndex)</div><div class="ttdoc">Update the member selection UI in the party screen</div><div class="ttdef"><b>Definition:</b> <a href="_party_screen_8cs_source.html#l00075">PartyScreen.cs:75</a></div></div>
+<div class="ttc" id="aclass_party_screen_html_a0d4081843eed02cd8a91240028c73d57"><div class="ttname"><a href="class_party_screen.html#a0d4081843eed02cd8a91240028c73d57">PartyScreen.SetMessageText</a></div><div class="ttdeci">void SetMessageText(string message)</div><div class="ttdoc">Set the message text for the dialog box at the bottom of the party screen</div><div class="ttdef"><b>Definition:</b> <a href="_party_screen_8cs_source.html#l00067">PartyScreen.cs:67</a></div></div>
+<div class="ttc" id="aclass_party_screen_html_a2212e4e746c7dfc8d10f71f8462b4002"><div class="ttname"><a href="class_party_screen.html#a2212e4e746c7dfc8d10f71f8462b4002">PartyScreen.Init</a></div><div class="ttdeci">void Init()</div><div class="ttdoc">Initialize the party screen</div><div class="ttdef"><b>Definition:</b> <a href="_party_screen_8cs_source.html#l00030">PartyScreen.cs:30</a></div></div>
+<div class="ttc" id="aclass_party_screen_html_a2b896ec62560cade230ff12f892db374"><div class="ttname"><a href="class_party_screen.html#a2b896ec62560cade230ff12f892db374">PartyScreen.CalledFrom</a></div><div class="ttdeci">BattleState? CalledFrom</div><div class="ttdoc">Where the party screen was called from (ActionSelection, RunningTurn, etc)</div><div class="ttdef"><b>Definition:</b> <a href="_party_screen_8cs_source.html#l00025">PartyScreen.cs:25</a></div></div>
+<div class="ttc" id="aclass_party_screen_html_a5051bbd3830720ea15929dcf94a686e4"><div class="ttname"><a href="class_party_screen.html#a5051bbd3830720ea15929dcf94a686e4">PartyScreen.SetPartyData</a></div><div class="ttdeci">void SetPartyData()</div><div class="ttdoc">Set the data for the party screen</div><div class="ttdef"><b>Definition:</b> <a href="_party_screen_8cs_source.html#l00043">PartyScreen.cs:43</a></div></div>
+<div class="ttc" id="aclass_party_screen_html_a666b1b44c71794385c1aa4dc133d5cd8"><div class="ttname"><a href="class_party_screen.html#a666b1b44c71794385c1aa4dc133d5cd8">PartyScreen.SelectedMember</a></div><div class="ttdeci">Pokemon SelectedMember</div><div class="ttdoc">The currently selected member in the party screen</div><div class="ttdef"><b>Definition:</b> <a href="_party_screen_8cs_source.html#l00014">PartyScreen.cs:14</a></div></div>
+<div class="ttc" id="aclass_party_screen_html_ab0dbaf6625761aa441a7f894f26bd73e"><div class="ttname"><a href="class_party_screen.html#ab0dbaf6625761aa441a7f894f26bd73e">PartyScreen.UpdateMemberSelection</a></div><div class="ttdeci">void UpdateMemberSelection(int selectedMemberIndex)</div><div class="ttdoc">Update the member selection UI in the party screen</div><div class="ttdef"><b>Definition:</b> <a href="_party_screen_8cs_source.html#l00076">PartyScreen.cs:76</a></div></div>
+<div class="ttc" id="aclass_party_screen_html_ac19d7482aed78ef45006612dd460de6d"><div class="ttname"><a href="class_party_screen.html#ac19d7482aed78ef45006612dd460de6d">PartyScreen.HandleUpdate</a></div><div class="ttdeci">void HandleUpdate(Action onSelected, Action onBack)</div><div class="ttdoc">Updates the party screen</div><div class="ttdef"><b>Definition:</b> <a href="_party_screen_8cs_source.html#l00092">PartyScreen.cs:92</a></div></div>
 <div class="ttc" id="aclass_pokemon_html"><div class="ttname"><a href="class_pokemon.html">Pokemon</a></div><div class="ttdoc">The Pokemon class manages all logic for pokemon</div><div class="ttdef"><b>Definition:</b> <a href="_pokemon_8cs_source.html#l00009">Pokemon.cs:10</a></div></div>
 <div class="ttc" id="aclass_pokemon_party_html"><div class="ttname"><a href="class_pokemon_party.html">PokemonParty</a></div><div class="ttdoc">The PokemonParty class manages all pokemon parties</div><div class="ttdef"><b>Definition:</b> <a href="_pokemon_party_8cs_source.html#l00009">PokemonParty.cs:10</a></div></div>
 </div><!-- fragment --></div><!-- contents -->

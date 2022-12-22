@@ -17,6 +17,7 @@
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen-awesome-theme.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -100,36 +101,37 @@ $(document).ready(function(){initNavTree('_h_p_bar_8cs_source.html',''); initRes
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>{</div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    [SerializeField] <span class="keyword">private</span> GameObject health;</div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    <span class="keyword">public</span> <span class="keywordtype">bool</span> IsUpdating { <span class="keyword">get</span>; <span class="keyword">private</span> <span class="keyword">set</span>; }</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="class_h_p_bar.html#aba22b99c9a2b5b1e2912e004eb785411">   17</a></span>    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_h_p_bar.html#aba22b99c9a2b5b1e2912e004eb785411">SetHP</a>(<span class="keywordtype">float</span> hpNormalized)</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    {</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        <span class="keywordflow">if</span> (<span class="keywordtype">float</span>.IsNaN(hpNormalized)) hpNormalized = 1;</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        health.transform.localScale = <span class="keyword">new</span> Vector3(hpNormalized, 1f);</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    }</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="class_h_p_bar.html#a8411b534b1fc6a7d474a5786381220d4">   27</a></span>    <span class="keyword">public</span> IEnumerator <a class="code hl_function" href="class_h_p_bar.html#a8411b534b1fc6a7d474a5786381220d4">SetHPSmoothly</a>(<span class="keywordtype">float</span> newHp)</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    {</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        IsUpdating = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        <span class="keywordtype">float</span> currentHp = health.transform.localScale.x;</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        <span class="keywordtype">float</span> changeAmount = currentHp - newHp;</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        <span class="keywordflow">while</span> (currentHp - newHp &gt; Mathf.Epsilon)</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        {</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>            currentHp -= changeAmount * Time.deltaTime;</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>            health.transform.localScale = <span class="keyword">new</span> Vector3(currentHp, 1f);</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>            yield <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        }</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        health.transform.localScale = <span class="keyword">new</span> Vector3(newHp, 1f);</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        IsUpdating = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    }</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>}</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="class_h_p_bar.html#a7b8cce7eec74a12a789e4531ca68374f">   12</a></span>    <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code hl_property" href="class_h_p_bar.html#a7b8cce7eec74a12a789e4531ca68374f">IsUpdating</a> { <span class="keyword">get</span>; <span class="keyword">private</span> <span class="keyword">set</span>; }</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="class_h_p_bar.html#aba22b99c9a2b5b1e2912e004eb785411">   18</a></span>    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_h_p_bar.html#aba22b99c9a2b5b1e2912e004eb785411">SetHP</a>(<span class="keywordtype">float</span> hpNormalized)</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    {</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        <span class="comment">// if (float.IsNaN(hpNormalized)) hpNormalized = 1;</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        health.transform.localScale = <span class="keyword">new</span> Vector3(hpNormalized, 1f);</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    }</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="class_h_p_bar.html#a8411b534b1fc6a7d474a5786381220d4">   28</a></span>    <span class="keyword">public</span> IEnumerator <a class="code hl_function" href="class_h_p_bar.html#a8411b534b1fc6a7d474a5786381220d4">SetHPSmoothly</a>(<span class="keywordtype">float</span> newHp)</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    {</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        <a class="code hl_property" href="class_h_p_bar.html#a7b8cce7eec74a12a789e4531ca68374f">IsUpdating</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        <span class="keywordtype">float</span> currentHp = health.transform.localScale.x;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        <span class="keywordtype">float</span> changeAmount = currentHp - newHp;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        <span class="keywordflow">while</span> (currentHp - newHp &gt; Mathf.Epsilon)</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        {</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>            currentHp -= changeAmount * Time.deltaTime;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>            health.transform.localScale = <span class="keyword">new</span> Vector3(currentHp, 1f);</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>            yield <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        }</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        health.transform.localScale = <span class="keyword">new</span> Vector3(newHp, 1f);</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        <a class="code hl_property" href="class_h_p_bar.html#a7b8cce7eec74a12a789e4531ca68374f">IsUpdating</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    }</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>}</div>
 <div class="ttc" id="aclass_h_p_bar_html"><div class="ttname"><a href="class_h_p_bar.html">HPBar</a></div><div class="ttdoc">The HPBar class manages all HPBars</div><div class="ttdef"><b>Definition:</b> <a href="_h_p_bar_8cs_source.html#l00007">HPBar.cs:8</a></div></div>
-<div class="ttc" id="aclass_h_p_bar_html_a8411b534b1fc6a7d474a5786381220d4"><div class="ttname"><a href="class_h_p_bar.html#a8411b534b1fc6a7d474a5786381220d4">HPBar.SetHPSmoothly</a></div><div class="ttdeci">IEnumerator SetHPSmoothly(float newHp)</div><div class="ttdoc">Smoothly set the HP of the HP bar</div><div class="ttdef"><b>Definition:</b> <a href="_h_p_bar_8cs_source.html#l00027">HPBar.cs:27</a></div></div>
-<div class="ttc" id="aclass_h_p_bar_html_aba22b99c9a2b5b1e2912e004eb785411"><div class="ttname"><a href="class_h_p_bar.html#aba22b99c9a2b5b1e2912e004eb785411">HPBar.SetHP</a></div><div class="ttdeci">void SetHP(float hpNormalized)</div><div class="ttdoc">Set the HP of the HP bar</div><div class="ttdef"><b>Definition:</b> <a href="_h_p_bar_8cs_source.html#l00017">HPBar.cs:17</a></div></div>
+<div class="ttc" id="aclass_h_p_bar_html_a7b8cce7eec74a12a789e4531ca68374f"><div class="ttname"><a href="class_h_p_bar.html#a7b8cce7eec74a12a789e4531ca68374f">HPBar.IsUpdating</a></div><div class="ttdeci">bool IsUpdating</div><div class="ttdoc">Whether or not the HPBar is currently updating</div><div class="ttdef"><b>Definition:</b> <a href="_h_p_bar_8cs_source.html#l00012">HPBar.cs:12</a></div></div>
+<div class="ttc" id="aclass_h_p_bar_html_a8411b534b1fc6a7d474a5786381220d4"><div class="ttname"><a href="class_h_p_bar.html#a8411b534b1fc6a7d474a5786381220d4">HPBar.SetHPSmoothly</a></div><div class="ttdeci">IEnumerator SetHPSmoothly(float newHp)</div><div class="ttdoc">Smoothly set the HP of the HP bar</div><div class="ttdef"><b>Definition:</b> <a href="_h_p_bar_8cs_source.html#l00028">HPBar.cs:28</a></div></div>
+<div class="ttc" id="aclass_h_p_bar_html_aba22b99c9a2b5b1e2912e004eb785411"><div class="ttname"><a href="class_h_p_bar.html#aba22b99c9a2b5b1e2912e004eb785411">HPBar.SetHP</a></div><div class="ttdeci">void SetHP(float hpNormalized)</div><div class="ttdoc">Set the HP of the HP bar</div><div class="ttdef"><b>Definition:</b> <a href="_h_p_bar_8cs_source.html#l00018">HPBar.cs:18</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
