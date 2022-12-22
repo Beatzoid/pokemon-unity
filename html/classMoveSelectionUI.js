@@ -1,0 +1,6 @@
+var classMoveSelectionUI =
+[
+    [ "HandleMoveSelection", "classMoveSelectionUI.html#a12a5adc962dd88ed28c29f332f3da348", null ],
+    [ "SetMoveData", "classMoveSelectionUI.html#aa0a7748657b547b9aa871d56acff6da3", null ],
+    [ "UpdateMoveSelection", "classMoveSelectionUI.html#a6e8339f3ea5ef7fc5debc06ee40127c8", null ]
+];

@@ -1,6 +1,0 @@
-<map id="MoveSelectionUI.UpdateMoveSelection" name="MoveSelectionUI.UpdateMoveSelection">
-<area shape="rect" id="node1" title=" " alt="" coords="695,5,895,45"/>
-<area shape="rect" id="node2" href="$class_move_selection_u_i.html#a12a5adc962dd88ed28c29f332f3da348" title=" " alt="" coords="448,5,647,45"/>
-<area shape="rect" id="node3" href="$class_battle_system.html#a73b3bbdcebdfe896f1d5983f8daf485b" title="Update the battle system" alt="" coords="212,13,400,38"/>
-<area shape="rect" id="node4" href="$class_game_controller.html#a5a89277529cadb49af7d55eba3bbf056" title=" " alt="" coords="5,13,164,38"/>
-</map>

@@ -1,4 +1,0 @@
-<map id="Pokemon.Init" name="Pokemon.Init">
-<area shape="rect" id="node1" title="Initializes the Pokemon" alt="" coords="283,5,381,31"/>
-<area shape="rect" id="node2" href="$class_map_area.html#af54c99ae982fe58597ab251dc542a38f" title="Get a wild pokemon from the current map area" alt="" coords="5,5,235,31"/>
-</map>

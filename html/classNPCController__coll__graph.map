@@ -1,0 +1,5 @@
+<map id="NPCController" name="NPCController">
+<area shape="rect" id="node1" title="The NPCController class manages all NPC&#45;related logic" alt="" coords="71,80,177,107"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,5,117,32"/>
+<area shape="rect" id="node3" href="$interfaceInteractable.html" title=" " alt="" coords="141,5,232,32"/>
+</map>

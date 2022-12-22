@@ -1,6 +1,0 @@
-<map id="RecoveryItem.Use" name="RecoveryItem.Use">
-<area shape="rect" id="node1" title=" " alt="" coords="5,55,137,80"/>
-<area shape="rect" id="node2" href="$class_pokemon.html#ab293763ab1e43ba2be1d3160106a56f6" title="Remove all status effects from the pokemon" alt="" coords="207,5,354,31"/>
-<area shape="rect" id="node3" href="$class_pokemon.html#a7f3a0cda3842f18b946e8e172005eaa8" title="Remove all volatile status effects from the pokemon" alt="" coords="185,55,376,80"/>
-<area shape="rect" id="node4" href="$class_pokemon.html#a8b84e27e85ab3918f66f4eae8264bc35" title=" " alt="" coords="205,104,356,129"/>
-</map>

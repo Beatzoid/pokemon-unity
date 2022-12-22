@@ -1,4 +1,0 @@
-<map id="Pokemon.CureVolatileStatus" name="Pokemon.CureVolatileStatus">
-<area shape="rect" id="node1" title="Remove all volatile status effects from the pokemon" alt="" coords="213,5,404,31"/>
-<area shape="rect" id="node2" href="$class_pokemon.html#ae9dba698f61246f12e2a17bd2f2b84ea" title="Resets pokemon" alt="" coords="5,5,165,31"/>
-</map>

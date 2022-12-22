@@ -1,5 +1,0 @@
-<map id="Pokemon.CheckForLevelUp" name="Pokemon.CheckForLevelUp">
-<area shape="rect" id="node1" title="Check if the pokemon should level up and if it should, then level it up" alt="" coords="5,5,192,31"/>
-<area shape="rect" id="node2" href="$class_pokemon_base.html#a8a8c604c2343050f84386341444e08ce" title=" " alt="" coords="240,5,445,31"/>
-<area shape="rect" id="node3" href="$class_pokemon_base.html#a8f1da10ca957076405a2b00335ca22d1" title=" " alt="" coords="493,5,689,31"/>
-</map>

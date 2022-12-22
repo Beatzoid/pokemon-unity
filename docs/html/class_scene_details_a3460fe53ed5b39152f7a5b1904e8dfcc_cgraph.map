@@ -1,6 +1,0 @@
-<map id="SceneDetails.UnloadScene" name="SceneDetails.UnloadScene">
-<area shape="rect" id="node1" title=" " alt="" coords="5,13,188,38"/>
-<area shape="rect" id="node2" href="$class_saving_system.html#a382bc3ca30ba8279beb173d35f3462e0" title=" " alt="" coords="236,5,427,45"/>
-<area shape="rect" id="node3" href="$class_savable_entity.html#a399fb0725a7228641020a5dbb59ccc1e" title=" " alt="" coords="475,13,657,38"/>
-<area shape="rect" id="node4" href="$interface_i_savable.html#a1b44bbc93b2228dfbede0fe86ef2d5ff" title=" " alt="" coords="705,13,860,38"/>
-</map>

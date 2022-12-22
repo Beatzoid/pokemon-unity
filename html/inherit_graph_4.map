@@ -1,0 +1,40 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$interfaceInteractable.html" title=" " alt="" coords="23,19,114,45"/>
+<area shape="rect" id="node2" href="$classNPCController.html" title="The NPCController class manages all NPC&#45;related logic" alt="" coords="213,56,318,83"/>
+<area shape="rect" id="node3" href="$classTrainerController.html" title="The TrainerController class manages all trainer&#45;related logic" alt="" coords="207,5,324,32"/>
+<area shape="rect" id="node4" href="$interfaceIPlayerTriggerable.html" title=" " alt="" coords="5,233,132,260"/>
+<area shape="rect" id="node5" href="$classLocationPortal.html" title="The LocationPortal manages all logic for the location portals" alt="" coords="212,157,319,184"/>
+<area shape="rect" id="node6" href="$classLongGrass.html" title=" " alt="" coords="222,208,309,235"/>
+<area shape="rect" id="node7" href="$classPortal.html" title="The Portal class manages all portal&#45;related logic" alt="" coords="237,259,293,285"/>
+<area shape="rect" id="node8" href="$classTrainerFOV.html" title="The TrainerFOV class manages the FOV of all trainers" alt="" coords="221,309,310,336"/>
+<area shape="rect" id="node9" href="$interfaceISavable.html" title=" " alt="" coords="32,81,105,108"/>
+<area shape="rect" id="node10" href="$classPlayerController.html" title="The PlayerController manages all player&#45;related logic" alt="" coords="209,107,322,133"/>
+<area shape="rect" id="node11" title=" " alt="" coords="13,841,125,868"/>
+<area shape="rect" id="node12" href="$classBattleDialogBox.html" title="The BattleDialogBox manages the dialog boxes in the battle scene" alt="" coords="208,1424,323,1451"/>
+<area shape="rect" id="node13" href="$classBattleHud.html" title="The BattleHud class manages all the HUD&#39;s in the battle scene" alt="" coords="225,1475,305,1501"/>
+<area shape="rect" id="node14" href="$classBattleSystem.html" title="The BattleSystem class manages the core battle scene logic" alt="" coords="215,1525,315,1552"/>
+<area shape="rect" id="node15" href="$classBattleUnit.html" title="The BattleUnit class manages a unit (pokemon) in the battle scene" alt="" coords="225,1576,305,1603"/>
+<area shape="rect" id="node16" href="$classCharacter.html" title="The Character class manages all character&#45;related logic" alt="" coords="226,1627,305,1653"/>
+<area shape="rect" id="node17" href="$classCharacterAnimator.html" title="The CharacterAnimator class manages all character animations" alt="" coords="200,1677,331,1704"/>
+<area shape="rect" id="node18" href="$classDialogManager.html" title="The DialogManager class manages all the dialog&#45;related logic" alt="" coords="211,360,319,387"/>
+<area shape="rect" id="node19" href="$classEssentialObjects.html" title="The EssentialObjects class manages the essential objects gameobject in the scene. This gameobject hol..." alt="" coords="205,411,325,437"/>
+<area shape="rect" id="node20" href="$classEssentialObjectsSpawner.html" title="The EssentialObjectsSpawner manages the initiating of the EssentialObjects gameobject" alt="" coords="180,461,351,488"/>
+<area shape="rect" id="node21" href="$classFader.html" title="The Fader class manages the fading effects in the game" alt="" coords="238,512,293,539"/>
+<area shape="rect" id="node22" href="$classGameController.html" title="The GameController class manages all core game logic" alt="" coords="209,563,321,589"/>
+<area shape="rect" id="node23" href="$classGameLayers.html" title="The game layers class manages all the layers in the game" alt="" coords="217,613,313,640"/>
+<area shape="rect" id="node24" href="$classGlobalSettings.html" title="The GlobalSettings class manages all global settings for the game" alt="" coords="212,664,319,691"/>
+<area shape="rect" id="node25" href="$classHPBar.html" title="The HPBar class manages all HPBars" alt="" coords="235,715,296,741"/>
+<area shape="rect" id="node26" href="$classInventory.html" title="The Inventory class manages all Inventory&#45;related logic" alt="" coords="228,765,303,792"/>
+<area shape="rect" id="node27" href="$classInventoryUI.html" title="The InventoryUI class manages the inventory UI" alt="" coords="221,816,310,843"/>
+<area shape="rect" id="node28" href="$classInvisibleTileMap.html" title=" " alt="" coords="207,867,323,893"/>
+<area shape="rect" id="node29" href="$classItemSlotUI.html" title="The ItemSlotUI class manages all the ItemSlot UI" alt="" coords="223,917,308,944"/>
+<area shape="rect" id="node30" href="$classMapArea.html" title="The MapArea class manages all map&#45;related data" alt="" coords="228,968,303,995"/>
+<area shape="rect" id="node31" href="$classMenuController.html" title="The MenuController class manages all menu&#45;related logic" alt="" coords="211,1019,320,1045"/>
+<area shape="rect" id="node32" href="$classMoveSelectionUI.html" title="The MoveSelectionUI class manages the move selection UI in the battle scene" alt="" coords="204,1069,327,1096"/>
+<area shape="rect" id="node33" href="$classPartyMemberUI.html" title="The PartyMemberUI class manages the individual party members UI in the party screen" alt="" coords="209,1120,322,1147"/>
+<area shape="rect" id="node34" href="$classPartyScreen.html" title="The PartyScreen text manages the core party screen logic" alt="" coords="219,1171,312,1197"/>
+<area shape="rect" id="node35" href="$classPokemonParty.html" title="The PokemonParty class manages all pokemon parties" alt="" coords="212,1221,319,1248"/>
+<area shape="rect" id="node36" href="$classSavableEntity.html" title=" " alt="" coords="215,1272,316,1299"/>
+<area shape="rect" id="node37" href="$classSavingSystem.html" title=" " alt="" coords="212,1323,319,1349"/>
+<area shape="rect" id="node38" href="$classSceneDetails.html" title="The SceneDetails class manages all data and details about a scene" alt="" coords="216,1373,315,1400"/>
+</map>

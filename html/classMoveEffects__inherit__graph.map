@@ -1,0 +1,4 @@
+<map id="MoveEffects" name="MoveEffects">
+<area shape="rect" id="node1" title="The MoveEffects class manages effects for pokemon moves" alt="" coords="19,5,114,32"/>
+<area shape="rect" id="node2" href="$classSecondaryEffects.html" title="The SecondaryEffects class manages all secondary effects for pokemon moves" alt="" coords="5,80,128,107"/>
+</map>

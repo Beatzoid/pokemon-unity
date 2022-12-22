@@ -1,5 +1,0 @@
-<map id="TrainerFOV" name="TrainerFOV">
-<area shape="rect" id="node1" title="The TrainerFOV class manages the FOV of all trainers" alt="" coords="89,79,178,104"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,5,117,31"/>
-<area shape="rect" id="node3" href="$interface_i_player_triggerable.html" title=" " alt="" coords="142,5,269,31"/>
-</map>

@@ -1,5 +1,0 @@
-<map id="CharacterAnimator.Update" name="CharacterAnimator.Update">
-<area shape="rect" id="node1" title=" " alt="" coords="5,31,181,56"/>
-<area shape="rect" id="node2" href="$class_sprite_animator.html#adbb3386815296f7bee00b9d1af4b81d1" title="Ran every frame" alt="" coords="229,5,424,31"/>
-<area shape="rect" id="node3" href="$class_sprite_animator.html#a9b304579afdacc2952f2c331a0c34d9f" title="Start the animation" alt="" coords="257,55,396,80"/>
-</map>

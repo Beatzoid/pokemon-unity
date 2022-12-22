@@ -1,0 +1,6 @@
+<map id="TrainerController" name="TrainerController">
+<area shape="rect" id="node1" title="The TrainerController class manages all trainer&#45;related logic" alt="" coords="128,80,245,107"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,5,117,32"/>
+<area shape="rect" id="node3" href="$interfaceInteractable.html" title=" " alt="" coords="141,5,232,32"/>
+<area shape="rect" id="node4" href="$interfaceISavable.html" title=" " alt="" coords="257,5,330,32"/>
+</map>

@@ -1,4 +1,0 @@
-<map id="BattleHud.UpdateHPAsync" name="BattleHud.UpdateHPAsync">
-<area shape="rect" id="node1" title="Update the HP bar smoothly" alt="" coords="5,5,185,31"/>
-<area shape="rect" id="node2" href="$class_h_p_bar.html#a8411b534b1fc6a7d474a5786381220d4" title="Smoothly set the HP of the HP bar" alt="" coords="233,5,392,31"/>
-</map>

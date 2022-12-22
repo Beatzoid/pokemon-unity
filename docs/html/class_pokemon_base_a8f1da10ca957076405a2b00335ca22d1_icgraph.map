@@ -1,8 +1,0 @@
-<map id="PokemonBase.GetFluctuating" name="PokemonBase.GetFluctuating">
-<area shape="rect" id="node1" title=" " alt="" coords="771,31,967,56"/>
-<area shape="rect" id="node2" href="$class_pokemon_base.html#a8a8c604c2343050f84386341444e08ce" title=" " alt="" coords="517,31,723,56"/>
-<area shape="rect" id="node3" href="$class_pokemon.html#a23eab2dda6c68486f454f3a0de6d692a" title="Check if the pokemon should level up and if it should, then level it up" alt="" coords="283,5,469,31"/>
-<area shape="rect" id="node4" href="$class_pokemon.html#aac29b4b4c365a166c9793ff4f0fa9315" title="Initializes the Pokemon" alt="" coords="327,55,425,80"/>
-<area shape="rect" id="node5" href="$class_map_area.html#af54c99ae982fe58597ab251dc542a38f" title="Get a wild pokemon from the current map area" alt="" coords="5,29,235,55"/>
-<area shape="rect" id="node6" href="$class_pokemon.html#aff9e483c8a23db0e316f2ea68a66e986" title=" " alt="" coords="52,79,188,104"/>
-</map>

@@ -1,7 +1,0 @@
-<map id="IPlayerTriggerable" name="IPlayerTriggerable">
-<area shape="rect" id="node1" title=" " alt="" coords="161,5,288,31"/>
-<area shape="rect" id="node2" href="$class_location_portal.html" title="The LocationPortal manages all logic for the location portals" alt="" coords="5,79,111,104"/>
-<area shape="rect" id="node3" href="$class_long_grass.html" title=" " alt="" coords="135,79,221,104"/>
-<area shape="rect" id="node4" href="$class_portal.html" title="The Portal class manages all portal&#45;related logic" alt="" coords="245,79,301,104"/>
-<area shape="rect" id="node5" href="$class_trainer_f_o_v.html" title="The TrainerFOV class manages the FOV of all trainers" alt="" coords="325,79,415,104"/>
-</map>

@@ -1,6 +1,0 @@
-<map id="PartyScreen.HandleUpdate" name="PartyScreen.HandleUpdate">
-<area shape="rect" id="node1" title=" " alt="" coords="673,81,855,107"/>
-<area shape="rect" id="node2" href="$class_inventory_u_i.html#a1fc1a2fab7a81a1cbf9320e4b72ff76e" title=" " alt="" coords="448,56,625,81"/>
-<area shape="rect" id="node4" href="$class_game_controller.html#a5a89277529cadb49af7d55eba3bbf056" title=" " alt="" coords="5,56,164,81"/>
-<area shape="rect" id="node3" href="$class_battle_system.html#a73b3bbdcebdfe896f1d5983f8daf485b" title="Update the battle system" alt="" coords="212,5,400,31"/>
-</map>

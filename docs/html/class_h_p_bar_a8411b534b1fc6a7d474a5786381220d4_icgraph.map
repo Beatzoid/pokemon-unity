@@ -1,4 +1,0 @@
-<map id="HPBar.SetHPSmoothly" name="HPBar.SetHPSmoothly">
-<area shape="rect" id="node1" title="Smoothly set the HP of the HP bar" alt="" coords="233,5,392,31"/>
-<area shape="rect" id="node2" href="$class_battle_hud.html#afb5f1eac547d204de182f0083fde49b3" title="Update the HP bar smoothly" alt="" coords="5,5,185,31"/>
-</map>

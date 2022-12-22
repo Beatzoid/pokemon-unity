@@ -1,5 +1,0 @@
-<map id="BattleSystem.StartBattle" name="BattleSystem.StartBattle">
-<area shape="rect" id="node1" title="Start a battle" alt="" coords="477,5,644,31"/>
-<area shape="rect" id="node2" href="$class_game_controller.html#ae2ecfd332ee50c1c7a1fdaa5fd022136" title=" " alt="" coords="251,5,429,31"/>
-<area shape="rect" id="node3" href="$class_long_grass.html#a38dfb138d0c943bf96d737cc33389a2a" title=" " alt="" coords="5,5,203,31"/>
-</map>

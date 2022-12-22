@@ -1,5 +1,0 @@
-<map id="LocationPortal" name="LocationPortal">
-<area shape="rect" id="node1" title="The LocationPortal manages all logic for the location portals" alt="" coords="81,79,186,104"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,5,117,31"/>
-<area shape="rect" id="node3" href="$interface_i_player_triggerable.html" title=" " alt="" coords="142,5,269,31"/>
-</map>

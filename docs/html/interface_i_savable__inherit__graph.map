@@ -1,5 +1,0 @@
-<map id="ISavable" name="ISavable">
-<area shape="rect" id="node1" title=" " alt="" coords="97,5,170,31"/>
-<area shape="rect" id="node2" href="$class_player_controller.html" title="The PlayerController manages all player&#45;related logic" alt="" coords="5,79,120,104"/>
-<area shape="rect" id="node3" href="$class_trainer_controller.html" title="The TrainerController class manages all trainer&#45;related logic" alt="" coords="145,79,263,104"/>
-</map>

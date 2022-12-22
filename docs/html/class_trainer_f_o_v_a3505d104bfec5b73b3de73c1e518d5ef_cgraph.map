@@ -1,9 +1,0 @@
-<map id="TrainerFOV.OnPlayerTriggered" name="TrainerFOV.OnPlayerTriggered">
-<area shape="rect" id="node1" title=" " alt="" coords="5,55,204,80"/>
-<area shape="rect" id="node2" href="$class_game_controller.html#a3aca7f99f41a0ab858045d41d3a5450c" title=" " alt="" coords="252,55,492,80"/>
-<area shape="rect" id="node3" href="$class_trainer_controller.html#a09e07e21f53eaf253f7eb2680f5cfa10" title="Trigger a trainer battle" alt="" coords="540,47,701,87"/>
-<area shape="rect" id="node4" href="$class_character.html#a14c8f6d3d6d397d977d70c007414ec08" title="Make the character look towards the target position" alt="" coords="761,5,920,31"/>
-<area shape="rect" id="node5" href="$class_character.html#a5fa1a0dd14517b9ffaa54869d93f511f" title="Move the character" alt="" coords="783,55,898,80"/>
-<area shape="rect" id="node6" href="$class_dialog_manager.html#ada319ebffef8266e2e07f191edc8a201" title="Show dialog in the dialog box" alt="" coords="749,104,932,129"/>
-<area shape="rect" id="node7" href="$class_dialog_manager.html#ad9f246bd9474111b7c10b6dc5224773c" title=" " alt="" coords="980,104,1157,129"/>
-</map>

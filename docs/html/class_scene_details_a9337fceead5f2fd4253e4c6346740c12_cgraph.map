@@ -1,6 +1,0 @@
-<map id="SceneDetails.LoadScene" name="SceneDetails.LoadScene">
-<area shape="rect" id="node1" title=" " alt="" coords="5,13,175,38"/>
-<area shape="rect" id="node2" href="$class_saving_system.html#ac442a333a84b1c69694d56a6453fef09" title=" " alt="" coords="223,5,413,45"/>
-<area shape="rect" id="node3" href="$class_savable_entity.html#aa1196f1f017dafea47de841db1b3aef2" title=" " alt="" coords="461,13,644,38"/>
-<area shape="rect" id="node4" href="$interface_i_savable.html#a64e8a35faff0e4640bf60ffcb6c45fa3" title=" " alt="" coords="692,13,847,38"/>
-</map>

@@ -1,0 +1,5 @@
+<map id="PlayerController" name="PlayerController">
+<area shape="rect" id="node1" title="The PlayerController manages all player&#45;related logic" alt="" coords="63,80,177,107"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,5,117,32"/>
+<area shape="rect" id="node3" href="$interfaceISavable.html" title=" " alt="" coords="142,5,215,32"/>
+</map>

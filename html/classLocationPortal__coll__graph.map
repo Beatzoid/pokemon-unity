@@ -1,0 +1,5 @@
+<map id="LocationPortal" name="LocationPortal">
+<area shape="rect" id="node1" title="The LocationPortal manages all logic for the location portals" alt="" coords="80,80,187,107"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,5,117,32"/>
+<area shape="rect" id="node3" href="$interfaceIPlayerTriggerable.html" title=" " alt="" coords="142,5,269,32"/>
+</map>

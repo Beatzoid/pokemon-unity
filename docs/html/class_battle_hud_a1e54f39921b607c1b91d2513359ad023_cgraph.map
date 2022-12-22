@@ -1,6 +1,0 @@
-<map id="BattleHud.SetData" name="BattleHud.SetData">
-<area shape="rect" id="node1" title="Set the data for the battle HUD" alt="" coords="5,55,137,80"/>
-<area shape="rect" id="node2" href="$class_battle_hud.html#aa19955c5d34ab4ecab9549488e65ffab" title="Set the exp on the exp bar" alt="" coords="205,5,332,31"/>
-<area shape="rect" id="node3" href="$class_h_p_bar.html#aba22b99c9a2b5b1e2912e004eb785411" title="Set the HP of the HP bar" alt="" coords="217,55,320,80"/>
-<area shape="rect" id="node4" href="$class_battle_hud.html#a83c7a9addf55ce5db2ece648c076cdb3" title=" " alt="" coords="185,104,352,129"/>
-</map>

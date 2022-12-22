@@ -1,7 +1,0 @@
-<map id="Character.HandleUpdate" name="Character.HandleUpdate">
-<area shape="rect" id="node1" title=" " alt="" coords="461,55,627,80"/>
-<area shape="rect" id="node2" href="$class_player_controller.html#aa1ee6751a1d2fc86dd32069925b05f7e" title=" " alt="" coords="212,5,413,31"/>
-<area shape="rect" id="node4" href="$class_n_p_c_controller.html#a25b4525d955f0ee00a4315f9c1f8bce7" title=" " alt="" coords="237,55,389,80"/>
-<area shape="rect" id="node5" href="$class_trainer_controller.html#a1645a25af157e238950ecf128f808c9a" title=" " alt="" coords="231,104,394,129"/>
-<area shape="rect" id="node3" href="$class_game_controller.html#a5a89277529cadb49af7d55eba3bbf056" title=" " alt="" coords="5,5,164,31"/>
-</map>

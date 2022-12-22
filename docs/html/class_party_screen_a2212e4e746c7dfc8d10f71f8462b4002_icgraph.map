@@ -1,6 +1,0 @@
-<map id="PartyScreen.Init" name="PartyScreen.Init">
-<area shape="rect" id="node1" title="Initialize the party screen" alt="" coords="448,35,564,60"/>
-<area shape="rect" id="node2" href="$class_battle_system.html#a106ea7579bf0b7756b9b6ed9ae40d38c" title="Setup the battle by setting up the player and enemy units, setting the HUD stats, and showing a messa..." alt="" coords="227,35,400,60"/>
-<area shape="rect" id="node3" href="$class_battle_system.html#afd9d4875e817129ddcf5dc091f43364e" title="Start a battle" alt="" coords="9,5,175,31"/>
-<area shape="rect" id="node4" href="$class_battle_system.html#ae335d38feacdeaa3aa30df5bb354ac4d" title="Start a trainer battle" alt="" coords="5,55,179,95"/>
-</map>

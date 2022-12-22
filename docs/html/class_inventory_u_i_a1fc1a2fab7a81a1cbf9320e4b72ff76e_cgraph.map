@@ -1,7 +1,0 @@
-<map id="InventoryUI.HandleUpdate" name="InventoryUI.HandleUpdate">
-<area shape="rect" id="node1" title=" " alt="" coords="5,31,183,56"/>
-<area shape="rect" id="node2" href="$class_inventory.html#a2b5afbff029c6d3b3cf8b971c40dcbf4" title=" " alt="" coords="231,5,429,31"/>
-<area shape="rect" id="node3" href="$class_party_screen.html#ac19d7482aed78ef45006612dd460de6d" title=" " alt="" coords="239,55,421,80"/>
-<area shape="rect" id="node4" href="$class_party_screen.html#ab0dbaf6625761aa441a7f894f26bd73e" title="Update the member selection UI in the party screen" alt="" coords="477,47,664,87"/>
-<area shape="rect" id="node5" href="$class_party_member_u_i.html#a3e4dfa9aceeca00568da82c21b808cce" title="Set whether the party member is selected (highlighted)" alt="" coords="712,55,901,80"/>
-</map>

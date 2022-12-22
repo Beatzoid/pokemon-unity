@@ -1,0 +1,8 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" title=" " alt="" coords="5,81,124,108"/>
+<area shape="rect" id="node2" href="$classItemBase.html" title="The ItemBase class manage the basic data for all items" alt="" coords="186,31,265,57"/>
+<area shape="rect" id="node5" href="$classMoveBase.html" title="The MoveBase class stores all data for a move" alt="" coords="183,81,267,108"/>
+<area shape="rect" id="node6" href="$classPokemonBase.html" title="The PokemonBase class holds all data for all pokemon" alt="" coords="172,132,279,159"/>
+<area shape="rect" id="node3" href="$classPokeballItem.html" title="The PokeballItem manages all pokeball&#45;related logic" alt="" coords="329,5,427,32"/>
+<area shape="rect" id="node4" href="$classRecoveryItem.html" title="The RecoveryItem class manages all the recovery item logic" alt="" coords="327,56,429,83"/>
+</map>

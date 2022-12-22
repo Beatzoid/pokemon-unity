@@ -1,0 +1,4 @@
+<map id="EssentialObjectsSpawner" name="EssentialObjectsSpawner">
+<area shape="rect" id="node1" title="The EssentialObjectsSpawner manages the initiating of the EssentialObjects gameobject" alt="" coords="5,80,176,107"/>
+<area shape="rect" id="node2" title=" " alt="" coords="35,5,147,32"/>
+</map>

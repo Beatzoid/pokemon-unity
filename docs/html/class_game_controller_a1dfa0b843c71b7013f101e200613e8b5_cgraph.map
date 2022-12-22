@@ -1,6 +1,0 @@
-<map id="GameController.Awake" name="GameController.Awake">
-<area shape="rect" id="node1" title=" " alt="" coords="5,55,161,80"/>
-<area shape="rect" id="node2" href="$class_conditions_d_b.html#a9b7ce5d2bc1a3641812a05d248b89803" title="Setup the Conditions DB" alt="" coords="209,5,335,31"/>
-<area shape="rect" id="node3" href="$class_move_d_b.html#ae634227b78a7a8ff434a87dc2da2c199" title=" " alt="" coords="225,55,319,80"/>
-<area shape="rect" id="node4" href="$class_pokemon_d_b.html#ae6038822ca25d520e386dd2bbd43e432" title=" " alt="" coords="213,104,331,129"/>
-</map>

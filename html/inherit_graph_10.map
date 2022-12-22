@@ -1,0 +1,4 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classMoveEffects.html" title="The MoveEffects class manages effects for pokemon moves" alt="" coords="5,5,100,32"/>
+<area shape="rect" id="node2" href="$classSecondaryEffects.html" title="The SecondaryEffects class manages all secondary effects for pokemon moves" alt="" coords="148,5,271,32"/>
+</map>

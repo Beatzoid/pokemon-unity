@@ -1,6 +1,0 @@
-<map id="TrainerController.TriggerTrainerBattle" name="TrainerController.TriggerTrainerBattle">
-<area shape="rect" id="node1" title="Trigger a trainer battle" alt="" coords="5,47,167,87"/>
-<area shape="rect" id="node2" href="$class_character.html#a14c8f6d3d6d397d977d70c007414ec08" title="Make the character look towards the target position" alt="" coords="227,5,385,31"/>
-<area shape="rect" id="node3" href="$class_character.html#a5fa1a0dd14517b9ffaa54869d93f511f" title="Move the character" alt="" coords="249,55,363,80"/>
-<area shape="rect" id="node4" href="$class_dialog_manager.html#ada319ebffef8266e2e07f191edc8a201" title="Show dialog in the dialog box" alt="" coords="215,104,397,129"/>
-</map>

@@ -1,4 +1,0 @@
-<map id="Character.Move" name="Character.Move">
-<area shape="rect" id="node1" title="Move the character" alt="" coords="215,13,329,38"/>
-<area shape="rect" id="node2" href="$class_trainer_controller.html#a09e07e21f53eaf253f7eb2680f5cfa10" title="Trigger a trainer battle" alt="" coords="5,5,167,45"/>
-</map>
