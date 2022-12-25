@@ -386,8 +386,6 @@ public class Pokemon
         return statVal;
     }
 
-
-
     #endregion
 }
 

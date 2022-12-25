@@ -410,8 +410,6 @@ public class BattleSystem : MonoBehaviour
         dialogBox.SetMoveSelectorActive(true);
     }
 
-
-
     #endregion
 
     #region Events
@@ -787,7 +785,6 @@ public class BattleSystem : MonoBehaviour
 
         if (isTrainerBattle)
         {
-
             yield return dialogBox.TypeDialog("You can't catch the trainer's pokemon!");
             state = BattleState.RunningTurn;
             yield break;

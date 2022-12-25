@@ -36,7 +36,6 @@ public class CharacterAnimator : MonoBehaviour
     private SpriteAnimator currentAnim;
     private bool wasPrevMoving;
 
-
     public void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();

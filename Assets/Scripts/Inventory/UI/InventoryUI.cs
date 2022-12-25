@@ -9,7 +9,7 @@ using UnityEngine.UI;
 /// <summary>
 /// The InventoryUIState is used to keep track of the current state of the inventory UI
 /// </summary>
-public enum InventoryUIState { ItemSelection, PartySelection, MoveToForget, Busy };
+public enum InventoryUIState { ItemSelection, PartySelection, MoveToForget, Busy }
 
 /// <summary>
 /// The InventoryUI class manages the inventory UI
@@ -172,7 +172,6 @@ public class InventoryUI : MonoBehaviour
             ClosePartyScreen();
             yield break;
         }
-
 
         ItemBase usedItem = inventory.UseItem(selectedItem, partyScreen.SelectedMember, selectedCategory);
 

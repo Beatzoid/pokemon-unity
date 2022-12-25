@@ -33,7 +33,6 @@ public class Move
     {
         MoveSaveData saveData = new MoveSaveData()
         {
-
             name = Base.MoveName,
             pp = PP,
         };
