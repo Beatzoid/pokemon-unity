@@ -72,7 +72,8 @@ public class DialogManager : MonoBehaviour
     /// </summary>
     /// <param name="text">The text to show </param>
     /// <param name="waitForInput">Whether or not to wait for an input before clearing the dialog box </param>
-    public IEnumerator ShowDialogText(string text, bool waitForInput = true)
+    /// <param name="autoClose"> Whether or not to close the dialog after it's finished </param>
+    public IEnumerator ShowDialogText(string text, bool waitForInput = true, bool autoClose = true)
     {
         IsShowing = true;
         dialogBox.SetActive(true);
@@ -81,8 +82,8 @@ public class DialogManager : MonoBehaviour
         if (waitForInput)
             yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
 
-        dialogBox.SetActive(false);
-        IsShowing = false;
+        if (autoClose)
+            CloseDialog();
     }
 
     /// <summary>
@@ -100,5 +101,11 @@ public class DialogManager : MonoBehaviour
             yield return new WaitForSeconds(1f / lettersPerSecond);
         }
         isTyping = false;
+    }
+
+    public void CloseDialog()
+    {
+        dialogBox.SetActive(false);
+        IsShowing = false;
     }
 }

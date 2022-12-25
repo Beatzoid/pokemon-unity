@@ -8,6 +8,7 @@ public class PartyMemberUI : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI nameText;
     [SerializeField] private TextMeshProUGUI levelText;
+    [SerializeField] private TextMeshProUGUI messageText;
     [SerializeField] private HPBar hpBar;
 
     private Pokemon _pokemon;
@@ -20,6 +21,7 @@ public class PartyMemberUI : MonoBehaviour
     {
         _pokemon = pokemon;
         UpdateData();
+        SetMessageText("");
 
         _pokemon.OnHPChanged += UpdateData;
     }
@@ -34,6 +36,15 @@ public class PartyMemberUI : MonoBehaviour
             nameText.color = GlobalSettings.Instance.HighlightedColor;
         else
             nameText.color = Color.black;
+    }
+
+    /// <summary>
+    /// Set the text of the message to display below the party members UI in the party screen
+    /// </summary>
+    /// <param name="message">The message to display </param>
+    public void SetMessageText(string message)
+    {
+        messageText.text = message;
     }
 
     private void UpdateData()

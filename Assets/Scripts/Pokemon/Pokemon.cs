@@ -331,11 +331,16 @@ public class Pokemon
         return Base.LearnableMoves.Where((move) => move.Level == level).FirstOrDefault();
     }
 
-    public void LearnMove(LearnableMove moveToLearn)
+    public void LearnMove(MoveBase moveToLearn)
     {
         if (Moves.Count > PokemonBase.MaxNumOfMoves) return;
 
-        Moves.Add(new Move(moveToLearn.MoveBase));
+        Moves.Add(new Move(moveToLearn));
+    }
+
+    public bool HasMove(MoveBase moveToCheck)
+    {
+        return Moves.Exists((move) => move.Base == moveToCheck);
     }
 
     private void ResetStatBoosts()
@@ -380,6 +385,8 @@ public class Pokemon
 
         return statVal;
     }
+
+
 
     #endregion
 }

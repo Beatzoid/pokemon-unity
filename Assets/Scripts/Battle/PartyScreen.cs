@@ -38,6 +38,38 @@ public class PartyScreen : MonoBehaviour
     }
 
     /// <summary>
+    /// Updates the party screen
+    /// </summary>
+    /// <param name="onSelected">The action to invoke when a member on the party screen is selected </param>
+    /// <param name="onBack"> The action to invoke when the player pressed the back button </param>
+    public void HandleUpdate(Action onSelected, Action onBack)
+    {
+        int prevSelectionIndex = selectionIndex;
+
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+            ++selectionIndex;
+        else if (Input.GetKeyDown(KeyCode.LeftArrow))
+            --selectionIndex;
+        else if (Input.GetKeyDown(KeyCode.DownArrow))
+            selectionIndex += 2;
+        else if (Input.GetKeyDown(KeyCode.UpArrow))
+            selectionIndex -= 2;
+
+        selectionIndex = Mathf.Clamp(selectionIndex, 0, pokemon.Count - 1);
+
+        if (selectionIndex != prevSelectionIndex) UpdateMemberSelection(selectionIndex);
+
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            onSelected?.Invoke();
+        }
+        else if (Input.GetKeyDown(KeyCode.X))
+        {
+            onBack?.Invoke();
+        }
+    }
+
+    /// <summary>
     /// Set the data for the party screen
     /// </summary>
     public void SetPartyData()
@@ -85,34 +117,26 @@ public class PartyScreen : MonoBehaviour
     }
 
     /// <summary>
-    /// Updates the party screen
+    /// Show if the TM is usable or not in the party member's party screen slot
     /// </summary>
-    /// <param name="onSelected">The action to invoke when a member on the party screen is selected </param>
-    /// <param name="onBack"> The action to invoke when the player pressed the back button </param>
-    public void HandleUpdate(Action onSelected, Action onBack)
+    /// <param name="tmItem">The TM item to show </param>
+    public void ShowIfTMUsable(TMItem tmItem)
     {
-        int prevSelectionIndex = selectionIndex;
-
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-            ++selectionIndex;
-        else if (Input.GetKeyDown(KeyCode.LeftArrow))
-            --selectionIndex;
-        else if (Input.GetKeyDown(KeyCode.DownArrow))
-            selectionIndex += 2;
-        else if (Input.GetKeyDown(KeyCode.UpArrow))
-            selectionIndex -= 2;
-
-        selectionIndex = Mathf.Clamp(selectionIndex, 0, pokemon.Count - 1);
-
-        if (selectionIndex != prevSelectionIndex) UpdateMemberSelection(selectionIndex);
-
-        if (Input.GetKeyDown(KeyCode.Return))
+        for (int i = 0; i < pokemon.Count; i++)
         {
-            onSelected?.Invoke();
+            string message = tmItem.CanBeTaught(pokemon[i]) ? "Able" : "Not able";
+            memberSlots[i].SetMessageText(message);
         }
-        else if (Input.GetKeyDown(KeyCode.X))
+    }
+
+    /// <summary>
+    /// Clear the member slot text in the party screen
+    /// </summary>
+    public void ClearMemberSlotMessages()
+    {
+        for (int i = 0; i < pokemon.Count; i++)
         {
-            onBack?.Invoke();
+            memberSlots[i].SetMessageText("");
         }
     }
 }

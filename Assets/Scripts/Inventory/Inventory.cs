@@ -37,6 +37,7 @@ public class Inventory : MonoBehaviour
     [SerializeField] private List<ItemSlot> pokeballSlots;
     [SerializeField] private List<ItemSlot> tmSlots;
 
+    /// <summary> Fired whenever the inventory is updated </summary>
     public event Action OnUpdated;
 
     public static List<string> ItemCategories { get; set; } = new List<string>()
@@ -63,6 +64,18 @@ public class Inventory : MonoBehaviour
     }
 
     /// <summary>
+    /// Gets an inventory item using the item and category index
+    /// </summary>
+    /// <param name="itemIndex"> The index of the item </param>
+    /// <param name="categoryIndex"> The index of the category of the item </param>
+    public ItemBase GetItem(int itemIndex, int categoryIndex)
+    {
+        List<ItemSlot> currentSlots = GetSlotsByCategory(categoryIndex);
+
+        return currentSlots[itemIndex].Item;
+    }
+
+    /// <summary>
     /// Use an item
     /// </summary>
     /// <param name="itemIndex">The index of the item to use </param>
@@ -70,14 +83,15 @@ public class Inventory : MonoBehaviour
     /// <param name="selectedCategory">The index of the selected category <param>
     public ItemBase UseItem(int itemIndex, Pokemon selectedPokemon, int selectedCategory)
     {
-        List<ItemSlot> currentSlots = GetSlotsByCategory(selectedCategory);
+        ItemBase item = GetItem(itemIndex, selectedCategory);
 
-        ItemBase item = currentSlots[itemIndex].Item;
         bool itemUsed = item.Use(selectedPokemon);
 
         if (itemUsed)
         {
-            RemoveItem(item, selectedCategory);
+            if (!item.IsReusable)
+                RemoveItem(item, selectedCategory);
+
             return item;
         }
 

@@ -351,7 +351,13 @@ MonoBehaviour:
     itemCount: 4
   - item: {fileID: 11400000, guid: c95c0110cd87842afa1c9e61f8e9ad7d, type: 2}
     itemCount: 2
-  tmSlots: []
+  tmSlots:
+  - item: {fileID: 11400000, guid: d300003b39e7e4992beeef82be420fa7, type: 2}
+    itemCount: 2
+  - item: {fileID: 11400000, guid: 3d2f5cf8103124adc8724e1e174cccb6, type: 2}
+    itemCount: 2
+  - item: {fileID: 11400000, guid: 760f6fb0c19124ad68d8096eba1aa84a, type: 2}
+    itemCount: 1
 --- !u!114 &497093016847531237
 MonoBehaviour:
   m_ObjectHideFlags: 0

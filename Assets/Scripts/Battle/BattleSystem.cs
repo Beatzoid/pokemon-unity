@@ -382,18 +382,6 @@ public class BattleSystem : MonoBehaviour
 
     #region Selection
 
-    private IEnumerator ChooseMoveToForget(Pokemon pokemon, MoveBase newMove)
-    {
-        state = BattleState.Busy;
-        yield return dialogBox.TypeDialog($"Choose a move you want to forget");
-        moveToLearn = newMove;
-
-        moveSelectionUI.gameObject.SetActive(true);
-        moveSelectionUI.SetMoveData(pokemon.Moves.Select(x => x.Base).ToList(), newMove);
-
-        state = BattleState.MoveToForget;
-    }
-
     private void OpenBag()
     {
         state = BattleState.Bag;
@@ -724,6 +712,18 @@ public class BattleSystem : MonoBehaviour
 
     #region Pokemon
 
+    private IEnumerator ChooseMoveToForget(Pokemon pokemon, MoveBase newMove)
+    {
+        state = BattleState.Busy;
+        yield return dialogBox.TypeDialog($"Choose a move you want to forget");
+        moveToLearn = newMove;
+
+        moveSelectionUI.gameObject.SetActive(true);
+        moveSelectionUI.SetMoveData(pokemon.Moves.Select(x => x.Base).ToList(), newMove);
+
+        state = BattleState.MoveToForget;
+    }
+
     private IEnumerator HandlePokemonFainted(BattleUnit faintedUnit)
     {
         yield return dialogBox.TypeDialog($"{faintedUnit.Pokemon.Base.Name} Fainted");
@@ -758,7 +758,7 @@ public class BattleSystem : MonoBehaviour
                 {
                     if (playerUnit.Pokemon.Moves.Count < PokemonBase.MaxNumOfMoves)
                     {
-                        playerUnit.Pokemon.LearnMove(newMove);
+                        playerUnit.Pokemon.LearnMove(newMove.MoveBase);
                         yield return dialogBox.TypeDialog($"{playerUnit.Pokemon.Base.Name} learned {newMove.MoveBase.MoveName}!");
                         dialogBox.SetMoveNames(playerUnit.Pokemon.Moves);
                     }
