@@ -9,7 +9,6 @@ public enum MoveCategory
     Physical, Special, Status
 }
 
-
 public enum MoveTarget
 {
     enemy, self

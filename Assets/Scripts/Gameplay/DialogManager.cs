@@ -22,10 +22,7 @@ public class DialogManager : MonoBehaviour
         Instance = this;
     }
 
-    public void HandleUpdate()
-    {
-
-    }
+    public void HandleUpdate() { }
 
     /// <summary>
     /// Show dialog in the dialog box
