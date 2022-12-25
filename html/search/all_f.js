@@ -29,7 +29,7 @@ var searchData=
   ['setup_26',['Setup',['../classBattleUnit.html#a476b1c2ae39178c48403654875b049ff',1,'BattleUnit']]],
   ['setupbattle_27',['SetupBattle',['../classBattleSystem.html#a106ea7579bf0b7756b9b6ed9ae40d38c',1,'BattleSystem']]],
   ['setvolatilestatus_28',['SetVolatileStatus',['../classPokemon.html#a68c420edad3db63938e73bc3bbde5054',1,'Pokemon']]],
-  ['showdialog_29',['ShowDialog',['../classDialogManager.html#ada319ebffef8266e2e07f191edc8a201',1,'DialogManager']]],
+  ['showdialog_29',['ShowDialog',['../classDialogManager.html#ad36b837a6a4bf84645d49c388fa95ac3',1,'DialogManager']]],
   ['showdialogtext_30',['ShowDialogText',['../classDialogManager.html#a1ebbf3e006412b460c2153be7882394c',1,'DialogManager']]],
   ['showiftmusable_31',['ShowIfTMUsable',['../classPartyScreen.html#af5ba2ae619289298eda1dee95fa155a4',1,'PartyScreen']]],
   ['sprite_32',['Sprite',['../classTrainerController.html#a0d799a412ba9651046eb590f776f8b9c',1,'TrainerController.Sprite()'],['../classPlayerController.html#a94ba3b0cbd7ba2d782a80937ed7d4aee',1,'PlayerController.Sprite()']]],
