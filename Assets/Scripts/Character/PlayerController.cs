@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using UnityEngine;
 
@@ -57,7 +58,7 @@ public class PlayerController : MonoBehaviour, ISavable
 
         Character.HandleUpdate();
 
-        if (Input.GetKeyDown(KeyCode.Return)) Interact();
+        if (Input.GetKeyDown(KeyCode.Return)) StartCoroutine(Interact());
     }
 
     public object CaptureState()
@@ -98,7 +99,8 @@ public class PlayerController : MonoBehaviour, ISavable
             }
         }
     }
-    private void Interact()
+
+    private IEnumerator Interact()
     {
         Vector3 facingDir = new Vector3(Character.Animator.MoveX, Character.Animator.MoveY);
         // Position of the tile that the player is facing
@@ -109,7 +111,7 @@ public class PlayerController : MonoBehaviour, ISavable
         Collider2D collider = Physics2D.OverlapCircle(interactPos, 0.3f, GameLayers.Instance.InteractablesLayer);
         if (collider != null)
         {
-            collider.GetComponent<Interactable>()?.Interact(transform);
+            yield return collider.GetComponent<Interactable>()?.Interact(transform);
         }
     }
 }

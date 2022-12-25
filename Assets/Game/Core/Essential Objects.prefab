@@ -4459,6 +4459,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Party Screen
       objectReference: {fileID: 0}
+    - target: {fileID: 2255715464397947395, guid: 7ab1a56e19d924509b981d6a20ae330d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ab1a56e19d924509b981d6a20ae330d, type: 3}

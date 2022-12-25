@@ -167,7 +167,7 @@ public class InventoryUI : MonoBehaviour
         // With TM items, even if the pokemon didn't learn the move this code still gets executed
         // so if this check wasn't here the item would keep getting used and the item count
         // would go into the negatives
-        if (!usedTM)
+        if (!usedTM && inventory.GetItem(selectedItem, selectedCategory) is TMItem)
         {
             ClosePartyScreen();
             yield break;
@@ -185,7 +185,7 @@ public class InventoryUI : MonoBehaviour
         }
         else
         {
-            if (usedItem is RecoveryItem)
+            if (selectedCategory == (int)ItemCategory.Items)
                 yield return DialogManager.Instance.ShowDialogText($"It won't have any effect!");
         }
 

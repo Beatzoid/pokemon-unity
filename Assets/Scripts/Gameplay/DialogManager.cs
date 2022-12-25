@@ -17,11 +17,6 @@ public class DialogManager : MonoBehaviour
     public event Action OnCloseDialog;
     public bool IsShowing { get; private set; }
 
-    private int currentLineIndex = 0;
-    private Dialog dialog;
-    private bool isTyping;
-    private Action OnDialogFinished;
-
     public void Awake()
     {
         Instance = this;
@@ -29,42 +24,32 @@ public class DialogManager : MonoBehaviour
 
     public void HandleUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.Return) && !isTyping)
-        {
-            ++currentLineIndex;
-            if (currentLineIndex < dialog.Lines.Count)
-            {
-                StartCoroutine(TypeDialog(dialog.Lines[currentLineIndex]));
-            }
-            else
-            {
-                currentLineIndex = 0;
-                IsShowing = false;
-                dialogBox.SetActive(false);
 
-                OnDialogFinished?.Invoke();
-                OnCloseDialog?.Invoke();
-            }
-        }
     }
 
     /// <summary>
     /// Show dialog in the dialog box
     /// </summary>
     /// <param name="dialog">The dialog to show </param>
-    /// <param name="onFinished">A function to run after the dialog is finished </param>
-    public IEnumerator ShowDialog(Dialog dialog, Action onFinished = null)
+    public IEnumerator ShowDialog(Dialog dialog)
     {
         yield return new WaitForEndOfFrame();
 
         OnShowDialog.Invoke();
 
         IsShowing = true;
-        this.dialog = dialog;
-        OnDialogFinished = onFinished;
 
         dialogBox.SetActive(true);
-        StartCoroutine(TypeDialog(dialog.Lines[0]));
+
+        foreach (string line in dialog.Lines)
+        {
+            yield return TypeDialog(line);
+            yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Return));
+        }
+
+        dialogBox.SetActive(false);
+        IsShowing = false;
+        OnCloseDialog?.Invoke();
     }
 
     /// <summary>
@@ -92,7 +77,6 @@ public class DialogManager : MonoBehaviour
     /// <param name="line">The line to type </param>
     public IEnumerator TypeDialog(string line)
     {
-        isTyping = true;
         dialogText.text = "";
 
         foreach (char letter in line.ToCharArray())
@@ -100,7 +84,6 @@ public class DialogManager : MonoBehaviour
             dialogText.text += letter;
             yield return new WaitForSeconds(1f / lettersPerSecond);
         }
-        isTyping = false;
     }
 
     public void CloseDialog()

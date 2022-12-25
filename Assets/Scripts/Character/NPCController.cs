@@ -45,18 +45,17 @@ public class NPCController : MonoBehaviour, Interactable
     /// Interact with the NPC (set the state, look towards the initiator, and start the dialog sequence)
     /// </summary>
     /// <param name="initiator">The transform of the character to interact with </param>
-    public void Interact(Transform initiator)
+    public IEnumerator Interact(Transform initiator)
     {
         if (state == NPCState.Idle)
         {
             state = NPCState.Dialog;
             character.LookTowards(initiator.position);
 
-            StartCoroutine(DialogManager.Instance.ShowDialog(dialog, () =>
-            {
-                idleTimer = 0f;
-                state = NPCState.Idle;
-            }));
+            yield return DialogManager.Instance.ShowDialog(dialog);
+
+            idleTimer = 0f;
+            state = NPCState.Idle;
         }
     }
 

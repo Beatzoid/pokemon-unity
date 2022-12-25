@@ -48,17 +48,17 @@ public class TrainerController : MonoBehaviour, Interactable, ISavable
     /// Initiates the trainer battle
     /// </summary>
     /// <param name="Transform">The transform of the object that is initiating the battle </param>
-    public void Interact(Transform initiator)
+    public IEnumerator Interact(Transform initiator)
     {
         character.LookTowards(initiator.position);
 
         if (!battleLost)
-            StartCoroutine(DialogManager.Instance.ShowDialog(dialog, () =>
-            {
-                GameController.Instance.StartTrainerBattle(this);
-            }));
+        {
+            yield return DialogManager.Instance.ShowDialog(dialog);
+            GameController.Instance.StartTrainerBattle(this);
+        }
         else
-            StartCoroutine(DialogManager.Instance.ShowDialog(dialogAfterBattle));
+            yield return DialogManager.Instance.ShowDialog(dialogAfterBattle);
     }
 
     /// <summary>
@@ -90,10 +90,8 @@ public class TrainerController : MonoBehaviour, Interactable, ISavable
         yield return character.Move(moveVec);
         player.Character.LookTowards(transform.position);
 
-        StartCoroutine(DialogManager.Instance.ShowDialog(dialog, () =>
-        {
-            GameController.Instance.StartTrainerBattle(this);
-        }));
+        yield return DialogManager.Instance.ShowDialog(dialog);
+        GameController.Instance.StartTrainerBattle(this);
     }
 
     /// <summary>
