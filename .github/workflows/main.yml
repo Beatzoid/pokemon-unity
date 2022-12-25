@@ -1,121 +1,121 @@
-name: Unity Action 😎
+# name: Unity Action 😎
 
-on: [push, pull_request]
+# on: [push, pull_request]
 
-jobs:
-    buildForLinuxBasedPlatforms:
-        name: Build for ${{ matrix.targetPlatform }} using Unity ${{matrix.unityVersion}}
-        runs-on: ubuntu-latest
-        strategy:
-            fail-fast: false
-            matrix:
-                unityVersion:
-                    - 2022.1.14f1
-                    - 2021.3.8f1
-                targetPlatform:
-                    - StandaloneLinux64 # Build a Linux 64-bit standalone.
-                    - iOS # Build an iOS player.
-                    - Android # Build an Android player.
-        steps:
-            - uses: actions/checkout@v3
+# jobs:
+#     buildForLinuxBasedPlatforms:
+#         name: Build for ${{ matrix.targetPlatform }} using Unity ${{matrix.unityVersion}}
+#         runs-on: ubuntu-latest
+#         strategy:
+#             fail-fast: false
+#             matrix:
+#                 unityVersion:
+#                     - 2022.1.14f1
+#                     - 2021.3.8f1
+#                 targetPlatform:
+#                     - StandaloneLinux64 # Build a Linux 64-bit standalone.
+#                     - iOS # Build an iOS player.
+#                     - Android # Build an Android player.
+#         steps:
+#             - uses: actions/checkout@v3
 
-            - uses: actions/cache@v3
-              with:
-                  path: Library
-                  key: Library-${{ matrix.targetPlatform }}-${{
-                      hashFiles(matrix.projectPath) }}
-                  restore-keys: |
-                      Library-${{ matrix.targetPlatform }}-${{ matrix.unityVersion }}
-                      Library-
+#             - uses: actions/cache@v3
+#               with:
+#                   path: Library
+#                   key: Library-${{ matrix.targetPlatform }}-${{
+#                       hashFiles(matrix.projectPath) }}
+#                   restore-keys: |
+#                       Library-${{ matrix.targetPlatform }}-${{ matrix.unityVersion }}
+#                       Library-
 
-            - uses: game-ci/unity-builder@v2
-              env:
-                  UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-                  UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
-                  UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
-              with:
-                  unityVersion: ${{ matrix.unityVersion }}
-                  targetPlatform: ${{ matrix.targetPlatform }}
-                  customParameters: "-myParameter myValue -myBoolean -ThirdParameter andItsValue"
-            - uses: actions/upload-artifact@v3
-              with:
-                  name: Build
-                  path: build
+#             - uses: game-ci/unity-builder@v2
+#               env:
+#                   UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+#                   UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+#                   UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+#               with:
+#                   unityVersion: ${{ matrix.unityVersion }}
+#                   targetPlatform: ${{ matrix.targetPlatform }}
+#                   customParameters: "-myParameter myValue -myBoolean -ThirdParameter andItsValue"
+#             - uses: actions/upload-artifact@v3
+#               with:
+#                   name: Build
+#                   path: build
 
-    buildForWindowsBasedPlatforms:
-        name: Build for ${{ matrix.targetPlatform }} using Unity ${{matrix.unityVersion}}
-        runs-on: windows-2019
-        strategy:
-            fail-fast: false
-            matrix:
-                unityVersion:
-                    - 2022.1.14f1
-                    - 2021.3.8f1
-                targetPlatform:
-                    - StandaloneWindows64 # Build a Windows 64-bit standalone.
-                    - WSAPlayer # Build a UWP App.
+#     buildForWindowsBasedPlatforms:
+#         name: Build for ${{ matrix.targetPlatform }} using Unity ${{matrix.unityVersion}}
+#         runs-on: windows-2019
+#         strategy:
+#             fail-fast: false
+#             matrix:
+#                 unityVersion:
+#                     - 2022.1.14f1
+#                     - 2021.3.8f1
+#                 targetPlatform:
+#                     - StandaloneWindows64 # Build a Windows 64-bit standalone.
+#                     - WSAPlayer # Build a UWP App.
 
-        steps:
-            - uses: actions/checkout@v3
+#         steps:
+#             - uses: actions/checkout@v3
 
-            - uses: actions/cache@v3
-              with:
-                  path: Library
-                  key: Library-${{ matrix.targetPlatform }}-${{
-                      hashFiles(matrix.projectPath) }}
-                  restore-keys: |
-                      Library-${{ matrix.targetPlatform }}-${{ matrix.unityVersion }}
-                      Library-
+#             - uses: actions/cache@v3
+#               with:
+#                   path: Library
+#                   key: Library-${{ matrix.targetPlatform }}-${{
+#                       hashFiles(matrix.projectPath) }}
+#                   restore-keys: |
+#                       Library-${{ matrix.targetPlatform }}-${{ matrix.unityVersion }}
+#                       Library-
 
-            - uses: game-ci/unity-builder@v2
-              env:
-                  UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-                  UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
-                  UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
-              with:
-                  unityVersion: ${{ matrix.unityVersion }}
-                  targetPlatform: ${{ matrix.targetPlatform }}
-                  customParameters: "-myParameter myValue -myBoolean -ThirdParameter andItsValue"
-            - uses: actions/upload-artifact@v3
-              with:
-                  name: Build
-                  path: build
+#             - uses: game-ci/unity-builder@v2
+#               env:
+#                   UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+#                   UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+#                   UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+#               with:
+#                   unityVersion: ${{ matrix.unityVersion }}
+#                   targetPlatform: ${{ matrix.targetPlatform }}
+#                   customParameters: "-myParameter myValue -myBoolean -ThirdParameter andItsValue"
+#             - uses: actions/upload-artifact@v3
+#               with:
+#                   name: Build
+#                   path: build
 
-    buildForMacOSBasedPlatforms:
-        name: Build for ${{ matrix.targetPlatform }} using Unity ${{matrix.unityVersion}}
-        runs-on: macos-latest
-        strategy:
-            fail-fast: false
-            matrix:
-                unityVersion:
-                    - 2022.1.14f1
-                    - 2021.3.8f1
-                targetPlatform:
-                    - StandaloneOSX # Build a macOS standalone.
+#     buildForMacOSBasedPlatforms:
+#         name: Build for ${{ matrix.targetPlatform }} using Unity ${{matrix.unityVersion}}
+#         runs-on: macos-latest
+#         strategy:
+#             fail-fast: false
+#             matrix:
+#                 unityVersion:
+#                     - 2022.1.14f1
+#                     - 2021.3.8f1
+#                 targetPlatform:
+#                     - StandaloneOSX # Build a macOS standalone.
 
-        steps:
-            - uses: actions/checkout@v3
+#         steps:
+#             - uses: actions/checkout@v3
 
-            - uses: actions/cache@v3
-              with:
-                  path: Library
-                  key: Library-${{ matrix.targetPlatform }}-${{
-                      hashFiles(matrix.projectPath) }}
-                  restore-keys: |
-                      Library-${{ matrix.targetPlatform }}-${{ matrix.unityVersion }}
-                      Library-
+#             - uses: actions/cache@v3
+#               with:
+#                   path: Library
+#                   key: Library-${{ matrix.targetPlatform }}-${{
+#                       hashFiles(matrix.projectPath) }}
+#                   restore-keys: |
+#                       Library-${{ matrix.targetPlatform }}-${{ matrix.unityVersion }}
+#                       Library-
 
-            - uses: game-ci/unity-builder@v2
-              env:
-                  UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-                  UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
-                  UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
-              with:
-                  unityVersion: ${{ matrix.unityVersion }}
-                  targetPlatform: ${{ matrix.targetPlatform }}
-                  customParameters: "-myParameter myValue -myBoolean -ThirdParameter andItsValue"
+#             - uses: game-ci/unity-builder@v2
+#               env:
+#                   UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+#                   UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+#                   UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+#               with:
+#                   unityVersion: ${{ matrix.unityVersion }}
+#                   targetPlatform: ${{ matrix.targetPlatform }}
+#                   customParameters: "-myParameter myValue -myBoolean -ThirdParameter andItsValue"
 
-            - uses: actions/upload-artifact@v3
-              with:
-                  name: Build
-                  path: build
+#             - uses: actions/upload-artifact@v3
+#               with:
+#                   name: Build
+#                   path: build
