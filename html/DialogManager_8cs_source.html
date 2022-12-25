@@ -148,35 +148,41 @@ $(document).ready(function(){initNavTree('DialogManager_8cs_source.html',''); in
 <div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        StartCoroutine(<a class="code hl_function" href="classDialogManager.html#ad9f246bd9474111b7c10b6dc5224773c">TypeDialog</a>(dialog.Lines[0]));</div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    }</div>
 <div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="classDialogManager.html#ac65a6b466eb587ca56b8d8ad091a0f12">   75</a></span>    <span class="keyword">public</span> IEnumerator <a class="code hl_function" href="classDialogManager.html#ac65a6b466eb587ca56b8d8ad091a0f12">ShowDialogText</a>(<span class="keywordtype">string</span> text, <span class="keywordtype">bool</span> waitForInput = <span class="keyword">true</span>)</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    {</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        IsShowing = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        dialogBox.SetActive(<span class="keyword">true</span>);</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        yield <span class="keywordflow">return</span> <a class="code hl_function" href="classDialogManager.html#ad9f246bd9474111b7c10b6dc5224773c">TypeDialog</a>(text);</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        <span class="keywordflow">if</span> (waitForInput)</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>            yield <span class="keywordflow">return</span> <span class="keyword">new</span> WaitUntil(() =&gt; Input.GetKeyDown(KeyCode.Return));</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        dialogBox.SetActive(<span class="keyword">false</span>);</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        IsShowing = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    }</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno"><a class="line" href="classDialogManager.html#ad9f246bd9474111b7c10b6dc5224773c">   92</a></span>    <span class="keyword">public</span> IEnumerator <a class="code hl_function" href="classDialogManager.html#ad9f246bd9474111b7c10b6dc5224773c">TypeDialog</a>(<span class="keywordtype">string</span> line)</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    {</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        isTyping = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        dialogText.text = <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>        <span class="keywordflow">foreach</span> (<span class="keywordtype">char</span> letter <span class="keywordflow">in</span> line.ToCharArray())</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        {</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>            dialogText.text += letter;</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>            yield <span class="keywordflow">return</span> <span class="keyword">new</span> WaitForSeconds(1f / lettersPerSecond);</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>        }</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        isTyping = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    }</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>}</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="classDialogManager.html#a1ebbf3e006412b460c2153be7882394c">   76</a></span>    <span class="keyword">public</span> IEnumerator <a class="code hl_function" href="classDialogManager.html#a1ebbf3e006412b460c2153be7882394c">ShowDialogText</a>(<span class="keywordtype">string</span> text, <span class="keywordtype">bool</span> waitForInput = <span class="keyword">true</span>, <span class="keywordtype">bool</span> autoClose = <span class="keyword">true</span>)</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    {</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        IsShowing = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        dialogBox.SetActive(<span class="keyword">true</span>);</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        yield <span class="keywordflow">return</span> <a class="code hl_function" href="classDialogManager.html#ad9f246bd9474111b7c10b6dc5224773c">TypeDialog</a>(text);</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        <span class="keywordflow">if</span> (waitForInput)</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>            yield <span class="keywordflow">return</span> <span class="keyword">new</span> WaitUntil(() =&gt; Input.GetKeyDown(KeyCode.Return));</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        <span class="keywordflow">if</span> (autoClose)</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>            CloseDialog();</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    }</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno"><a class="line" href="classDialogManager.html#ad9f246bd9474111b7c10b6dc5224773c">   93</a></span>    <span class="keyword">public</span> IEnumerator <a class="code hl_function" href="classDialogManager.html#ad9f246bd9474111b7c10b6dc5224773c">TypeDialog</a>(<span class="keywordtype">string</span> line)</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    {</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        isTyping = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        dialogText.text = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        <span class="keywordflow">foreach</span> (<span class="keywordtype">char</span> letter <span class="keywordflow">in</span> line.ToCharArray())</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>        {</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>            dialogText.text += letter;</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>            yield <span class="keywordflow">return</span> <span class="keyword">new</span> WaitForSeconds(1f / lettersPerSecond);</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        }</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>        isTyping = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    }</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    <span class="keyword">public</span> <span class="keywordtype">void</span> CloseDialog()</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    {</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>        dialogBox.SetActive(<span class="keyword">false</span>);</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>        IsShowing = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    }</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>}</div>
 <div class="ttc" id="aclassDialogManager_html"><div class="ttname"><a href="classDialogManager.html">DialogManager</a></div><div class="ttdoc">The DialogManager class manages all the dialog-related logic</div><div class="ttdef"><b>Definition:</b> <a href="DialogManager_8cs_source.html#l00009">DialogManager.cs:10</a></div></div>
-<div class="ttc" id="aclassDialogManager_html_ac65a6b466eb587ca56b8d8ad091a0f12"><div class="ttname"><a href="classDialogManager.html#ac65a6b466eb587ca56b8d8ad091a0f12">DialogManager.ShowDialogText</a></div><div class="ttdeci">IEnumerator ShowDialogText(string text, bool waitForInput=true)</div><div class="ttdoc">Show the text on the dialog</div><div class="ttdef"><b>Definition:</b> <a href="DialogManager_8cs_source.html#l00075">DialogManager.cs:75</a></div></div>
-<div class="ttc" id="aclassDialogManager_html_ad9f246bd9474111b7c10b6dc5224773c"><div class="ttname"><a href="classDialogManager.html#ad9f246bd9474111b7c10b6dc5224773c">DialogManager.TypeDialog</a></div><div class="ttdeci">IEnumerator TypeDialog(string line)</div><div class="ttdoc">Smoothly type a line on the dialog box</div><div class="ttdef"><b>Definition:</b> <a href="DialogManager_8cs_source.html#l00092">DialogManager.cs:92</a></div></div>
+<div class="ttc" id="aclassDialogManager_html_a1ebbf3e006412b460c2153be7882394c"><div class="ttname"><a href="classDialogManager.html#a1ebbf3e006412b460c2153be7882394c">DialogManager.ShowDialogText</a></div><div class="ttdeci">IEnumerator ShowDialogText(string text, bool waitForInput=true, bool autoClose=true)</div><div class="ttdoc">Show the text on the dialog</div><div class="ttdef"><b>Definition:</b> <a href="DialogManager_8cs_source.html#l00076">DialogManager.cs:76</a></div></div>
+<div class="ttc" id="aclassDialogManager_html_ad9f246bd9474111b7c10b6dc5224773c"><div class="ttname"><a href="classDialogManager.html#ad9f246bd9474111b7c10b6dc5224773c">DialogManager.TypeDialog</a></div><div class="ttdeci">IEnumerator TypeDialog(string line)</div><div class="ttdoc">Smoothly type a line on the dialog box</div><div class="ttdef"><b>Definition:</b> <a href="DialogManager_8cs_source.html#l00093">DialogManager.cs:93</a></div></div>
 <div class="ttc" id="aclassDialogManager_html_ada319ebffef8266e2e07f191edc8a201"><div class="ttname"><a href="classDialogManager.html#ada319ebffef8266e2e07f191edc8a201">DialogManager.ShowDialog</a></div><div class="ttdeci">IEnumerator ShowDialog(Dialog dialog, Action onFinished=null)</div><div class="ttdoc">Show dialog in the dialog box</div><div class="ttdef"><b>Definition:</b> <a href="DialogManager_8cs_source.html#l00056">DialogManager.cs:56</a></div></div>
 <div class="ttc" id="aclassDialog_html"><div class="ttname"><a href="classDialog.html">Dialog</a></div><div class="ttdoc">The Dialog class holds the data for the dialogs in the game</div><div class="ttdef"><b>Definition:</b> <a href="Dialog_8cs_source.html#l00009">Dialog.cs:10</a></div></div>
 </div><!-- fragment --></div><!-- contents -->

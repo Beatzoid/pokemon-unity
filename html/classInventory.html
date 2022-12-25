@@ -116,6 +116,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a2b5afbff029c6d3b3cf8b971c40dcbf4"><td class="memItemLeft" align="right" valign="top">List&lt; <a class="el" href="classItemSlot.html">ItemSlot</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInventory.html#a2b5afbff029c6d3b3cf8b971c40dcbf4">GetSlotsByCategory</a> (int categoryIndex)</td></tr>
 <tr class="memdesc:a2b5afbff029c6d3b3cf8b971c40dcbf4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the List of ItemSlots for the specific category  <a href="classInventory.html#a2b5afbff029c6d3b3cf8b971c40dcbf4">More...</a><br /></td></tr>
 <tr class="separator:a2b5afbff029c6d3b3cf8b971c40dcbf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aede599d99d5a011cd355fc583a8a2af8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classItemBase.html">ItemBase</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInventory.html#aede599d99d5a011cd355fc583a8a2af8">GetItem</a> (int itemIndex, int categoryIndex)</td></tr>
+<tr class="memdesc:aede599d99d5a011cd355fc583a8a2af8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets an inventory item using the item and category index  <a href="classInventory.html#aede599d99d5a011cd355fc583a8a2af8">More...</a><br /></td></tr>
+<tr class="separator:aede599d99d5a011cd355fc583a8a2af8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae1c100c14cb5123507ba89ebb92a387d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classItemBase.html">ItemBase</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInventory.html#ae1c100c14cb5123507ba89ebb92a387d">UseItem</a> (int itemIndex, <a class="el" href="classPokemon.html">Pokemon</a> selectedPokemon, int selectedCategory)</td></tr>
 <tr class="memdesc:ae1c100c14cb5123507ba89ebb92a387d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Use an item  <a href="classInventory.html#ae1c100c14cb5123507ba89ebb92a387d">More...</a><br /></td></tr>
 <tr class="separator:ae1c100c14cb5123507ba89ebb92a387d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -136,6 +139,7 @@ Properties</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="events" name="events"></a>
 Events</h2></td></tr>
 <tr class="memitem:ab7eb0442fc2ad3a98168240dcd98f7fb"><td class="memItemLeft" align="right" valign="top">Action&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInventory.html#ab7eb0442fc2ad3a98168240dcd98f7fb">OnUpdated</a></td></tr>
+<tr class="memdesc:ab7eb0442fc2ad3a98168240dcd98f7fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fired whenever the inventory is updated  <a href="classInventory.html#ab7eb0442fc2ad3a98168240dcd98f7fb">More...</a><br /></td></tr>
 <tr class="separator:ab7eb0442fc2ad3a98168240dcd98f7fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -158,7 +162,7 @@ Events</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Inventory_8cs_source.html#l00051">51</a> of file <a class="el" href="Inventory_8cs_source.html">Inventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Inventory_8cs_source.html#l00052">52</a> of file <a class="el" href="Inventory_8cs_source.html">Inventory.cs</a>.</p>
 
 </div>
 </div>
@@ -185,7 +189,46 @@ Events</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Inventory_8cs_source.html#l00104">104</a> of file <a class="el" href="Inventory_8cs_source.html">Inventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Inventory_8cs_source.html#l00118">118</a> of file <a class="el" href="Inventory_8cs_source.html">Inventory.cs</a>.</p>
+
+</div>
+</div>
+<a id="aede599d99d5a011cd355fc583a8a2af8" name="aede599d99d5a011cd355fc583a8a2af8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aede599d99d5a011cd355fc583a8a2af8">&#9670;&nbsp;</a></span>GetItem()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classItemBase.html">ItemBase</a> Inventory.GetItem </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>itemIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>categoryIndex</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets an inventory item using the item and category index </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">itemIndex</td><td>The index of the item </td></tr>
+    <tr><td class="paramname">categoryIndex</td><td>The index of the category of the item </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="Inventory_8cs_source.html#l00071">71</a> of file <a class="el" href="Inventory_8cs_source.html">Inventory.cs</a>.</p>
 
 </div>
 </div>
@@ -213,7 +256,7 @@ Events</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="Inventory_8cs_source.html#l00060">60</a> of file <a class="el" href="Inventory_8cs_source.html">Inventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Inventory_8cs_source.html#l00061">61</a> of file <a class="el" href="Inventory_8cs_source.html">Inventory.cs</a>.</p>
 
 </div>
 </div>
@@ -252,7 +295,7 @@ Events</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="Inventory_8cs_source.html#l00092">92</a> of file <a class="el" href="Inventory_8cs_source.html">Inventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Inventory_8cs_source.html#l00106">106</a> of file <a class="el" href="Inventory_8cs_source.html">Inventory.cs</a>.</p>
 
 </div>
 </div>
@@ -298,7 +341,7 @@ Events</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="Inventory_8cs_source.html#l00071">71</a> of file <a class="el" href="Inventory_8cs_source.html">Inventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Inventory_8cs_source.html#l00084">84</a> of file <a class="el" href="Inventory_8cs_source.html">Inventory.cs</a>.</p>
 
 </div>
 </div>
@@ -329,7 +372,7 @@ Events</h2></td></tr>
 <div class="line">        <span class="stringliteral">&quot;TMs &amp; HMs&quot;</span></div>
 <div class="line">    }</div>
 </div><!-- fragment -->
-<p class="definition">Definition at line <a class="el" href="Inventory_8cs_source.html#l00042">42</a> of file <a class="el" href="Inventory_8cs_source.html">Inventory.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="Inventory_8cs_source.html#l00043">43</a> of file <a class="el" href="Inventory_8cs_source.html">Inventory.cs</a>.</p>
 
 </div>
 </div>
@@ -346,7 +389,9 @@ Events</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="Inventory_8cs_source.html#l00040">40</a> of file <a class="el" href="Inventory_8cs_source.html">Inventory.cs</a>.</p>
+<p>Fired whenever the inventory is updated </p>
+
+<p class="definition">Definition at line <a class="el" href="Inventory_8cs_source.html#l00041">41</a> of file <a class="el" href="Inventory_8cs_source.html">Inventory.cs</a>.</p>
 
 </div>
 </div>

@@ -12,7 +12,7 @@ var searchData=
   ['sethp_9',['SetHP',['../classHPBar.html#aba22b99c9a2b5b1e2912e004eb785411',1,'HPBar']]],
   ['sethpsmoothly_10',['SetHPSmoothly',['../classHPBar.html#a8411b534b1fc6a7d474a5786381220d4',1,'HPBar']]],
   ['setlevel_11',['SetLevel',['../classBattleHud.html#a218bc7cf8cdd6519f929b9c0201dac22',1,'BattleHud']]],
-  ['setmessagetext_12',['SetMessageText',['../classPartyScreen.html#a0d4081843eed02cd8a91240028c73d57',1,'PartyScreen']]],
+  ['setmessagetext_12',['SetMessageText',['../classPartyMemberUI.html#a08fce6d4b5e26c1206130f09aa1fcb84',1,'PartyMemberUI.SetMessageText()'],['../classPartyScreen.html#a0d4081843eed02cd8a91240028c73d57',1,'PartyScreen.SetMessageText()']]],
   ['setmovedata_13',['SetMoveData',['../classMoveSelectionUI.html#aa0a7748657b547b9aa871d56acff6da3',1,'MoveSelectionUI']]],
   ['setmovenames_14',['SetMoveNames',['../classBattleDialogBox.html#a6b185ea64636bff1607fd41d3cfa791c',1,'BattleDialogBox']]],
   ['setmoveselectoractive_15',['SetMoveSelectorActive',['../classBattleDialogBox.html#a1817f2fab90a73a0208b949dfbbbd37a',1,'BattleDialogBox']]],
@@ -25,8 +25,9 @@ var searchData=
   ['setupbattle_22',['SetupBattle',['../classBattleSystem.html#a106ea7579bf0b7756b9b6ed9ae40d38c',1,'BattleSystem']]],
   ['setvolatilestatus_23',['SetVolatileStatus',['../classPokemon.html#a68c420edad3db63938e73bc3bbde5054',1,'Pokemon']]],
   ['showdialog_24',['ShowDialog',['../classDialogManager.html#ada319ebffef8266e2e07f191edc8a201',1,'DialogManager']]],
-  ['showdialogtext_25',['ShowDialogText',['../classDialogManager.html#ac65a6b466eb587ca56b8d8ad091a0f12',1,'DialogManager']]],
-  ['spriteanimator_26',['SpriteAnimator',['../classSpriteAnimator.html#a83f87fb1e58a27157cf8db6e20c98ee0',1,'SpriteAnimator']]],
-  ['startbattle_27',['StartBattle',['../classBattleSystem.html#afd9d4875e817129ddcf5dc091f43364e',1,'BattleSystem']]],
-  ['starttrainerbattle_28',['StartTrainerBattle',['../classBattleSystem.html#ae335d38feacdeaa3aa30df5bb354ac4d',1,'BattleSystem']]]
+  ['showdialogtext_25',['ShowDialogText',['../classDialogManager.html#a1ebbf3e006412b460c2153be7882394c',1,'DialogManager']]],
+  ['showiftmusable_26',['ShowIfTMUsable',['../classPartyScreen.html#af5ba2ae619289298eda1dee95fa155a4',1,'PartyScreen']]],
+  ['spriteanimator_27',['SpriteAnimator',['../classSpriteAnimator.html#a83f87fb1e58a27157cf8db6e20c98ee0',1,'SpriteAnimator']]],
+  ['startbattle_28',['StartBattle',['../classBattleSystem.html#afd9d4875e817129ddcf5dc091f43364e',1,'BattleSystem']]],
+  ['starttrainerbattle_29',['StartTrainerBattle',['../classBattleSystem.html#ae335d38feacdeaa3aa30df5bb354ac4d',1,'BattleSystem']]]
 ];

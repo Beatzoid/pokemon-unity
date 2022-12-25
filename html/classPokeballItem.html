@@ -116,13 +116,21 @@ Public Member Functions</h2></td></tr>
 Properties</h2></td></tr>
 <tr class="memitem:a98aa724cd57a2aaf0cbc6cbbc536c406"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPokeballItem.html#a98aa724cd57a2aaf0cbc6cbbc536c406">CatchRateModifier</a><code> [get]</code></td></tr>
 <tr class="separator:a98aa724cd57a2aaf0cbc6cbbc536c406"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2cb886f171cfe743ca01b62dcedb4fbd"><td class="memItemLeft" align="right" valign="top">override bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPokeballItem.html#a2cb886f171cfe743ca01b62dcedb4fbd">CanUseOutsideBattle</a><code> [get]</code></td></tr>
+<tr class="separator:a2cb886f171cfe743ca01b62dcedb4fbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header properties_classItemBase"><td colspan="2" onclick="javascript:toggleInherit('properties_classItemBase')"><img src="closed.png" alt="-"/>&#160;Properties inherited from <a class="el" href="classItemBase.html">ItemBase</a></td></tr>
-<tr class="memitem:aa0f5600ec25e8ae76b09454cb9972138 inherit properties_classItemBase"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classItemBase.html#aa0f5600ec25e8ae76b09454cb9972138">Name</a><code> [get]</code></td></tr>
-<tr class="separator:aa0f5600ec25e8ae76b09454cb9972138 inherit properties_classItemBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:add38c068ab67e267c6794b9df920c80e inherit properties_classItemBase"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classItemBase.html#add38c068ab67e267c6794b9df920c80e">Description</a><code> [get]</code></td></tr>
-<tr class="separator:add38c068ab67e267c6794b9df920c80e inherit properties_classItemBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad902d03e87762adda660b28f427d7bd1 inherit properties_classItemBase"><td class="memItemLeft" align="right" valign="top">virtual string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classItemBase.html#ad902d03e87762adda660b28f427d7bd1">Name</a><code> [get]</code></td></tr>
+<tr class="separator:ad902d03e87762adda660b28f427d7bd1 inherit properties_classItemBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a540ee6089087647726614738479bee1c inherit properties_classItemBase"><td class="memItemLeft" align="right" valign="top">virtual string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classItemBase.html#a540ee6089087647726614738479bee1c">Description</a><code> [get]</code></td></tr>
+<tr class="separator:a540ee6089087647726614738479bee1c inherit properties_classItemBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1f691c1a4283823087de799ecef47ca8 inherit properties_classItemBase"><td class="memItemLeft" align="right" valign="top">Sprite&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classItemBase.html#a1f691c1a4283823087de799ecef47ca8">Icon</a><code> [get]</code></td></tr>
 <tr class="separator:a1f691c1a4283823087de799ecef47ca8 inherit properties_classItemBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acfa3327b1171de31b0314d56db6eed29 inherit properties_classItemBase"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classItemBase.html#acfa3327b1171de31b0314d56db6eed29">CanUseInBattle</a><code> [get]</code></td></tr>
+<tr class="separator:acfa3327b1171de31b0314d56db6eed29 inherit properties_classItemBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abeb29d7257641818c2f4efe742b5155e inherit properties_classItemBase"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classItemBase.html#abeb29d7257641818c2f4efe742b5155e">CanUseOutsideBattle</a><code> [get]</code></td></tr>
+<tr class="separator:abeb29d7257641818c2f4efe742b5155e inherit properties_classItemBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b63271e792e54e8a46f430b4634784c inherit properties_classItemBase"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classItemBase.html#a6b63271e792e54e8a46f430b4634784c">IsReusable</a><code> [get]</code></td></tr>
+<tr class="separator:a6b63271e792e54e8a46f430b4634784c inherit properties_classItemBase"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >The <a class="el" href="classPokeballItem.html" title="The PokeballItem manages all pokeball-related logic">PokeballItem</a> manages all pokeball-related logic </p>
@@ -155,11 +163,35 @@ Properties</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classItemBase.html">ItemBase</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="PokeballItem_8cs_source.html#l00014">14</a> of file <a class="el" href="PokeballItem_8cs_source.html">PokeballItem.cs</a>.</p>
+<p class="definition">Definition at line <a class="el" href="PokeballItem_8cs_source.html#l00016">16</a> of file <a class="el" href="PokeballItem_8cs_source.html">PokeballItem.cs</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Property Documentation</h2>
+<a id="a2cb886f171cfe743ca01b62dcedb4fbd" name="a2cb886f171cfe743ca01b62dcedb4fbd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2cb886f171cfe743ca01b62dcedb4fbd">&#9670;&nbsp;</a></span>CanUseOutsideBattle</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">override bool PokeballItem.CanUseOutsideBattle</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="PokeballItem_8cs_source.html#l00014">14</a> of file <a class="el" href="PokeballItem_8cs_source.html">PokeballItem.cs</a>.</p>
+
+</div>
+</div>
 <a id="a98aa724cd57a2aaf0cbc6cbbc536c406" name="a98aa724cd57a2aaf0cbc6cbbc536c406"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a98aa724cd57a2aaf0cbc6cbbc536c406">&#9670;&nbsp;</a></span>CatchRateModifier</h2>
 

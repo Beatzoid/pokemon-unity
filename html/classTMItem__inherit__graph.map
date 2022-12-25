@@ -1,0 +1,5 @@
+<map id="TMItem" name="TMItem">
+<area shape="rect" id="node1" title="THe TMITem class manages all the TM items in the game. TM items are used to teach pokemon new moves" alt="" coords="31,155,98,181"/>
+<area shape="rect" id="node2" href="$classItemBase.html" title="The ItemBase class manage the basic data for all items" alt="" coords="25,80,104,107"/>
+<area shape="rect" id="node3" title=" " alt="" coords="5,5,124,32"/>
+</map>

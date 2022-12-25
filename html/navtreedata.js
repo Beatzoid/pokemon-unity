@@ -45,7 +45,8 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"BattleDialogBox_8cs_source.html"
+"BattleDialogBox_8cs_source.html",
+"interfaceISavable.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

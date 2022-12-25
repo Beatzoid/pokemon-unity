@@ -57,6 +57,7 @@ var annotated_dup =
     [ "SecondaryEffects", "classSecondaryEffects.html", null ],
     [ "SpriteAnimator", "classSpriteAnimator.html", "classSpriteAnimator" ],
     [ "StatBoost", "classStatBoost.html", null ],
+    [ "TMItem", "classTMItem.html", null ],
     [ "TrainerController", "classTrainerController.html", "classTrainerController" ],
     [ "TrainerFOV", "classTrainerFOV.html", "classTrainerFOV" ],
     [ "TypeChart", "classTypeChart.html", null ]

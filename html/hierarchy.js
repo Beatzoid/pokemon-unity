@@ -69,7 +69,8 @@ var hierarchy =
     [ "ScriptableObject", null, [
       [ "ItemBase", "classItemBase.html", [
         [ "PokeballItem", "classPokeballItem.html", null ],
-        [ "RecoveryItem", "classRecoveryItem.html", null ]
+        [ "RecoveryItem", "classRecoveryItem.html", null ],
+        [ "TMItem", "classTMItem.html", null ]
       ] ],
       [ "MoveBase", "classMoveBase.html", null ],
       [ "PokemonBase", "classPokemonBase.html", null ]
