@@ -17,7 +17,7 @@ jobs:
                     - iOS # Build an iOS player.
                     - Android # Build an Android player.
         steps:
-            - uses: actions/checkout@v2
+            - uses: actions/checkout@v3
 
             - uses: actions/cache@v2
               with:
@@ -56,7 +56,7 @@ jobs:
                     - WSAPlayer # Build a UWP App.
 
         steps:
-            - uses: actions/checkout@v2
+            - uses: actions/checkout@v3
 
             - uses: actions/cache@v2
               with:
@@ -94,7 +94,7 @@ jobs:
                     - StandaloneOSX # Build a macOS standalone.
 
         steps:
-            - uses: actions/checkout@v2
+            - uses: actions/checkout@v3
 
             - uses: actions/cache@v2
               with:
