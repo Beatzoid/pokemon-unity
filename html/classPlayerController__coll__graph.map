@@ -1,5 +1,7 @@
 <map id="PlayerController" name="PlayerController">
-<area shape="rect" id="node1" title="The PlayerController manages all player&#45;related logic" alt="" coords="63,80,177,107"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,5,117,32"/>
-<area shape="rect" id="node3" href="$interfaceISavable.html" title=" " alt="" coords="142,5,215,32"/>
+<area shape="rect" id="Node000001" title="The PlayerController manages all player&#45;related logic." alt="" coords="62,79,174,105"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,117,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="82,41,111,77,107,80,78,45"/>
+<area shape="rect" id="Node000003" href="$interfaceISavable.html" title=" " alt="" coords="141,5,213,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="160,45,130,80,126,77,155,41"/>
 </map>

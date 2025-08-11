@@ -1,7 +1,7 @@
 var searchData=
 [
   ['calledfrom_0',['CalledFrom',['../classPartyScreen.html#a2b896ec62560cade230ff12f892db374',1,'PartyScreen']]],
-  ['character_1',['Character',['../classCharacter.html',1,'Character'],['../classPlayerController.html#a4cda779ee8ad78e55a6ad0bd0df56165',1,'PlayerController.Character()']]],
+  ['character_1',['Character',['../classCharacter.html',1,'Character'],['../classPlayerController.html#a4cda779ee8ad78e55a6ad0bd0df56165',1,'PlayerController.Character']]],
   ['characteranimator_2',['CharacterAnimator',['../classCharacterAnimator.html',1,'']]],
   ['checkforlevelup_3',['CheckForLevelUp',['../classPokemon.html#a23eab2dda6c68486f454f3a0de6d692a',1,'Pokemon']]],
   ['clear_4',['Clear',['../classBattleUnit.html#a3bdafc42f911fa5465444d60e5b7967d',1,'BattleUnit']]],

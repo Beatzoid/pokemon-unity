@@ -1,5 +1,7 @@
 <map id="PokeballItem" name="PokeballItem">
-<area shape="rect" id="node1" title="The PokeballItem manages all pokeball&#45;related logic" alt="" coords="15,155,114,181"/>
-<area shape="rect" id="node2" href="$classItemBase.html" title="The ItemBase class manage the basic data for all items" alt="" coords="25,80,104,107"/>
-<area shape="rect" id="node3" title=" " alt="" coords="5,5,124,32"/>
+<area shape="rect" id="Node000001" title="The PokeballItem manages all pokeball&#45;related logic." alt="" coords="15,153,113,178"/>
+<area shape="rect" id="Node000002" href="$classItemBase.html" title="The ItemBase class manage the basic data for all items." alt="" coords="25,79,103,105"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="67,120,67,152,61,152,61,120"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,5,123,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="67,46,67,79,61,79,61,46"/>
 </map>

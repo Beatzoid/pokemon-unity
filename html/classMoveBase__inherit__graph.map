@@ -1,4 +1,5 @@
 <map id="MoveBase" name="MoveBase">
-<area shape="rect" id="node1" title="The MoveBase class stores all data for a move" alt="" coords="23,80,107,107"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,5,124,32"/>
+<area shape="rect" id="Node000001" title="The MoveBase class stores all data for a move." alt="" coords="22,79,106,105"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,5,123,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="67,46,67,79,61,79,61,46"/>
 </map>

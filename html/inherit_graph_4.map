@@ -1,40 +1,82 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$interfaceInteractable.html" title=" " alt="" coords="23,19,114,45"/>
-<area shape="rect" id="node2" href="$classNPCController.html" title="The NPCController class manages all NPC&#45;related logic" alt="" coords="213,56,318,83"/>
-<area shape="rect" id="node3" href="$classTrainerController.html" title="The TrainerController class manages all trainer&#45;related logic" alt="" coords="207,5,324,32"/>
-<area shape="rect" id="node4" href="$interfaceIPlayerTriggerable.html" title=" " alt="" coords="5,233,132,260"/>
-<area shape="rect" id="node5" href="$classLocationPortal.html" title="The LocationPortal manages all logic for the location portals" alt="" coords="212,157,319,184"/>
-<area shape="rect" id="node6" href="$classLongGrass.html" title=" " alt="" coords="222,208,309,235"/>
-<area shape="rect" id="node7" href="$classPortal.html" title="The Portal class manages all portal&#45;related logic" alt="" coords="237,259,293,285"/>
-<area shape="rect" id="node8" href="$classTrainerFOV.html" title="The TrainerFOV class manages the FOV of all trainers" alt="" coords="221,309,310,336"/>
-<area shape="rect" id="node9" href="$interfaceISavable.html" title=" " alt="" coords="32,81,105,108"/>
-<area shape="rect" id="node10" href="$classPlayerController.html" title="The PlayerController manages all player&#45;related logic" alt="" coords="209,107,322,133"/>
-<area shape="rect" id="node11" title=" " alt="" coords="13,841,125,868"/>
-<area shape="rect" id="node12" href="$classBattleDialogBox.html" title="The BattleDialogBox manages the dialog boxes in the battle scene" alt="" coords="208,1424,323,1451"/>
-<area shape="rect" id="node13" href="$classBattleHud.html" title="The BattleHud class manages all the HUD&#39;s in the battle scene" alt="" coords="225,1475,305,1501"/>
-<area shape="rect" id="node14" href="$classBattleSystem.html" title="The BattleSystem class manages the core battle scene logic" alt="" coords="215,1525,315,1552"/>
-<area shape="rect" id="node15" href="$classBattleUnit.html" title="The BattleUnit class manages a unit (pokemon) in the battle scene" alt="" coords="225,1576,305,1603"/>
-<area shape="rect" id="node16" href="$classCharacter.html" title="The Character class manages all character&#45;related logic" alt="" coords="226,1627,305,1653"/>
-<area shape="rect" id="node17" href="$classCharacterAnimator.html" title="The CharacterAnimator class manages all character animations" alt="" coords="200,1677,331,1704"/>
-<area shape="rect" id="node18" href="$classDialogManager.html" title="The DialogManager class manages all the dialog&#45;related logic" alt="" coords="211,360,319,387"/>
-<area shape="rect" id="node19" href="$classEssentialObjects.html" title="The EssentialObjects class manages the essential objects gameobject in the scene. This gameobject hol..." alt="" coords="205,411,325,437"/>
-<area shape="rect" id="node20" href="$classEssentialObjectsSpawner.html" title="The EssentialObjectsSpawner manages the initiating of the EssentialObjects gameobject" alt="" coords="180,461,351,488"/>
-<area shape="rect" id="node21" href="$classFader.html" title="The Fader class manages the fading effects in the game" alt="" coords="238,512,293,539"/>
-<area shape="rect" id="node22" href="$classGameController.html" title="The GameController class manages all core game logic" alt="" coords="209,563,321,589"/>
-<area shape="rect" id="node23" href="$classGameLayers.html" title="The game layers class manages all the layers in the game" alt="" coords="217,613,313,640"/>
-<area shape="rect" id="node24" href="$classGlobalSettings.html" title="The GlobalSettings class manages all global settings for the game" alt="" coords="212,664,319,691"/>
-<area shape="rect" id="node25" href="$classHPBar.html" title="The HPBar class manages all HPBars" alt="" coords="235,715,296,741"/>
-<area shape="rect" id="node26" href="$classInventory.html" title="The Inventory class manages all Inventory&#45;related logic" alt="" coords="228,765,303,792"/>
-<area shape="rect" id="node27" href="$classInventoryUI.html" title="The InventoryUI class manages the inventory UI" alt="" coords="221,816,310,843"/>
-<area shape="rect" id="node28" href="$classInvisibleTileMap.html" title=" " alt="" coords="207,867,323,893"/>
-<area shape="rect" id="node29" href="$classItemSlotUI.html" title="The ItemSlotUI class manages all the ItemSlot UI" alt="" coords="223,917,308,944"/>
-<area shape="rect" id="node30" href="$classMapArea.html" title="The MapArea class manages all map&#45;related data" alt="" coords="228,968,303,995"/>
-<area shape="rect" id="node31" href="$classMenuController.html" title="The MenuController class manages all menu&#45;related logic" alt="" coords="211,1019,320,1045"/>
-<area shape="rect" id="node32" href="$classMoveSelectionUI.html" title="The MoveSelectionUI class manages the move selection UI in the battle scene" alt="" coords="204,1069,327,1096"/>
-<area shape="rect" id="node33" href="$classPartyMemberUI.html" title="The PartyMemberUI class manages the individual party members UI in the party screen" alt="" coords="209,1120,322,1147"/>
-<area shape="rect" id="node34" href="$classPartyScreen.html" title="The PartyScreen text manages the core party screen logic" alt="" coords="219,1171,312,1197"/>
-<area shape="rect" id="node35" href="$classPokemonParty.html" title="The PokemonParty class manages all pokemon parties" alt="" coords="212,1221,319,1248"/>
-<area shape="rect" id="node36" href="$classSavableEntity.html" title=" " alt="" coords="215,1272,316,1299"/>
-<area shape="rect" id="node37" href="$classSavingSystem.html" title=" " alt="" coords="212,1323,319,1349"/>
-<area shape="rect" id="node38" href="$classSceneDetails.html" title="The SceneDetails class manages all data and details about a scene" alt="" coords="216,1373,315,1400"/>
+<area shape="rect" id="Node000000" href="$interfaceInteractable.html" title=" " alt="" coords="23,19,113,44"/>
+<area shape="rect" id="Node000001" href="$classNPCController.html" title="The NPCController class manages all NPC&#45;related logic." alt="" coords="212,55,316,80"/>
+<area shape="poly" id="edge1_Node000000_Node000001" title=" " alt="" coords="129,40,212,55,211,61,128,45"/>
+<area shape="rect" id="Node000033" href="$classTrainerController.html" title="The TrainerController class manages all trainer&#45;related logic." alt="" coords="206,5,322,31"/>
+<area shape="poly" id="edge2_Node000000_Node000033" title=" " alt="" coords="128,25,205,19,205,25,128,30"/>
+<area shape="rect" id="Node000022" href="$interfaceIPlayerTriggerable.html" title=" " alt="" coords="5,227,131,252"/>
+<area shape="rect" id="Node000021" href="$classLocationPortal.html" title="The LocationPortal manages all logic for the location portals." alt="" coords="211,153,316,179"/>
+<area shape="poly" id="edge3_Node000022_Node000021" title=" " alt="" coords="109,217,178,188,210,177,212,182,180,193,111,222"/>
+<area shape="rect" id="Node000023" href="$classLongGrass.html" title=" " alt="" coords="221,203,306,228"/>
+<area shape="poly" id="edge4_Node000022_Node000023" title=" " alt="" coords="146,227,221,218,221,223,146,233"/>
+<area shape="rect" id="Node000024" href="$classPortal.html" title="The Portal class manages all portal&#45;related logic." alt="" coords="236,252,292,278"/>
+<area shape="poly" id="edge5_Node000022_Node000024" title=" " alt="" coords="146,247,236,259,235,264,145,252"/>
+<area shape="rect" id="Node000025" href="$classTrainerFOV.html" title="The TrainerFOV class manages the FOV of all trainers." alt="" coords="220,301,308,327"/>
+<area shape="poly" id="edge6_Node000022_Node000025" title=" " alt="" coords="110,257,180,288,220,301,218,306,178,293,108,262"/>
+<area shape="rect" id="Node000032" href="$interfaceISavable.html" title=" " alt="" coords="32,80,104,106"/>
+<area shape="poly" id="edge8_Node000032_Node000033" title=" " alt="" coords="108,70,178,40,210,29,211,34,180,45,110,75"/>
+<area shape="rect" id="Node000031" href="$classPlayerController.html" title="The PlayerController manages all player&#45;related logic." alt="" coords="208,104,320,130"/>
+<area shape="poly" id="edge7_Node000032_Node000031" title=" " alt="" coords="120,96,208,107,207,113,119,102"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="12,820,124,846"/>
+<area shape="poly" id="edge32_Node000002_Node000001" title=" " alt="" coords="69,804,84,646,109,420,141,208,158,132,167,106,177,90,192,77,210,70,212,75,195,82,181,93,172,108,163,133,146,209,114,421,89,647,74,805"/>
+<area shape="poly" id="edge41_Node000002_Node000033" title=" " alt="" coords="70,804,119,383,151,154,165,77,176,41,189,30,204,23,206,27,192,34,181,44,170,78,156,155,124,383,75,805"/>
+<area shape="poly" id="edge27_Node000002_Node000021" title=" " alt="" coords="68,804,75,674,92,490,106,395,125,309,148,238,161,210,177,188,192,176,210,169,212,174,195,181,181,192,166,213,153,240,130,310,112,396,97,491,80,675,73,805"/>
+<area shape="poly" id="edge28_Node000002_Node000023" title=" " alt="" coords="68,804,76,683,95,513,110,427,128,348,150,283,163,257,177,238,197,223,220,216,221,221,199,228,181,241,167,260,155,285,133,349,115,428,101,514,82,683,73,804"/>
+<area shape="poly" id="edge37_Node000002_Node000024" title=" " alt="" coords="69,805,78,692,98,538,113,459,130,387,152,328,177,287,190,277,205,269,235,263,236,268,206,275,192,281,181,291,156,330,135,389,118,460,104,538,84,693,74,805"/>
+<area shape="poly" id="edge42_Node000002_Node000025" title=" " alt="" coords="69,804,81,701,102,561,116,490,133,426,153,373,177,336,196,323,218,315,220,320,199,327,181,340,158,375,138,428,121,492,107,562,86,701,75,805"/>
+<area shape="poly" id="edge35_Node000002_Node000031" title=" " alt="" coords="69,804,85,656,110,445,142,248,159,178,177,139,190,128,206,121,208,126,193,132,181,142,164,180,147,249,116,446,90,656,75,805"/>
+<area shape="rect" id="Node000003" href="$classBattleDialogBox.html" title="The BattleDialogBox manages the dialog boxes in the battle scene." alt="" coords="207,1387,320,1412"/>
+<area shape="poly" id="edge9_Node000002_Node000003" title=" " alt="" coords="74,861,84,972,104,1127,118,1205,136,1276,156,1334,181,1374,193,1384,208,1390,206,1395,190,1388,177,1377,152,1337,130,1278,113,1206,98,1127,78,973,69,861"/>
+<area shape="rect" id="Node000004" href="$classBattleHud.html" title="The BattleHud class manages all the HUD&#39;s in the battle scene." alt="" coords="224,1436,304,1462"/>
+<area shape="poly" id="edge10_Node000002_Node000004" title=" " alt="" coords="73,861,82,982,101,1151,115,1237,133,1315,155,1380,167,1404,181,1423,201,1437,224,1444,223,1449,198,1442,177,1427,163,1407,150,1382,128,1317,110,1238,95,1152,77,983,68,861"/>
+<area shape="rect" id="Node000005" href="$classBattleSystem.html" title="The BattleSystem class manages the core battle scene logic." alt="" coords="214,1485,314,1511"/>
+<area shape="poly" id="edge11_Node000002_Node000005" title=" " alt="" coords="73,861,80,991,98,1174,112,1268,130,1354,153,1425,166,1452,181,1472,196,1484,215,1491,213,1496,193,1489,177,1476,162,1455,148,1427,125,1356,106,1269,92,1175,75,991,68,861"/>
+<area shape="rect" id="Node000006" href="$classBattleUnit.html" title="The BattleUnit class manages a unit (pokemon) in the battle scene." alt="" coords="224,1535,304,1560"/>
+<area shape="poly" id="edge12_Node000002_Node000006" title=" " alt="" coords="73,861,78,1000,95,1198,108,1300,127,1393,151,1470,165,1499,181,1522,201,1536,225,1543,223,1548,198,1541,177,1525,160,1502,146,1472,122,1395,103,1301,89,1199,73,1000,67,861"/>
+<area shape="rect" id="Node000007" href="$classCharacter.html" title="The Character class manages all character&#45;related logic." alt="" coords="225,1584,302,1610"/>
+<area shape="poly" id="edge13_Node000002_Node000007" title=" " alt="" coords="72,861,77,1008,92,1222,105,1332,124,1432,149,1515,164,1547,181,1571,201,1585,225,1592,224,1597,199,1590,177,1575,159,1550,144,1517,119,1433,100,1332,86,1222,71,1009,67,861"/>
+<area shape="rect" id="Node000008" href="$classCharacterAnimator.html" title="The CharacterAnimator class manages all character animations." alt="" coords="199,1633,328,1659"/>
+<area shape="poly" id="edge14_Node000002_Node000008" title=" " alt="" coords="72,861,75,1017,89,1245,102,1363,121,1471,147,1560,163,1594,181,1620,200,1634,197,1639,177,1624,158,1597,142,1562,116,1472,97,1364,83,1246,70,1018,67,861"/>
+<area shape="rect" id="Node000009" href="$classDialogManager.html" title="The DialogManager class manages all the dialog&#45;related logic." alt="" coords="210,351,318,376"/>
+<area shape="poly" id="edge15_Node000002_Node000009" title=" " alt="" coords="70,804,83,710,105,585,136,465,155,418,177,386,192,374,209,367,211,372,194,379,181,389,160,421,141,467,110,586,88,711,75,805"/>
+<area shape="rect" id="Node000010" href="$classEssentialObjects.html" title="The EssentialObjects class manages the essential objects gameobject in the scene. This gameobject hol..." alt="" coords="204,400,324,426"/>
+<area shape="poly" id="edge16_Node000002_Node000010" title=" " alt="" coords="66,804,68,731,82,632,96,579,115,527,142,478,177,435,202,419,205,424,180,439,147,481,120,529,101,581,87,633,73,731,71,804"/>
+<area shape="rect" id="Node000011" href="$classEssentialObjectsSpawner.html" title="The EssentialObjectsSpawner manages the initiating of the EssentialObjects gameobject." alt="" coords="179,449,349,475"/>
+<area shape="poly" id="edge17_Node000002_Node000011" title=" " alt="" coords="67,804,72,739,88,653,102,608,121,563,146,521,177,484,192,473,195,478,180,488,150,524,126,565,107,609,94,655,78,740,72,805"/>
+<area shape="rect" id="Node000012" href="$classFader.html" title="The Fader class manages the fading effects in the game." alt="" coords="237,499,291,524"/>
+<area shape="poly" id="edge18_Node000002_Node000012" title=" " alt="" coords="69,805,77,748,95,675,109,637,127,599,149,564,177,533,205,517,235,510,237,516,207,522,180,538,154,568,131,602,114,639,100,677,82,749,74,805"/>
+<area shape="rect" id="Node000013" href="$classGameController.html" title="The GameController class manages all core game logic." alt="" coords="208,548,320,574"/>
+<area shape="poly" id="edge19_Node000002_Node000013" title=" " alt="" coords="71,804,82,756,102,697,133,636,153,607,177,583,206,567,209,571,180,587,157,611,137,638,107,699,87,758,76,805"/>
+<area shape="rect" id="Node000014" href="$classGameLayers.html" title="The game layers class manages all the layers in the game." alt="" coords="216,597,312,623"/>
+<area shape="poly" id="edge20_Node000002_Node000014" title=" " alt="" coords="75,804,88,765,109,719,139,672,177,632,195,621,215,614,217,619,198,626,180,636,143,675,114,722,93,767,80,806"/>
+<area shape="rect" id="Node000015" href="$classGlobalSettings.html" title="The GlobalSettings class manages all global settings for the game." alt="" coords="211,647,317,672"/>
+<area shape="poly" id="edge21_Node000002_Node000015" title=" " alt="" coords="80,804,118,742,145,709,177,681,209,666,211,671,180,686,149,713,122,745,84,807"/>
+<area shape="rect" id="Node000016" href="$classHPBar.html" title="The HPBar class manages all HPBars." alt="" coords="234,696,294,722"/>
+<area shape="poly" id="edge22_Node000002_Node000016" title=" " alt="" coords="88,806,127,767,177,731,205,719,233,711,234,716,207,724,180,735,131,771,92,810"/>
+<area shape="rect" id="Node000017" href="$classInventory.html" title="The Inventory class manages all Inventory&#45;related logic." alt="" coords="227,745,301,771"/>
+<area shape="poly" id="edge23_Node000002_Node000017" title=" " alt="" coords="108,810,178,780,225,765,227,770,180,785,110,815"/>
+<area shape="rect" id="Node000018" href="$classInventoryUI.html" title="The InventoryUI class manages the inventory UI." alt="" coords="220,795,308,820"/>
+<area shape="poly" id="edge24_Node000002_Node000018" title=" " alt="" coords="139,821,219,811,220,816,139,826"/>
+<area shape="rect" id="Node000019" href="$classInvisibleTileMap.html" title=" " alt="" coords="206,844,322,870"/>
+<area shape="poly" id="edge25_Node000002_Node000019" title=" " alt="" coords="139,839,206,847,205,852,139,844"/>
+<area shape="rect" id="Node000020" href="$classItemSlotUI.html" title="The ItemSlotUI class manages all the ItemSlot UI." alt="" coords="222,893,306,919"/>
+<area shape="poly" id="edge26_Node000002_Node000020" title=" " alt="" coords="111,850,180,880,222,893,220,898,178,885,109,855"/>
+<area shape="rect" id="Node000026" href="$classMapArea.html" title="The MapArea class manages all map&#45;related data." alt="" coords="227,943,300,968"/>
+<area shape="poly" id="edge29_Node000002_Node000026" title=" " alt="" coords="92,855,131,894,180,929,228,947,226,952,177,934,127,898,88,859"/>
+<area shape="rect" id="Node000027" href="$classMenuController.html" title="The MenuController class manages all menu&#45;related logic." alt="" coords="210,992,318,1018"/>
+<area shape="poly" id="edge30_Node000002_Node000027" title=" " alt="" coords="84,858,122,919,149,951,180,979,210,993,208,998,177,983,145,955,118,923,80,861"/>
+<area shape="rect" id="Node000028" href="$classMoveSelectionUI.html" title="The MoveSelectionUI class manages the move selection UI in the battle scene." alt="" coords="203,1041,324,1067"/>
+<area shape="poly" id="edge31_Node000002_Node000028" title=" " alt="" coords="80,860,93,898,114,943,143,989,180,1028,204,1041,202,1046,177,1032,139,992,110,946,88,900,75,861"/>
+<area shape="rect" id="Node000029" href="$classPartyMemberUI.html" title="The PartyMemberUI class manages the individual party members UI in the party screen." alt="" coords="208,1091,320,1116"/>
+<area shape="poly" id="edge33_Node000002_Node000029" title=" " alt="" coords="76,860,87,908,107,966,137,1026,157,1054,180,1077,208,1093,206,1097,177,1082,153,1057,133,1029,102,968,82,909,71,861"/>
+<area shape="rect" id="Node000030" href="$classPartyScreen.html" title="The PartyScreen text manages the core party screen logic." alt="" coords="218,1140,310,1166"/>
+<area shape="poly" id="edge34_Node000002_Node000030" title=" " alt="" coords="74,861,82,917,100,989,114,1026,132,1063,154,1097,180,1127,198,1138,218,1145,216,1150,196,1143,177,1131,149,1100,127,1066,109,1028,95,990,77,918,69,861"/>
+<area shape="rect" id="Node000034" href="$classPokemonParty.html" title="The PokemonParty class manages all pokemon parties." alt="" coords="211,1189,317,1215"/>
+<area shape="poly" id="edge36_Node000002_Node000034" title=" " alt="" coords="72,861,78,926,94,1010,107,1055,126,1099,150,1140,180,1176,195,1186,211,1193,209,1198,192,1191,177,1180,146,1143,121,1102,102,1057,88,1012,72,926,67,861"/>
+<area shape="rect" id="Node000035" href="$classSavableEntity.html" title=" " alt="" coords="214,1239,314,1264"/>
+<area shape="poly" id="edge38_Node000002_Node000035" title=" " alt="" coords="71,862,74,935,87,1032,101,1085,121,1136,147,1184,180,1226,196,1237,214,1244,212,1249,193,1241,177,1229,142,1187,116,1138,96,1086,82,1033,68,935,66,862"/>
+<area shape="rect" id="Node000036" href="$classSavingSystem.html" title=" " alt="" coords="211,1288,316,1314"/>
+<area shape="poly" id="edge39_Node000002_Node000036" title=" " alt="" coords="75,861,88,954,110,1079,141,1198,160,1244,181,1275,195,1286,212,1293,210,1298,192,1290,177,1279,155,1246,136,1199,105,1080,83,955,70,862"/>
+<area shape="rect" id="Node000037" href="$classSceneDetails.html" title="The SceneDetails class manages all data and details about a scene." alt="" coords="215,1337,313,1363"/>
+<area shape="poly" id="edge40_Node000002_Node000037" title=" " alt="" coords="75,861,86,964,107,1103,121,1173,138,1237,158,1289,181,1324,196,1336,215,1343,213,1348,194,1341,177,1328,153,1292,133,1239,116,1174,102,1104,81,965,69,862"/>
 </map>
